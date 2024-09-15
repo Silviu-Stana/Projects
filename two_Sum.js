@@ -9,7 +9,7 @@
  * @param {number} target
  * @return {number[]}
  */
-var twoSum = function (nums, target) {
+var twoSumV1Unoptimized = function (nums, target) {
     for(let i=0; i<nums.length; i++)
     {
         let foundIndex = nums.findIndex((num, index)=> index !== i &&  num + nums[i] === target);
@@ -18,4 +18,22 @@ var twoSum = function (nums, target) {
     }
 };
 
-console.log(twoSum([2,7,10,1], 9));
+var twoSumV2Optimized = function(nums, target) {
+        let numMap = {}
+    
+        for(let i=0; i<nums.length; i++)
+        {
+            let difference = target-nums[i];
+    
+            //Pair found, return numbers.
+            if(numMap.hasOwnProperty(difference)) return [i, numMap[difference]]
+    
+            //If no pair found, add it to the hash map.
+            numMap[nums[i]]=i;
+        }
+    
+        //Haven't found a match.
+        return null;
+    };
+
+console.log(twoSumV2Optimized([2,7,10,1], 9));
