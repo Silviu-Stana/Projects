@@ -1,6 +1,6 @@
 /**
- * @param {string} s
- * @return {number}
+ @param {string} s
+ @return {number}
  */
 
 var findTheLongestSubstring = function(s) {
@@ -25,3 +25,8 @@ var findTheLongestSubstring = function(s) {
         
         return maxLength;
     };
+
+
+console.log(findTheLongestSubstring('eleetminicoworoep')) //13
+console.log(findTheLongestSubstring('leetcodeisgreat')) //5
+console.log(findTheLongestSubstring('bcbcbc')) //6

@@ -1,0 +1,20 @@
+function sumArray(array) {
+        
+        if(array !== null && array.length>2)
+        {
+          let min=array[0], max=array[0];  
+          for(let i=0; i<array.length; i++)
+          {
+            if (array[i]>max) max=array[i];
+            if (array[i]<min) min=array[i];
+          }
+        
+        return array.reduce((a,b)=>a+b)-min-max;
+        }
+        
+        else return 0;
+      }
+      
+
+console.log(sumArray([-6, -20, -1, -10, -12 ])); 
+//Expected -28
