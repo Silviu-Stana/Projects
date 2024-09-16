@@ -1,5 +1,5 @@
 function greet() {
-        return "hello world!";
-        }
+        return 'hello world!'
+}
 
-const greet = () => "hello world!";
+const greet = () => 'hello world!'
