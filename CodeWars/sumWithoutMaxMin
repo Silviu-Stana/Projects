@@ -18,3 +18,9 @@ function sumArray(array) {
 
 console.log(sumArray([-6, -20, -1, -10, -12 ])); 
 //Expected -28
+
+
+function sumOfSquares(numbers){
+  
+        return numbers.reduce((a,b)=> a + b*b, 0);
+      }
