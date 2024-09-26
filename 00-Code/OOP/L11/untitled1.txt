@@ -1,0 +1,30 @@
+import com.sun.source.doctree.SystemPropertyTree;
+
+import java.util.Scanner;
+
+abstract class Ex
+{
+    abstract void afis1();
+    abstract void afis2();
+
+    void decid(int b)
+    {
+        if(b>0)afis1();
+        else afis2();
+    }
+}
+
+class Ex1 extends Ex
+{
+    void afis1(){System.out.println("Afis1");}
+    void afis2(){System.out.println("Afis2");}
+}
+
+public class untitled1 {
+    public static void main(String[] args) {
+
+        Ex1 a = new Ex1();
+
+        a.decid(-3);
+    }
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Silviu's Blog</title>
+        <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body>
+        <div class="alignCenter">
+                <div>
+                        <br>
+                        <form class="inline-block" action="/" method="get"> <button class="backButton">
+                                        < Back</button>
+                        </form>
+                        <form class="inline-block" action="/edit" method="get"> <button class="editButton">Edit
+                                        Post</button></form>
+                        <form class="inline-block" action="/delete" method="post"> <button class="deleteButton">Delete
+                                        Post</button></form>
+                </div>
+
+
+
+                <h1 class="post-h1"><%= title %></h1>
+                <h3>Stana Stefan-Silviu</h3>
+
+                <br>
+
+                <div class="postDescription">
+                        <%- description %>
+                </div>
+
+                </ul>
+
+        </div>
+
+</body>
+
+</html>

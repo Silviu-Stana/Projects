@@ -1,0 +1,196 @@
+#include <iostream>
+
+using namespace std;
+
+/** elaborati o functie recursiva pentru calculul sumei cifrelor
+    unui numar natural dat ca argument
+*/
+
+int sumCif(int n) //n>=0
+{
+    if(n==0)
+        return 0;
+    return n%10+sumCif(n/10);
+}
+
+/**
+    elaborati o functie recursiva pentru calculul cifrei maxime
+    a unui numar natural dat ca argument
+*/
+
+int cifMax(int n)
+{
+    if(n==0)
+        return 0;
+    int m=cifMax(n/10);
+    /*if(m>n%10)
+        return m;
+    else
+        return n%10;*/
+    return m>n%10? m:n%10;
+}
+/**
+Elaborati o functie recursiva cifmax ,cu 2 parametrii .Primul parametru n=nr nat. pt care se
+calculeaza cifra maxima  .Iar in al doilea parametru se calculeaza
+*/
+
+void cifmax(int n,int &m){
+    if(n==0){ m=0; return;}
+    cifmax(n/10,m);
+    if(n%10>m)
+        m=n%10;
+}
+/**
+n=352
+cifmax(352,m): cifmax(35,m) 352%2 <5 => m=5
+cifmax(35,m) : cifmax(3 ,m) 35%10>3 => m=5
+cifmax(3,m) : cifmax(0,m)   3%10>0 => m=3
+cifmax(0,m) -> m=0
+*/
+/**
+Elaborati o functie recursiva cifmax ,cu 2 parametrii .Primul parametru n=nr nat. pt care se
+calculeaza cifra minim  .Iar in al doilea parametru se calculeaza
+*/
+
+void cifmin(int n,int &m){
+    if(n<10){ m=n; return;}
+    cifmin(n/10,m);
+    if(n%10<m)
+        m=n%10;
+}
+
+/**elaborati o functie recursiva pentru determinarea sumei cifelor pare si a sumei
+cifelor impare pentru un numar natural
+*/
+void sumeCif(int n, int &spar, int &simpar)
+{if(n==0){spar=0;simpar=0;return;}
+sumeCif(n/10,spar,simpar);
+if(n%2==0)spar+=n%10;
+else simpar+=n%10;
+}
+
+/**
+Elaborati o functie recursive pentru determinarea celui mai mare
+divizor impar al unui numar natural dat ca argument
+prin conventie, daca n=0 =>cmmd impar =1
+Ex:
+n=36 =>cmmd ip=9
+*/
+
+int divIp(int n)
+{
+    if(n==0)return 1;
+    if(n%2==1) return n;
+    return divIp(n/2);
+}
+/**Calculati nr. de cifere al unui nr. natural dat ca argument */
+int nrCif (int n)
+{
+    if (n<10) return 1;
+    return 1+nrCif (n/10);
+}
+/**Elaborati o fct. recursiva pt. det. nr de aparitii a unei cifre
+intr-un nr nat n dat ca argument */
+int NrAp(int n, int c)
+{
+    if(n<10)
+     return n==c;
+    return (n%10==c)+NrAp(n/10,c);
+}
+/**
+elaborati o functie recursiva pt det numarului de cifre distincte din componenta
+unui nr nat n dat ca arg
+
+ex:  n=322375 =>4 cifre distincte
+*/
+int apare(int n, int c) ///1 daca apare c in n si 0 daca nu apare
+{
+    if(n<10) return n==c;
+    if(n%10==c) return 1;
+    return apare(n/10,c);
+}
+int cifreDist(int n, int c)
+{
+    if(c==10) return 0;
+    if(apare(n,c)) return 1+cifreDist(n,c+1);
+    return cifreDist(n,c+1);
+}
+int cifreDistincte(int n)
+{
+    return cifreDist(n,0);
+}
+/**
+*/
+int main()
+{
+    int n,m,spar,simpar,c;
+    cin>>n;
+    cout<<"Suma cifrelor = "<<sumCif(n)<<endl;
+    cout<<"Cifra maxima = "<<cifMax(n)<<endl;
+    cifmax(n,m);
+    cout<<"Cifra maxima = "<<m<<endl;
+    cifmin(n,m);
+    cout<<"Cifra minima = "<<m<<endl;
+    sumeCif(n,spar,simpar);
+    cout<<"suma cifrelor pare este : "<<spar<<" si a celor impare :"<<simpar<<endl;
+    cout << nrCif(n)<<endl;
+    cout<<"Tastati o cifra: "; cin>>c;
+    cout<<"Cifra apare de "<<NrAp(n,c)<<" ori"<<endl;
+    cout<<"Numarul de cifre distincte: "<<cifreDistincte(n)<<endl;
+    return 0;
+}
+
+
+
+
+
+
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+/**Fisier date.in contine un sir de nr naturale maxim 100
+Sa se elaboreze functii recursive pentru
+Citirea sirului de nr intr un vector a
+Afisarea vectorului
+Construirea vectorilor b si c b contine elementele pare iar c pe cele impare.
+*/
+ifstream f("date.in");
+void citire(int a[],int &n)
+{
+    if(f>>a[n])
+    {
+        n++;
+        citire(a,n);
+    }
+    return;
+}
+void afisare(int a[],int n)
+{
+    if(n==0) return;
+    afisare(a,n-1);
+    cout<< a[n-1]<<' ';
+}
+
+void construire(int a[], int m, int b[], int &n, int c[], int &p)
+{
+    if(m==0) return;
+    construire(a,m-1,b,n,c,p);
+    if(a[m-1]%2==0) b[n++]=a[m-1];
+    else c[p++]=a[m-1];
+
+}
+        int main()
+    {
+        int a[100],b[100],c[100];
+        int m=0, n=0, p=0;
+        citire(a,m);
+        afisare(a,m);
+        construire(a,m,b,n,c,p);
+        cout<<endl;
+        afisare(b,n);
+        cout<<endl;
+        afisare(c,p);
+        cout<<endl;
+        return 0;
+    }

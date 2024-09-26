@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 
+Don't add any classes/ids/elements 
+Hint 1: The flag is 900px by 600px and the circle is 200px by 200px.
+-->
+
+<head>
+        <meta charset="UTF-8">
+        <title>CSS Flag Project</title>
+        <style>
+                .flag {
+                        width: 900px;
+                        height: 600px;
+                        background-color: #ce1126;
+                }
+
+                .flag>div {
+                        width: 100%;
+                        height: 50%;
+
+                        position: relative;
+                        left: 0;
+                        background-color: #002868;
+                        border-radius: 0;
+                }
+
+                div>div {
+                        width: 200px;
+                        height: 200px;
+                        background-color: white;
+                        border-radius: 50%;
+
+                        position: relative;
+                        top: 10%;
+                        left: 40%;
+                }
+
+                div>p {
+                        text-align: center;
+                        margin: 0;
+                        font-size: 5rem;
+                }
+
+
+                .flag>p {
+                        color: white;
+                        text-align: center;
+                        font-size: 5rem;
+
+                        margin: 0;
+                        position: relative;
+                        top: 7%;
+                }
+        </style>
+</head>
+
+
+<body>
+        <div class="flag">
+                <p>The Flag</p>
+                <div>
+                        <div>
+                                <p>of Laos</p>
+                        </div>
+                </div>
+        </div>
+</body>
+
+</html>

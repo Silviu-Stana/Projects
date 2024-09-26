@@ -1,0 +1,87 @@
+1.
+CREATE TABLE tProductie(
+IdInregistrare char(10) NOT NULL,
+Data smalldatetime,
+CodMuncitor char(10),
+CodOperatie char(10),
+NumarSemifabricatePrelucrate int)
+
+ALTER TABLE tProductie
+ADD CONSTRAINT pk_Inreg PRIMARY KEY(IdInregistrare)
+
+ALTER TABLE tProductie
+ADD CONSTRAINT pk_Munc FOREIGN KEY(CodMuncitor) REFERENCES tMuncitori(CodMuncitor)
+
+ALTER TABLE tProductie
+ADD CONSTRAINT pk_Oper FOREIGN KEY(CodOperatie) REFERENCES tOperatii(CodOperatii)
+
+ALTER TABLE tProductie
+ADD CONSTRAINT ch_Fab CHECK(NumarSemifabricatePrelucrate BETWEEN 1 AND 100)
+
+
+
+2.
+INSERT INTO tMuncitori(CodMuncitor, Nume, Atelier)
+VALUES('M1', 'Stana', 'IT')
+
+3.
+UPDATE tOperatii
+SET PretManopera=PretManopera*0.9
+WHERE DurataNormata>60
+
+
+4. Nr muncitori la nivel de Atelier
+SELECT COUNT(CodMuncitor) as [Nr Muncitori], Atelier
+from tMuncitori
+group by Atelier
+
+5.
+SELECT D.Atelier, C.CodProdus, C.DenumireProdus, B.CodOperatie, B.DenumireOperatie, A.Data, SUM(A.NumarSemifabricatePrelucrate) as [Suma Totala]
+FROM tProductie as A inner join tOperatii as B on A.CodOperatie=B.CodOperatie
+inner join tProduse as C on B.CodProdus=C.CodProdus
+inner join tMuncitori as D on A.CodMuncitor=D.CodMuncitor
+GROUP BY D.Atelier, C.CodProdus, C.DenumireProdus, B.CodOperatie, B.DenumireOperatie, A.Data
+
+6. Produse cu pret Max
+SELECT CodProdus, DenumireProdus
+from tProduse
+WHERE PretProdus=(SELECT MAX(PretProdus) as Max
+		   FROM tProduse
+		    )
+
+
+7. Muncitori fara operatii
+select B.CodMuncitor, B.Nume, B.Atelier, A.CodOperatie
+from tProductie as A right join tMuncitori as B on A.CodMuncitor=B.CodMuncitor
+where A.CodOperatie is null
+
+
+8.
+ALTER TABLE tProduse
+ADD COLUMN Stoc int DEFAULT 0
+
+9.
+GO
+CREATE TRIGGER tr_CresteStoc
+ON tProductie
+AFTER INSERT
+AS BEGIN
+    UPDATE p
+    SET p.Stoc = p.Stoc + i.NumarSemifabricatePrelucrate
+    FROM tProductie p JOIN inserted i ON p.YourPrimaryKeyColumn = i.YourPrimaryKeyColumn
+    WHERE i.CodOperatie = 100;
+END
+
+
+10.
+CREATE FUNCTION fc_Durata(@CodProdus INT)
+RETURNS INT
+AS BEGIN
+    DECLARE @DurataNormata INT
+
+    SET @DurataNormata = SUM(DurataNormata)
+    FROM tOperatii
+    WHERE CodProdus = @CodProdus
+
+    RETURN @DurataNormata;
+END

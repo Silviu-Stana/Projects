@@ -1,0 +1,162 @@
+import jdk.jshell.spi.ExecutionControl;
+
+import java.util.Scanner;
+
+class Produs
+{
+    private String nume;
+    private int stoc;
+
+    public Produs(String nume, int stoc)
+    {
+        this.nume=nume;
+        this.stoc=stoc;
+    }
+
+    public int getStoc()
+    {
+     return stoc;
+    }
+
+    public synchronized void add(int q)
+    {
+        stoc+=q;
+        System.out.println("Added " + q + " Produse " + nume);
+    }
+
+    public synchronized void sell(int q) throws StocInsuficientException
+    {
+        if(stoc>=q) {
+            stoc -= q;
+            System.out.println("Sold " + q + " " + nume);
+        }
+        else{
+            throw new StocInsuficientException("Stoc insuficient pentru " + nume);
+        }
+    }
+}
+
+class StocInsuficientException extends Exception
+{
+    public StocInsuficientException(String mesaj)
+    {
+        super(mesaj);
+    }
+}
+
+class Eroare extends Exception
+{
+    void afis()
+    {
+        System.out.println("Nr nu este 1-5.");
+    }
+}
+
+public class Executie extends Thread
+{
+    private static int N=100;
+    public static int totA=0;
+    public static int totV=0;
+
+    private String fir;
+    private int sleepA;
+    private int sleepV;
+
+    public static Produs p = new Produs("Laptop", 10);
+
+    public Executie(int sleepA, int sleepV, String fir)
+    {
+        this.sleepA=sleepA;
+        this.sleepV=sleepV;
+        this.fir=fir;
+    }
+
+    public static int getA() {return totA;}
+    public static int getV() {return totV;}
+
+    public void adauga()
+    {
+        try {
+            sleep(sleepA);
+        }
+        catch (InterruptedException e)
+        {
+            e.getStackTrace();
+        }
+
+        System.out.print(fir + ": ");
+        p.add(1);
+        totA+=1;
+    }
+
+    public void vinde()
+    {
+        System.out.print(fir + ": ");
+        try {
+            sleep(sleepV);
+        }
+        catch (InterruptedException e)
+        {
+            e.getStackTrace();
+        }
+
+        try {
+            p.sell(1);
+            totV+=1;
+        }
+        catch (StocInsuficientException e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void run()
+    {
+        for (int i=0; i<N; i++)
+        {
+            adauga();
+            vinde();
+        }
+    }
+
+
+
+
+    public static void main(String[] args)
+    {
+        Executie t1 = new Executie(100, 100, "t1");
+        Executie t2 = new Executie(500, 500, "t2");
+
+        t1.start();
+        t2.start();
+
+        try{
+            t1.join();
+            t2.join();
+        }
+        catch (InterruptedException e)
+        {
+            e.getStackTrace();
+        }
+
+        System.out.println("Total added: " + totA);
+        System.out.println("Total sold: " + totV);
+        System.out.println("Stoc final: " + p.getStoc());
+
+
+    }
+}
+/*
+public class ooo {
+
+    public static int citesc() throws Eroare
+    {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
+        if(n>=1 && n<=5){return n;}
+        else throw new Eroare();
+    }
+
+}
+ */

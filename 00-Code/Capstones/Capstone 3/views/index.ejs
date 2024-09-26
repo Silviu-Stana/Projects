@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Silviu's Blog</title>
+        <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body>
+        <div class="alignCenter">
+                <h1>Welcome to my blog!</h1>
+                <h3>Stana Stefan-Silviu</h3>
+
+                <br>
+                <div>
+                        <form action="/post" method="post">
+                                <button>Create Blog Post</button>
+                </div>
+
+
+                <% if (locals.titles && locals.titles.length>0) { %>
+                <h2>Recent Posts</h2>
+                <% } %>
+
+
+                <ul class="alignCenter">
+                        <% if(locals.titles) { %>
+                        <% for(let i=0; i< titles.length; i++) { %>
+                        <li>
+                                <a href="/posts/<%= titles[i] %>"><%= titles[i] %></a>
+                        </li>
+                        <% } } %>
+
+                </ul>
+
+        </div>
+
+</body>
+
+</html>

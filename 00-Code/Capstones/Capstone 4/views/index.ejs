@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Silviu's Blog</title>
+        <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body>
+        <!-- Every time you reload the page, the texts and button will have a different random matching color. -->
+        <script>
+                const randomColor = ['#544ae7', '#e74a4a', '#2c9131', '#912c78', '#845f08', '#0a5f11', '#1509ba'];
+                const chosen = randomColor[Math.floor(Math.random() * randomColor.length)];
+                document.addEventListener('DOMContentLoaded', function () {
+                        document.querySelector('button').style.backgroundColor = chosen;
+                        document.querySelector('h1').style.color = chosen;
+                });
+        </script>
+
+
+        <div class="alignCenter">
+                <h1>Click the button!</h1>
+                <h3>I know you want to ;)</h3>
+
+                <br>
+                <div>
+                        <form action="/cat" method="post">
+                                <button>Get a Cat</button>
+                </div>
+
+        </div>
+
+</body>
+
+</html>

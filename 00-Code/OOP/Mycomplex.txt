@@ -1,0 +1,101 @@
+#include <iostream>
+
+using namespace std;
+
+class Complex
+{
+private:
+    double r,i;
+public:
+    Complex(); //implicit
+    Complex(double,double);//cu parametri
+    Complex(const Complex&);//copiere
+
+    friend ostream& operator<<(ostream&, const Complex&); //supraincarcare operator <<
+    friend istream& operator>>(istream&, Complex&); //supraincarcare operator >>
+
+    Complex operator+(const Complex&) const;
+    Complex operator+(double) const;
+    friend Complex operator+(double, const Complex&);
+
+    Complex& operator=(const Complex&);
+    Complex& operator++();//prefix
+    Complex& operator++(int);//postfix
+
+    bool operator==(const Complex&);
+};
+
+Complex::Complex(double re, double im)
+{
+    r=re;
+    i=im;
+}
+
+Complex::Complex(): r(0), i(0) {}
+
+Complex::Complex(const Complex& copie)
+{
+    r= copie.r;
+    i = copie.i;
+}
+
+ostream& operator<<(ostream& out, const Complex& c)
+{
+    out<<endl;
+    out<<c.r << " i" << c.i;
+    return out; // do we need a return?
+}
+
+istream& operator>>(istream& in, Complex& c)
+{
+    cout<<endl;
+    cout<<"Partea Reala: "; in>>c.r;
+    cout<<"Partea Imaginara: "; in>>c.i;
+    return in;
+}
+
+Complex Complex::operator+(const Complex& z) const
+{
+    return Complex(r+z.r, i+z.i);
+}
+
+
+Complex operator+(double a, const Complex& c)
+{
+    return Complex(a,0) + z;
+}
+
+
+Complex::Complex& operator=(const Complex& z)
+{
+    r=z.r;
+    r=z.i;
+}
+
+
+///PREFIX
+Complex::Complex& operator++()
+{
+
+}
+
+///POSTFIX
+Complex::Complex& operator++(int)
+{
+
+}
+
+Complex::bool operator==(const Complex& z)
+{
+    if(z.r==this->r && z.i==this->i) return 1;
+    else return 0;
+}
+
+int main()
+{
+    Complex c1, c2;
+
+    cin>>c1>>c2;
+    cout<<c1<<c2;
+    return 0;
+}

@@ -1,0 +1,146 @@
+h1 {
+        margin-top: 100px;
+        margin-bottom: 0px;
+        font-size: 30px;
+        background-image: linear-gradient(to right, red, blue, red);
+        color: transparent;
+        background-clip: text;
+        background-size: 25%;
+        animation: h1 10s infinite linear;
+        
+        
+}
+
+.post-h1{
+        margin-top: 50px;
+        margin-bottom: 0px;
+        font-size: 30px;
+}
+
+.postDescription{
+        text-align: left;
+        width: 50%;
+        margin: 0 auto;
+}
+
+/* For mobile phones */
+@media (max-width: 768px) {
+        h1 {
+                margin-top: 50px;
+        }
+        
+        input{
+                width: 80%;
+        }
+        
+        textarea{
+                width: 80%;
+        }
+        
+        .postDescription{
+                width: 80%;
+        }
+      }
+
+input{
+        padding: 10px 15px;
+        border-radius: 150px;
+        border: 2px solid #544ae7;
+        font-size: large;
+        font-family: 'Roboto', sans-serif;
+}
+
+input:focus::placeholder {
+        color: transparent;
+      }
+
+textarea:focus::placeholder {
+        color: transparent;
+      }
+
+textarea{
+        padding: 15px 15px;
+        border-radius: 20px;
+        border: 3px solid #544ae7;
+        font-size: large;
+        font-family: 'Roboto', sans-serif;
+}
+
+.margin-5{
+        margin: 5px 20px;
+}
+
+button{
+        background-color: #544ae7;
+        color: white;
+        padding: 15px 20px;
+        cursor: pointer;
+        border-radius: 200px;
+        font-size: 20px;
+        transition: opacity 0.3s ease;
+}
+
+.inline-block{
+        display: inline-block;
+}
+
+.editButton{
+        background-color: #4a57e7;
+        padding: 12px 20px;
+        font-size: 18px;
+}
+
+.deleteButton{
+        background-color: #e74a4a;
+        padding: 12px 18px;
+        font-size: 18px;
+}
+
+.backButton{
+        background-color: #2c9131;
+        padding: 12px 18px;
+        font-size: 18px; 
+}
+
+
+button:hover{
+        transition:  0.3s ease;
+        background-color: #4323fb;
+}
+.backButton:hover{background-color: #1b5b1e;}
+.editButton:hover{background-color: #2f378f;}
+.deleteButton:hover{background-color: #983131;}
+
+
+.alignCenter{
+        text-align: center;
+}
+
+ul {
+        list-style-position: inside;
+}
+
+li{
+        size: 50px;
+        margin-bottom: 3px;
+}
+
+::marker {
+        font-size: 1.2rem
+      }
+
+h3{
+        margin-top: 5px;
+}
+
+@keyframes h1 {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 100% 0;
+        }
+      }
+
+      
+      

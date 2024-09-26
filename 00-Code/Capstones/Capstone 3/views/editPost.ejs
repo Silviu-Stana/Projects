@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Silviu's Blog</title>
+        <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body>
+        <div class="alignCenter">
+                <h1>How would you like to change your post?</h1>
+                <br>
+                <br>
+
+                <form action="/edit-post" method="post">
+                        <h3 class="margin-5">Title</h3>
+                        <input type="text" name="title2" id="title2" size="60" value="<%= content.title %>" required>
+                        <br><br><br>
+
+                        <h3 class="margin-5">Post</h3>
+                        <textarea name="description" id="description" cols="60" rows="10" placeholder="Edit your post!"
+                                required><%= content.body %></textarea>
+
+                        <br><br><br>
+                        <button>Save</button>
+                </form>
+        </div>
+
+</body>
+
+</html>

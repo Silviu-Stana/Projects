@@ -1,0 +1,145 @@
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+
+bool vocala (char c)
+{
+    return c=='a' || c=='e' || c=='i' || c=='o' || c=='u' || c=='A' || c=='E' || c=='I' || c=='O' || c=='U';
+}
+
+bool vocala3 (char c)
+{
+   return strchr("aeiouAEIOU",c) !=0;
+}
+
+bool vocala4 (char c)
+{
+    switch(c)
+    {
+    case 'a':
+    case 'e':
+    case 'i':
+    case 'o':
+    case 'u':
+    case 'A':
+    case 'E':
+    case 'I':
+    case 'O':
+    case 'U':
+        return 1;
+    ///default: return 0;
+    }
+    return 0;
+}
+
+int nrVocale1 (char s[])
+{
+    int nrV=0;
+    for (int i=0;i<strlen(s);i++)
+        if (vocala(s[i]))    nrV++;
+    return nrV;
+}
+
+int nrVocale2 (char s[])
+{
+    int nrV=0;
+    for (int i=0;s[i];i++)
+        nrV+=vocala4(s[i]);
+    return nrV;
+}
+int nrvocale3(char S[100])
+{
+    int nrv=0;
+    for(int i=0;S[i];i++)
+    nrv+=vocala(S[i]);
+    return nrv;
+}
+int nrvocale(char *S)
+{
+    int nrv=0;
+    while (*S)
+    {
+        nrv+=vocala(*S);
+        S++;
+    }
+    return nrv;
+}
+
+    //top 3 caractere din text.
+void frec (char s[])
+{
+    int f[255]={0};
+    for (int i=0;s[i]!=0;i++)    f[s[i]]++;
+    int max1=0,max2=0,max3=0;
+    char c1,c2,c3;
+    for (int i=0;i<255;i++)
+        if (f[i]>max1)
+        {
+            max3=max2;      max2=max1;         max1=f[i];
+            c3=c2;     c2=c1;       c1=i;
+        }
+        else
+            if (f[i]>max2)
+            {    max3=max2;      max2=f[i];
+                c3=c2;    c2=i;
+            }
+            else
+                if (f[i]>max3)
+                {
+                    max3=f[i];
+                    c3=i;
+                }
+                cout<<c1<< "->"<<max1<<endl;
+                cout<<c2<< "->"<<max2<<endl;
+                for (int i=0;i<255;i++)
+                   if (f[i]==max3 && i!=c1 && i!=c2) cout<<(char) i<< "->"<<max3<<endl;
+
+
+}
+
+
+void eliminareVocale1 (char s[])
+{
+    int k=0;
+    for (int i=0;s[i]!=0;i++)
+       if (!vocala(s[i]))   {   s[k]=s[i];    k++;  }
+    s[k]=0;
+}
+
+
+void eliminareVocale2 (char s[])
+{
+    for (int i=0;i<strlen(s);i++)
+        if (vocala (s[i]))     {     strcpy(s+i, s+i+1);     i--;      }
+}
+
+void eliminareVocale (char s[])
+{
+    for (int i=strlen(s)-1;i>=0;i--)
+        if (vocala (s[i]))    {    strcpy(s+i, s+i+1);     }
+}
+
+
+int numarCuv(char s[])
+{
+    int i,k=0;
+    if(s[0]!=' ' && s[0]!=0) k=1;
+    int lg=strlen(s);
+    lg--;
+    for(i=0;i<lg;i++)
+         if(s[i]==' ' && s[i+1]!=' ' &&s[i+1]!=0)   k++;
+    return k;
+}
+
+int main()
+{
+    char s[100];
+    cin.getline(s,99,'\n');
+    cout<<nrVocale(s)<<endl;
+    frec(s);
+    eliminareVocale(s);
+    cout<<s;
+
+    return 0;
+}

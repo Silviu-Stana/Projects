@@ -1,0 +1,106 @@
+#include <iostream>
+using namespace std;
+
+class Fractie
+{
+private:
+    int numarator;
+    int numitor;
+
+    int cmmdc(int a, int b)
+    {
+        while(b!=0){
+            int r=a%b;
+            a=b;
+            b=r;
+        }
+        return a;
+    }
+
+        void simplifica()
+    {
+        int d = cmmdc(numarator, numitor);
+        numarator/=d;
+        numitor/=d;
+    }
+
+public:
+    Fractie(): numarator(0), numitor(1) {}//implicit
+
+    Fractie(int m, int n)
+    {
+        numarator=m;
+        numitor=n;
+    }
+
+    Fractie adunare(Fractie& f)
+    {
+        int m = numarator * f.numitor + f.numarator * numitor;
+        int n = numitor * f.numitor;
+
+        Fractie fractie(m,n);
+
+        simplifica();
+
+        return fractie;
+    }
+
+    static void adunare2(Fractie& f1, Fractie& f2)
+    {
+        int m = f1.numarator * f2.numitor + f2.numarator * f1.numitor;
+        int n = f1.numitor * f2.numitor;
+
+        Fractie fractie(m,n);
+
+        fractie.simplifica();
+
+        cout<< fractie.numarator << "/" << fractie.numitor << endl;
+    }
+
+    static void scadere2(Fractie& f1, Fractie& f2)
+    {
+        int m = f1.numarator * f2.numitor - f2.numarator * f1.numitor;
+        int n = f1.numitor * f2.numitor;
+
+        Fractie fractie(m,n);
+
+        fractie.simplifica();
+
+        cout<< fractie.numarator << "/" << fractie.numitor << endl;
+    }
+
+    static void inmultire2(Fractie& f1, Fractie& f2)
+    {
+        int m = f1.numarator * f2.numarator;
+        int n = f1.numitor * f2.numitor;
+
+        Fractie fractie(m,n);
+
+        fractie.simplifica();
+
+        cout<< fractie.numarator << "/" << fractie.numitor << endl;
+    }
+
+    static void impartire2(Fractie& f1, Fractie& f2)
+    {
+        int m = f1.numarator * f2.numitor;
+        int n = f1.numitor * f2.numarator;
+
+        Fractie fractie(m,n);
+
+        fractie.simplifica();
+
+        cout<< fractie.numarator << "/" << fractie.numitor << endl;
+    }
+
+
+//this->value = value;
+};
+
+int main()
+{
+    Fractie f1(1,3), f2(2,5);
+
+    Fractie::impartire2(f1,f2);
+    return 0;
+}

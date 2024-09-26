@@ -1,0 +1,71 @@
+1.
+create table tProductie(
+IdInregistrare char(10),
+Data smalldatetime,
+CodMuncitor varchar(10),
+CodOperatie varchar(10),
+NumarSemifabricatePrelucrate smallint not null)
+
+alter table tProductie
+add constraint pk_id PRIMARY KEY(IdInregistrare)
+
+alter table tProductie
+add constraint fk_munc FOREIGN KEY(CodMuncitor) references tMuncitori(CodMuncitor)
+
+alter table tProductie
+add constraint fk_oper FOREIGN KEY(CodOperatie) references tOperatii(CodOperatie)
+
+alter table tProductie
+add contraint chk_nrfab CHECK (NumarSemifabricatePrelucrate  BETWEEN 1 AND 100);
+
+
+2. insert into tMUNCITORI(CodMuncitor, Nume, Atelier)
+values('M1','Vasile',''Metalurgie')
+
+
+3. update tOperatii
+set PretManopera=pretManopera*0.9
+where DurataNormata>60
+
+
+
+4. Nr muncitori la nivel de Atelier
+
+select Atelier, COUNT(Atelier) as [Nr Muncitori]
+from tMuncitori
+group by Atelier
+
+
+
+5.
+select D.Atelier, C.CodProdus, C.DenumireProdus, B.CodOperatie, B.DenumireOperatie, A.Data, SUM(NumarSemifabricatePrelucrate)
+from tProductie as A
+join tOperatii as B on A.CodOperatie=B.CodOperatie
+join tProduse as C on B.CodProdus=C.CodProdus
+join tMuncitori as D on A.CodMuncitor=D.CodMuncitor
+GROUP BY D.Atelier, C.CodProdus, C.DenumireProdus, B.CodOperatie, B.DenumireOperatie, A.Data
+
+
+6. Produsele cu Pret maxim
+select CodProdus, DenumireProdus, PretProdus
+from tProduse as P
+where P.PretProdus=(select MAX(P2.PretProdus)
+                                   from tProduse as P2)
+		   where P2.DenumireProdus=P.DenumireProdus)
+
+
+
+
+7. 
+select C.CodMuncitor, C.Nume, C.Atelier
+from tProductie as A
+LEFT join tMuncitori as C on A.CodMuncitor=C.CodMuncitor
+where A.CodOperatie is null
+
+
+8.
+ALTER TABLE tProduse
+ADD COLUMN Stoc int DEFAULT 0;
+
+ALTER TABLE tProduse
+ADD CONSTRAINT df_stoc DEFAULT 0 FOR Stoc

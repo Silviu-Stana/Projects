@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Silviu's Blog</title>
+        <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body>
+        <script>
+                const randomColor = ['#544ae7', '#e74a4a', '#2c9131', '#912c78', '#845f08', '#0a5f11', '#1509ba'];
+                const chosen = randomColor[Math.floor(Math.random() * randomColor.length)];
+                document.addEventListener('DOMContentLoaded', function () {
+                        document.querySelector('button').style.backgroundColor = chosen;
+                        document.querySelector('h1').style.color = chosen;
+                        document.querySelector('.catPicture').style.borderColor = chosen;
+                });
+        </script>
+
+
+        <div class="alignCenter">
+                <h1>Here's a cat!</h1>
+                <h3><%= catLine %></h3>
+
+                <br>
+                <div>
+                        <form action="/cat" method="post">
+                                <button>Get Another Cat</button>
+                </div>
+
+                <% if(locals.picture) { %>
+                <img class="catPicture" src="<%= picture.url %>" width="360" alt="cat" />
+                <% } %>
+        </div>
+
+</body>
+
+</html>

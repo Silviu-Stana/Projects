@@ -1,0 +1,61 @@
+//JAVA OOP
+import java.util.Scanner;
+
+class Muncitor
+{
+    protected int h;
+    protected int salariu;
+
+    Muncitor(int hours){
+        h=hours;
+    }
+
+    int salariu(){return h*2;}
+}
+
+class Sef extends Muncitor
+{
+    Sef(int h)
+    {
+        super(h);
+    }
+
+    @Override
+    int salariu() {return h*5;}
+}
+
+class Director extends Sef
+{
+    Director(int h)
+    {
+        super(h);
+    }
+
+    @Override
+    int salariu() {return h*10;}
+}
+
+
+public class scratch_2 {
+    public static void main(String[] args) {
+
+        Muncitor m1 = new Muncitor(10);
+
+        Scanner sc = new Scanner(System.in);
+        int tip = sc.nextInt();
+
+        System.out.print("Introduceti nr ore lucrate: ");
+        int ore= sc.nextInt();
+
+        Muncitor m = null;
+        switch(tip)
+        {
+            case 1: m=new Muncitor(ore); break;
+            case 2: m=new Sef(ore); break;
+            case 3: m=new Director(ore); break;
+            default: System.out.println("Error");
+        }
+
+        System.out.println(m.salariu());
+    }
+}
