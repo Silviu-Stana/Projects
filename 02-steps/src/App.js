@@ -4,6 +4,7 @@ export default function App() {
         const step = 1;
 
         function handlePrevious() {}
+        function handleNext() {}
 
         return (
                 <div className="steps">
@@ -18,10 +19,12 @@ export default function App() {
                         </p>
 
                         <div className="buttons">
-                                <button style={{ backgroundColor: '#7950f2', color: '#fff' }} onClick={() => alert('Previous')}>
+                                <button style={{ backgroundColor: '#7950f2', color: '#fff' }} onClick={handlePrevious}>
                                         Previous
                                 </button>
-                                <button style={{ backgroundColor: '#7950f2', color: '#fff' }}>Next</button>
+                                <button style={{ backgroundColor: '#7950f2', color: '#fff' }} onClick={handleNext}>
+                                        Next
+                                </button>
                         </div>
                 </div>
         );
