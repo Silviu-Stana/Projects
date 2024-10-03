@@ -19,15 +19,18 @@ function Counter() {
         return (
                 <div>
                         <button onClick={() => setStep((s) => s - 1)}>-</button>
-                        Step: {step}
+                        <span>Step: {step}</span>
                         <button onClick={() => setStep((s) => s + 1)}>+</button>
                         <br />
+
                         <button onClick={() => setCount((c) => c - 1 * step)}>-</button>
-                        Count: {count}
+                        <span>Count: {count}</span>
                         <button onClick={() => setCount((c) => c + 1 * step)}>+</button>
-                        <br />
-                        <br />
-                        30 days from today is {new Date(new Date().setDate(new Date().getDate() + count)).toDateString()}
+
+                        <p>
+                                {count === 0 ? 'Today is ' : count > 0 ? `${count} days from today is ` : `${Math.abs(count)} days ago was `}{' '}
+                                {new Date(new Date().setDate(new Date().getDate() + count)).toDateString()}
+                        </p>
                 </div>
         );
 }
