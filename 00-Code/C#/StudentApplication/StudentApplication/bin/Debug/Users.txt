@@ -1,0 +1,13 @@
+a,a,a
+b,b,b
+c,c,c
+a,a,Ana
+b,b,Bob
+c,c,Crina
+a,a,Ana
+b,b,Bob
+v,v,Vasile
+a,a,ana
+a,a,Ana
+b,b,Bob
+v,v,Vasile
