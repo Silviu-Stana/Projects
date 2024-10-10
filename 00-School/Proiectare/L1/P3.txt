@@ -1,0 +1,25 @@
+//P3
+ import java.util.Scanner;
+class HelloWorld {
+    public static void main(String[] args) {
+        Scanner cin = new Scanner(System.in);
+        int a,b;
+        
+        //exemple: 0 and 33
+        //types out 033 and 330, then removes the first 0 character from 033
+        
+        System.out.print("a=");
+        a=cin.nextInt();
+        System.out.print("b=");
+        b=cin.nextInt();
+        
+        String num1 = Integer.toString(a)+Integer.toString(b);
+        String num2 = Integer.toString(b)+Integer.toString(a);
+        
+        while(num1.substring(0,1).equals("0")) num1=num1.substring(1);
+        while(num2.substring(0,1).equals("0")) num2=num2.substring(1);
+        
+        System.out.println("The 2 numbers we can form are: ");
+        System.out.println(num1 + " and " + num2);
+    }
+}

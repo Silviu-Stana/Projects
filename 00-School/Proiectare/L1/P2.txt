@@ -1,0 +1,17 @@
+//P2
+ import java.util.Scanner;
+class HelloWorld {
+    public static void main(String[] args) {
+        Scanner cin = new Scanner(System.in);
+        System.out.print("n=");
+        int n, sum=0;
+        n=cin.nextInt();
+        
+        while(n>0)
+        {
+            sum+=n%10;
+            n/=10;
+        }
+        System.out.println("Sum of digits is: " + sum);
+    }
+}

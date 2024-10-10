@@ -1,0 +1,153 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp4
+{
+
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Multime m1 = new Multime();
+            m1.Add(2);
+            m1.Add(4);
+            m1.Add(6);
+
+            Console.WriteLine(m1.ToString());
+            Console.WriteLine("Marimea Maxima: " + Multime.DimMax);
+            Multime.DimMax = 50;
+
+            //Scris ca "String Interpolation"
+            Console.WriteLine($"Marimea Maxima: {Multime.DimMax}");
+
+            Multime m2 = new Multime();
+            m2.Add(3);
+            m2.Add(4);
+
+            Console.WriteLine(m2.ToString());
+            //Reuniunea
+            Console.WriteLine((m1 + m2).ToString());
+
+            Console.ReadKey();
+        }
+    }
+
+    public class Multime
+    {
+        private static int dimMax = 100;
+        private int size { get; set; }
+        private int[] x;
+
+        public static int DimMax
+        {
+            get { return dimMax; }
+            set { dimMax = value; }
+        }
+
+        public int this[int i] {
+            get { return x[i]; }
+            set { x[i] = value; }
+        }
+
+        public Multime()
+        {
+            this.size = 0;
+            x = new int[dimMax];
+        }
+
+        public Multime(Multime m)
+        {
+            this.size = m.size;
+
+            this.x = new int[dimMax];
+
+            for (int i = 0; i < size; i++) x[i] = m[i]; //m[i] is the same as m.x[i]
+        }
+
+        public Multime(int[] x)
+        {
+            if (dimMax < x.Length)
+            {
+                size = dimMax;
+            }
+            else size = x.Length;
+        }
+
+        public override string ToString()
+        {
+            string s = "{";
+
+            for (int i = 0; i < size; i++)
+            {
+                s += x[i].ToString() + ",";
+            }
+
+            //Stergem ultimul caracter, care va fi o virgula (,)
+            s += "\b";
+
+            //Adaugam paranteza finala
+            s += "}";
+
+            return s;
+        }
+
+        public bool Full()
+        {
+            return size == dimMax;
+        }
+        public bool Empty()
+        {
+            return size == 0;
+        }
+
+
+        public int Exista(int elem)
+        {
+            for(int i=0; i<size; i++)
+            {
+                //Pozitia elementului
+                if (x[i] == elem) return i;
+            }
+
+            //Daca nu am gasit
+            return -1;
+        }
+
+        public void Add(int elem)
+        {
+            //Daca NU exista, si mai este loc in vector
+            if(Exista(elem) == -1 && size<dimMax)
+            {
+                x[size++] = elem;
+            }
+        }
+
+        public void Delete(int elem)
+        {
+            int pozitiaElementului = Exista(elem);
+
+            //Daca exista, punem ultimul element la pozitia unde am gasit elementul.
+            if (pozitiaElementului != -1) x[pozitiaElementului] = x[size - 1];
+            size--;
+        }
+
+        public static Multime operator+(Multime m1, Multime m2)
+        {
+            Multime rezultat = new Multime(m1);
+
+            for(int i=0; i<m2.size; i++)
+            {
+                //Daca nu exista, il adaugam:
+                if (m1.Exista(m2[i]) == -1)
+                {
+                    rezultat.Add(m2[i]);
+                }
+            }
+
+            return rezultat;
+        }
+    }
+}

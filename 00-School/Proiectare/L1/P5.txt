@@ -1,0 +1,18 @@
+//P5
+ import java.util.Scanner;
+class HelloWorld {
+    public static void main(String[] args) {
+        Scanner cin = new Scanner(System.in);
+        int n, sum=0;
+        int pare=0, impare=0;
+        System.out.print("n=");
+        n=cin.nextInt();
+        
+        if(n%10==n/10%10) System.out.println(Integer.toString(n+1) + " " + Integer.toString(n+2));
+        else
+        {
+            if(n%10>n/10%10) System.out.println(n%10);
+            else System.out.println(n/10%10);
+        }
+    }
+}

@@ -1,0 +1,38 @@
+//P4
+ import java.util.Scanner;
+class HelloWorld {
+    public static void main(String[] args) {
+        Scanner cin = new Scanner(System.in);
+        int n, sum=0;
+        int pare=0, impare=0;
+        System.out.print("n=");
+        n=cin.nextInt();
+        
+        int temp=n;
+        while(temp>0)
+        {
+            if(temp%10>=4)
+            {
+            System.out.println("Pitic");
+            break;
+            }
+            temp/=10;
+        }
+        
+        temp=n;
+        while(temp>0)
+        {
+            sum+=temp%10;
+            if(pare%2==0)pare++;
+            else impare++;
+            
+            temp/=10;
+        }
+        
+        if(sum>n+2) System.out.println("Generos");
+        
+        if(pare==impare) System.out.println("Echilibrat");
+        
+        if(Math.sqrt(n)*Math.sqrt(n)==n) System.out.println("Corect");
+    }
+}
