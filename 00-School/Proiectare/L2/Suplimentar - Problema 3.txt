@@ -1,0 +1,45 @@
+import java.util.Scanner;
+public class L2Problema2 {
+static long fibbo[] = new long[100];
+
+static void Fibonacci()
+{
+    fibbo[0]=1;
+    fibbo[1]=1;
+    
+    for(int i=2; i<100; i++)
+    {
+        fibbo[i]=fibbo[i-1]+fibbo[i-2];
+        //System.out.print(fibbo[i] + " ");
+    }
+}
+
+static void Counter(int[] nums)
+{
+    int count=0;
+    
+    for(int i=0; i<nums.length; i++)
+    {
+        for(int j=0; j<fibbo.length; j++)
+        {
+            if(nums[i]==fibbo[j]) {count++; break;}
+        }
+    }
+    
+    System.out.print("Count is: " + count);
+}
+
+public static void main(String[] args) {
+    Fibonacci();
+ int n,i, numere[];
+ Scanner cin = new Scanner(System.in);
+ System.out.print("Vector size=");
+ n=cin.nextInt();
+ numere = new int[n];
+ 
+ for(i=0; i<n; i++) numere[i] = cin.nextInt();
+ 
+ Counter(numere);
+ 
+} 
+}

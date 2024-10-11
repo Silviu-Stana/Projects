@@ -1,0 +1,45 @@
+import java.util.Scanner;
+public class L2Problema2 {
+static long fibbo[] = new long[100];
+
+static void MaxMinLinii(int[][] numbers, int length)
+{
+    /*
+1 2 5
+2 4 1
+11 3 7
+    */
+    
+    for(int i=0; i<length; i++)
+    {
+        //Resetam max si minim, dupa terminarea fiecarei linii.
+    int max=-99999999;
+    int min=99999999;
+        
+        for(int j=0; j<length; j++)
+        {
+            if(numbers[i][j]>max) max=numbers[i][j];
+            if(numbers[i][j]<min) min=numbers[i][j];
+        }
+        
+        System.out.println("Max Linia " + i + ": " + max);
+        System.out.println("Min Linia " + i + ": " + min);
+    }
+}
+
+public static void main(String[] args) {
+ int n,i, numere[][];
+ Scanner cin = new Scanner(System.in);
+ System.out.print("Bidimentsional size=");
+ n=cin.nextInt();
+ numere = new int[n][n];
+ 
+    for(i=0; i<n; i++)
+    {
+        for(int j=0; j<n; j++) numere[i][j] = cin.nextInt();
+    }
+    
+    MaxMinLinii(numere, n);
+ 
+} 
+}

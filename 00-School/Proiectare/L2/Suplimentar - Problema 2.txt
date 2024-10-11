@@ -1,0 +1,43 @@
+import java.util.Scanner;
+public class L2Problema2 {
+
+static int SumaCifrelor(int n)
+{
+    int sum=0;
+    while(n>0)
+    {
+        sum+=n%10;
+        n/=10;
+    }
+    return sum;
+}
+
+static int ProdusulCifrelor(int n)
+{
+    int p=1;
+    while(n>0)
+    {
+        if(n%10 != 0)p*=n%10;
+        
+
+        n/=10;
+    }
+    return p;
+}
+
+public static void main(String[] args) {
+ int a,b,i;
+ Scanner cin = new Scanner(System.in);
+ System.out.print("a=");
+ a=cin.nextInt();
+ System.out.print("b=");
+ b=cin.nextInt();
+ 
+ System.out.println("Suma Cifrelor lui a: " +SumaCifrelor(a)); 
+  System.out.println("Suma Cifrelor lui b: " +SumaCifrelor(b)); 
+   System.out.println("Produsul Cifrelor lui a: " +ProdusulCifrelor(a)); 
+  System.out.println("Produsul Cifrelor lui b: " +ProdusulCifrelor(b));
+ 
+ 
+} 
+}
