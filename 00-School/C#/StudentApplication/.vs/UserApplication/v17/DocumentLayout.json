@@ -1,17 +1,17 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\silviu\\source\\repos\\StudentApplication\\",
+  "WorkspaceRootPath": "D:\\Projects\\00-School\\C#\\StudentApplication\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{66AEC07C-5371-4E68-8B52-A7C847C264F7}|StudentApplication\\StudentApplication.csproj|c:\\users\\silviu\\source\\repos\\studentapplication\\studentapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{66AEC07C-5371-4E68-8B52-A7C847C264F7}|StudentApplication\\StudentApplication.csproj|solutionrelative:studentapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AEC9AFD6-071A-45E8-80CC-BE28C03F9DB8}|StudentModel\\UserModel.csproj|c:\\users\\silviu\\source\\repos\\studentapplication\\studentmodel\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{AEC9AFD6-071A-45E8-80CC-BE28C03F9DB8}|StudentModel\\UserModel.csproj|D:\\Projects\\00-School\\C#\\StudentApplication\\studentmodel\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AEC9AFD6-071A-45E8-80CC-BE28C03F9DB8}|StudentModel\\UserModel.csproj|solutionrelative:studentmodel\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{66AEC07C-5371-4E68-8B52-A7C847C264F7}|StudentApplication\\StudentApplication.csproj|C:\\Users\\silviu\\source\\repos\\StudentApplication\\studentapplication\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "AbsoluteMoniker": "D:0:0:{66AEC07C-5371-4E68-8B52-A7C847C264F7}|StudentApplication\\UserApplication.csproj|d:\\projects\\00-school\\c#\\studentapplication\\studentapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66AEC07C-5371-4E68-8B52-A7C847C264F7}|StudentApplication\\UserApplication.csproj|solutionrelative:studentapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66AEC07C-5371-4E68-8B52-A7C847C264F7}|StudentApplication\\StudentApplication.csproj|D:\\Projects\\00-School\\C#\\StudentApplication\\studentapplication\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{66AEC07C-5371-4E68-8B52-A7C847C264F7}|StudentApplication\\StudentApplication.csproj|solutionrelative:studentapplication\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     }
   ],
@@ -22,41 +22,40 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "App.config",
-              "DocumentMoniker": "C:\\Users\\silviu\\source\\repos\\StudentApplication\\StudentApplication\\App.config",
+              "DocumentMoniker": "D:\\Projects\\00-School\\C#\\StudentApplication\\StudentApplication\\App.config",
               "RelativeDocumentMoniker": "StudentApplication\\App.config",
-              "ToolTip": "C:\\Users\\silviu\\source\\repos\\StudentApplication\\StudentApplication\\App.config",
+              "ToolTip": "D:\\Projects\\00-School\\C#\\StudentApplication\\StudentApplication\\App.config",
               "RelativeToolTip": "StudentApplication\\App.config",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-10-09T13:22:42.792Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-09T13:22:42.792Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\silviu\\source\\repos\\StudentApplication\\StudentModel\\User.cs",
+              "DocumentMoniker": "D:\\Projects\\00-School\\C#\\StudentApplication\\StudentModel\\User.cs",
               "RelativeDocumentMoniker": "StudentModel\\User.cs",
-              "ToolTip": "C:\\Users\\silviu\\source\\repos\\StudentApplication\\StudentModel\\User.cs",
+              "ToolTip": "D:\\Projects\\00-School\\C#\\StudentApplication\\StudentModel\\User.cs",
               "RelativeToolTip": "StudentModel\\User.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAhwCEAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAIwKYAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-09T13:21:47.729Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\silviu\\source\\repos\\StudentApplication\\StudentApplication\\Program.cs",
+              "DocumentMoniker": "D:\\Projects\\00-School\\C#\\StudentApplication\\StudentApplication\\Program.cs",
               "RelativeDocumentMoniker": "StudentApplication\\Program.cs",
-              "ToolTip": "C:\\Users\\silviu\\source\\repos\\StudentApplication\\StudentApplication\\Program.cs",
+              "ToolTip": "D:\\Projects\\00-School\\C#\\StudentApplication\\StudentApplication\\Program.cs",
               "RelativeToolTip": "StudentApplication\\Program.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAADwvwsAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
