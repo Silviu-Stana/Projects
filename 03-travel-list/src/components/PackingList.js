@@ -26,7 +26,7 @@ export default function PackingList({ items, onDeleteItem, onToggleItem, onClear
                                         <option value="description">Sort by description</option>
                                         <option value="packed">Sort by packed status</option>
                                 </select>
-                                {sortedItems.length ? <button onClick={onClearList}>Clear list</button> : null}
+                                {sortedItems.length ? <button onRate={onClearList}>Clear list</button> : null}
                         </div>
                 </div>
         );
