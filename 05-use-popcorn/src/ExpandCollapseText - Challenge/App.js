@@ -37,6 +37,8 @@ function TextExpander({
 
         const textStyle = {
                 color: buttonColor,
+                cursor: 'pointer',
+                font: 'inherit',
         };
 
         let wordsCutoff = children.toString().split(' ').slice(0, collapsedNumWords).join(' ') + '... ';
