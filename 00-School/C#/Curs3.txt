@@ -1,0 +1,379 @@
+(1) Compararea obiectelor in C# (Equals, CompareTo)
+(2) Reprezentarea ca string a obiectelor (ToString)
+(3) Reprezentarea ca numere intregi unice (hash code) (GetHashCode)
+(4) Interfete in C#
+
+   public class Car
+   {
+       public string Id { get; set; }
+       public string Model { get; set; }
+       public int Year { get; set; }
+       public string Color { get; set; }
+       public double Price { get; set; }
+
+       //pentru utilizarea (corecta) a metodelor de  tip "contains, exists" in cadrul colectiilor
+       //platformei .NET, trebuie implementata metoda de comparare (prin valoarea) "Equals"
+       public override bool Equals(object obj)
+       {
+           if(obj == null)
+           {
+               return false;
+           }
+
+           //se verifica daca obj este o referinta catre un obiect "Car"
+           if(obj is Car)
+           {
+               Car car = (Car)obj;
+
+               return this.Id == car.Id &&
+                   this.Model == car.Model &&
+                   this.Year == car.Year &&
+                   this.Color == car.Color &&
+                   this.Price == car.Price;
+           }
+
+           return false;
+       }
+
+       //reprezentarea ca string (sir de caractere) a obiectelor
+       public override string ToString()
+       {
+           return $"{Id}; {Model}; {Price}; {Year}; {Color}";
+       }
+
+       //numere intregi unice (coduri hash) asociate obiectelor!
+       public override int GetHashCode()
+       {
+           //se scrie o expresie care asigura unicitatea valorilor, indiferent de
+           //cum sunt initializate obiectele!
+           return 3 * Year + 5;
+       }
+   }
+
+  internal class Program
+  {
+      static void Main(string[] args)
+      {
+          Car c1 = new Car()
+          {
+             Id = "1",
+             Color = "Red",
+             Model = "Ford",
+             Price = 240.5,
+             Year = 2009
+          };
+
+          Car c2 = new Car()
+          {
+              Id = "2",
+              Color = "Black",
+              Model = "Audi",
+              Price = 300.5,
+              Year = 2012
+          };
+
+          Dictionary<Car, Car> cars = new Dictionary<Car, Car>();
+          //cars.Add(c1, c1);
+          cars.Add(c2, c2);
+
+          if(cars.ContainsKey(c1))
+          {
+              Console.WriteLine($"dictionarul contine obiectul {c1}");
+          }
+
+          if (!c1.Equals(c2))
+          {
+              Console.WriteLine($"obiecte inegale [{c1}]; [{c2}]");
+          }
+
+          Console.ReadKey();
+      }
+  }
+
+
+Implementare interfata IComparable
+
+Relatii de ordine intre obiecte se stabilesc prin
+implementarea interfetei IComparable (metoda CompareTo)
+
+  public class Car : IComparable<Car>
+    {
+        public double Price { get; set; }
+        public int ColorId { get; set; }
+        public DateTime CreateDate { get; set; }
+
+        public int CompareTo(object obj)
+        {
+            if(!(obj is Car))
+            {
+                throw new ArgumentException("wrong argument type!");
+            }
+
+            Car car = (Car)obj; //obj as Car
+
+            return this.Price.CompareTo(car.Price);
+        }
+
+        public int CompareTo(Car other)
+        {
+            throw new NotImplementedException();
+        }
+
+        //public int CompareTo(Bike other)
+        //{
+        //    throw new NotImplementedException();
+        //}
+    }
+
+Metoda GetHashCode() - cod unic asociat instantelor
+
+Exemplu: utilizarea obiectelor clasei Point2D ca si chei intr-un dictionar
+
+   public class Point2D
+    {
+        public int X { get; set; }
+        public int Y { get; set; }
+
+        public override int GetHashCode()
+        {
+            return 3 * X + 5 * Y;
+        }
+
+        public static Dictionary<Point2D, Point2D> Mapping = new Dictionary<Point2D, Point2D>();
+
+        public static Point2D Key;
+
+        public static void SetKey(int x, int y)
+        {
+            Key.X = x; 
+            Key.Y = y;
+        }
+
+        public static void Add(Point2D point)
+        {
+            if(!Mapping.ContainsKey(point))
+            {
+                Mapping.Add(point, point);
+            }
+        }
+
+        public static Point2D GetValue(int x, int y)
+        {
+            SetKey(x, y);
+            if (Mapping.ContainsKey(Key))
+            {
+                return Mapping[Key];
+            }
+
+            return null;
+        }
+    }
+
+
+Interfete in C# - implementare
+
+Interfetele joaca rol de "contract" intre o clasa client (clasa care foloseste
+o metoda a altei clase - numita clasa Server).
+
+class A
+{
+	IB m;
+	public void Method()
+	{
+		m.Job();
+	}
+}
+
+A: client
+B: server
+
+public interface IB
+{
+	void Job();
+}
+
+class B : IB
+{
+	void Job()
+	{
+	
+	}	
+}
+
+class B1: IB
+{
+	void Job()
+	{
+	
+	}
+}
+
+de ce interfete: pentru "spargere" a dependentelor!!
+
+Contract? Adica semnatura metodei declarata in interfata stabileste contractul:
+Care sunt parametrii, tipul returnat, numele metodei.
+
+Interfetele ofera grad ridicat de flexibilitate/generalizare in aplicatii, deoarece
+au caracter general;
+Interfetele obliga respectarea contractelor intre obiecte;
+Orice clasa care declara ca implementeaza o interfata este obligata sa implementeze
+toate metodele acesteia;
+
+Exemplu (Proiect3):
+
+Implementare mini-librarie de "logging" utilizata in aplicatiile C#.
+
+Obiectiv principal: continutul log-urilor sa poata fi memorat in diverse surse (de output).
+
+Pentru aceasta vom implementa operatia de logging ca metoda declarata intr-o interfata!
+
+//declarare interfata in C#
+namespace AppLogging
+{
+    public interface ILog
+    {
+        void Log(LogModel log); //metoda interfata
+    }
+}
+
+namespace AppLogging.Internal
+{
+    internal class ConsoleLogging : ILog
+    {
+        public void Log(LogModel log)
+        {
+            Console.WriteLine(log);
+        }
+    }
+}
+
+//Observatie: formatul utilizat pentru fisiere sa fie json!
+
+namespace AppLogging.Internal
+{
+    internal class FileLogging : ILog
+    {
+        private string FilePath;
+
+        public FileLogging()
+        {
+            var filePath = ConfigurationManager.AppSettings["LogFileDirectory"];
+
+            if(string.IsNullOrEmpty(filePath))
+            {
+                filePath = "AppLogs";
+            }
+
+            if(!System.IO.Directory.Exists(filePath))
+            {
+                System.IO.Directory.CreateDirectory(filePath);
+            }
+
+            FilePath = Path.Combine(filePath, "Log.txt");
+        }
+        
+        public void Log(LogModel log)
+        {
+            File.AppendAllText(FilePath, log.ToString()+"\n");
+        }
+    }
+}
+
+namespace AppLogging
+{
+    public class LogFactory
+    {
+        private static ILog _instance;
+
+        public static ILog Instance
+        {
+            get
+            {
+                if(_instance == null )
+                {
+                    //get from app.config (if exists)
+                    var logType = ConfigurationManager.AppSettings["logType"];
+
+                    if(string.IsNullOrWhiteSpace(logType))
+                    {
+                        logType = "Console";
+                    }
+
+                    LogOuput output = (LogOuput)Enum.Parse(typeof(LogOuput), logType);
+
+                    switch(output)
+                    {
+                        case LogOuput.Console:
+                            _instance = new ConsoleLogging();
+                            break;
+                        case LogOuput.File:
+                            _instance = new FileLogging();
+                            break;
+                        case LogOuput.Database:
+                            _instance = new DatabaseLogging();
+                            break;
+                    }
+                }
+
+                return _instance;
+            }
+        }
+    }
+}
+
+
+namespace AppLogging
+{
+    public class LogModel
+    {
+        public string Message { get; set; }
+        public int Level { get; set; }
+
+        public override string ToString()
+        {
+            return $"[{DateTime.Now}: [{((LogLevel)Level).ToString()}]] - {Message};";
+        }
+    }
+}
+
+namespace AppLogging
+{
+    public enum LogLevel
+    {
+        Info = 1,
+        Warn = 2,
+        Error = 3,
+        Debug = 4
+    }
+}
+
+namespace AppLogging
+{
+    public enum LogOuput
+    {
+        Console = 1,
+        File = 2,
+        Database = 3
+    }
+}
+
+(1) Sa se utilizeze libraria de logging (complet implementata) in
+proiectele deja implementate (info, sau error cand pot aparea exceptii - sa fie logate)
+
+(2) Sa se extinda libraria cu posibilitatea stocarii log-urilor intr-o tabela
+dintr-o baza de date (Log)
+
+try
+{
+}
+catch()
+{
+}
+
+
+
+
+
+
+   
+

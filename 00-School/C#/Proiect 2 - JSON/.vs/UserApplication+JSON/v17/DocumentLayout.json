@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Projects\\00-School\\C#\\Proiect 2 - JSON\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{66AEC07C-5371-4E68-8B52-A7C847C264F7}|StudentApplication\\UserApplication.csproj|d:\\projects\\00-school\\c#\\proiect 2 - json\\studentapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66AEC07C-5371-4E68-8B52-A7C847C264F7}|StudentApplication\\UserApplication.csproj|solutionrelative:studentapplication\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AEC9AFD6-071A-45E8-80CC-BE28C03F9DB8}|StudentModel\\UserModel.csproj|d:\\projects\\00-school\\c#\\proiect 2 - json\\studentmodel\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AEC9AFD6-071A-45E8-80CC-BE28C03F9DB8}|StudentModel\\UserModel.csproj|solutionrelative:studentmodel\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\Projects\\00-School\\C#\\Proiect 2 - JSON\\StudentModel\\User.cs",
+              "RelativeDocumentMoniker": "StudentModel\\User.cs",
+              "ToolTip": "D:\\Projects\\00-School\\C#\\Proiect 2 - JSON\\StudentModel\\User.cs",
+              "RelativeToolTip": "StudentModel\\User.cs",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAvwJAAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T14:32:22.683Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Projects\\00-School\\C#\\Proiect 2 - JSON\\StudentApplication\\Program.cs",
+              "RelativeDocumentMoniker": "StudentApplication\\Program.cs",
+              "ToolTip": "D:\\Projects\\00-School\\C#\\Proiect 2 - JSON\\StudentApplication\\Program.cs",
+              "RelativeToolTip": "StudentApplication\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T14:32:18.342Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

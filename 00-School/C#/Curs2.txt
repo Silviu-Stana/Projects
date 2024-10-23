@@ -1,0 +1,394 @@
+Utilizarea librariilor externe intr-un proiect Visual Studio
+
+(third party libraries)
+
+Scenariu: Sa se implementeze o colectie de obiecte Student, cu posibilitate de salvare
+pe disk a informatiilor in formatul json pentru o incarcare ulterioara in aplicatie.
+
+JSon = Javascript Object Notation
+
+Format text pentru reprezentarea structurala a obiectelor
+
+{
+  "menu": {
+    "id": "file",
+    "value": "File",
+    "popup": {
+      "menuitem": [
+        {
+          "value": "New",
+          "onclick": "CreateNewDoc()"
+        },
+        {
+          "value": "Open",
+          "onclick": "OpenDoc()"
+        },
+        {
+          "value": "Close",
+          "onclick": "CloseDoc()"
+        }
+      ]
+    }
+  }
+}
+
+Clase C# pentru structura de mai sus:
+
+ class JsonObjectMenu
+    {
+        public Menu Menu { get; set; }
+    }
+
+    public class Menu
+    {
+        public string Id { get; set; }
+        public string Value { get; set; } 
+        public Popup Popup { get; set; }
+    }
+
+    public class Popup
+    {
+        public List<MenuItem> MenuItem { get; set; }
+
+    }
+
+    public class MenuItem
+    {
+        public string Value { get; set; }
+        public string OnClick { get; set; }
+    }
+
+  internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //exemplu de serializare din C# object in JSon
+            //object => json
+
+            var jsonOjectMenu = new JsonOjectMenu()
+            {
+                Menu = new Menu()
+                {
+                    Id = "file",
+                    Value = "File",
+                    Popup = new Popup()
+                    {
+                        MenuItem = new List<MenuItem>()
+                        {
+                            new MenuItem(){ Value = "New", OnClick = "CreateNewDoc()"},
+                            new MenuItem(){ Value = "Open", OnClick = "OpenDoc()"},
+                            new MenuItem(){ Value = "Close", OnClick = "CloseDoc()"},
+                        }
+                    }
+                }
+            };
+
+            string jsonValues = JsonConvert.SerializeObject(jsonOjectMenu);
+
+            File.WriteAllText("JsonValue.json", jsonValues);
+
+            //deserializare: json => C# object
+            var objCSharp = JsonConvert.DeserializeObject<JsonOjectMenu>(File.ReadAllText("JsonValue.json"));
+
+            Console.ReadKey();
+        }
+    }
+
+
+In .NET exista mai multe librarii (externe platformei .NET) care poti utilizate pentru serializarea/deserializarea
+obiectelor in/din formatul JSon.
+
+Cea mai uzuala este "Newtonsoft.Json".
+
+Pentru a putea utiliza o librarie (fisier .dll), acesta trebuie importat (inclus) in proiect (ca referinta).
+
+Cum se procedeaza?
+
+(1) Manage NuGet Packages
+
+Obs: NuGet este o platforma care contine extrem de multe librarii "third party" care poti utilizate in
+dezvoltarea aplicatiilor .NET
+
+=> Browse => Newtonsoft.Json => Install
+
+Modificari in proiect
+
+- libraria apare la References
+- apare un fisier packages.config
+
+<?xml version="1.0" encoding="utf-8"?>
+<packages>
+  <package id="Newtonsoft.Json" version="13.0.1" targetFramework="net472" />
+</packages>
+
+- apare pe disk, in structura de foldere asociata proietului un folder "packages" ce contine cate un 
+sub-folder pentru fiecare pachet instalat de pe nuget.
+
+"...\StudentApplication_new\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll"
+
+
+(2) using Newtonsoft.Json;
+
+
+//cum convertesc (serializez) un obiect la JSon? (in cazul nostru de tip List<Student>)
+
+string jsonContent = JsonConvert.SerializeObject(Students);
+
+//cum deserializez un text json intr-un obiect?
+
+List<Student> result = JsonConvert.DeserializeObject<List<Student>>(jsonContent); 
+
+Exemplu:
+
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+
+namespace StudentModel
+{
+    public class StudentList
+    {
+        public List<Student> Students { get; private set; }
+
+        public StudentList()
+        {
+            Students = new List<Student>();
+        }
+
+        public void Add(Student student)
+        {
+            if(!Students.Contains(student))
+            {
+                Students.Add(student);                    
+            }
+            else
+            {
+                throw new Exception($"{student} already exists.");
+            }
+        }
+
+        public void Add(List<Student> students)
+        {
+            foreach(var student in students)
+            {
+                try
+                {
+                    Add(student);
+                }
+                catch(Exception ex) { Console.WriteLine(ex.Message); }
+            }
+        }
+
+        public void Remove(Student student)
+        {
+            if (Students.Contains(student))
+            {
+                Students.Remove(student);
+            }
+            else
+            {
+                throw new Exception($"{student} does not exist.");
+            }
+        }
+
+        public void SaveOnDisk()
+        {
+            //salvarea continutului listei de studenti pe disk
+            //in format JSon!
+            var folder = ConfigurationManager.AppSettings["FilePath"];
+
+            if(!Directory.Exists(folder))
+
+            {
+                Directory.CreateDirectory(folder);
+            }
+
+            File.WriteAllText(Path.Combine(folder, "Student.txt"), ToString());
+        }
+
+        public void LoadFromDisk()
+        {
+            var filePath = Path.Combine(ConfigurationManager.AppSettings["FilePath"], "Student.txt");
+
+            if(File.Exists(filePath))
+            {
+                var content = File.ReadAllText(filePath); //acesta va fi un text in format JSon!!
+
+                Students = JsonConvert.DeserializeObject<List<Student>>(content);
+            }
+        }
+
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(Students);
+        }
+    }
+}
+
+Elemente introductive C#
+
+
+(1) Clasa
+
+   public class MenuItem
+    {
+        public string Value { get; set; } // property (automata)
+        public string OnClick { get; set; } //property (automata)
+    }
+
+
+ public class MenuItem
+    {
+	private string _value;
+
+	//property (getter / setter)
+	public string Value
+	{
+		get 
+		{
+			return _value;
+		}
+		set
+		{
+			
+			_value = value; //value este cuvant rezervat
+		}
+	}        
+
+
+        public string OnClick { get; set; } //property (automata)
+    }
+
+
+Prin urmare o clasa poate sa contina proprietati.
+
+read/write  public string Value { get; set; } //getter/setter
+read only   public string Value { get; }  // public string Value { get; private set; }
+write only
+
+Constructorii clasei raman disponibili si in C#
+(mai putin constructorul de copiere)
+
+In C# nu mai este necesar constructorul de copiere deoarece
+obiecte sunt toate manevrate prin referinta!
+
+Obiectele in C# (de o anumita clasa!!! ) sunt create doar dinamic (pe Heap).
+
+MenuItem item; //in C++ aici era creat un obiect pe stiva (stack)
+//in C# nu mai este valabil; doar se declara o referinta!!
+
+item = new MenuItem(); // item nu este un pointer!! este o referinta!!
+
+Obs: exista totusi pastrata o structura de tip value in C# (pentru performanta - obiecte mici stocate
+pe stiva) - tipul struct
+
+Observatie2: in C# memoria este eliberata automat pentru toate obiectele create pe HEAP
+care nu mai sunt referite de nici o variabiala in aplicatie la un moment dat!
+- management al memoriei automat; un mic programel (task) care ruleaza in background - GC (Garbage Collector)
+- acesta scaneaza memoria HEAP a aplicatiei periodic pentru identificarea
+zonelor de memorie ocupate de obiecte fara referinta in aplicatie la un moment dat
+si incearca eliberarea acestora!
+- se recomanda totusi utilizarea mecanismului de creare/eliberare resurse oferit de C# - si anume
+clase ce implementeaza interfata IDispose (asa numitele "disposable objects")
+
+Compararea obiectelor C#
+
+(1) Equals = egalitate ca si continut!
+
+Observatie: ca si in Java, toate clasele C# sunt implicit derivate din clasa
+Object (object)
+
+
+    public class Popup
+    {
+        public List<MenuItem> MenuItem { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            //se verifica daca obj este de tip Popup (cu operatorul is)
+            if (!(obj is Popup))
+            {
+                return false;
+            }
+
+            //convertim obj la Popup cu operatorul as
+            Popup popup = obj as Popup;
+
+            //
+
+            if (MenuItem != null && popup.MenuItem != null)
+            {
+                
+                if(MenuItem.Count != popup.MenuItem.Count)
+                {
+                    return false;
+                }
+
+                for(int i = 0; i < MenuItem.Count; i++)
+                {
+                    if (!MenuItem[i].Equals(popup.MenuItem[i]))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
+    }
+
+    public class MenuItem
+    {
+        public string Value { get; set; }
+        public string OnClick { get; set; }
+
+        //comparare
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            //se verifica daca obj este de tip MenuItem (cu operatorul is)
+            if(!(obj is MenuItem))
+            {
+                return false;
+            }
+
+            //convertim obj la MenuItem cu operatorul as
+            MenuItem menuItem = obj as MenuItem;
+
+            return Value == menuItem.Value && OnClick == menuItem.OnClick;
+        }
+    }
+
+Varianta Proiect aplicatie utilizatori:
+
+colectia de utilizatori va fi salvata pe disk/incarcata in forma json
+utilizand libraria Newtonsoft!
+
+Observatie: de asemenea, se va implementa metoda Equals in vederea
+evitarii duplicatelor de obiecte in cadrul colectiei! (metodele Add / Remove din colectie)
+
+
+
+
+
+
+
+
+
+
+
