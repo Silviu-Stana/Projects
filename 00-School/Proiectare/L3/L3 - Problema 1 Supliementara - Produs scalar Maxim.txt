@@ -1,0 +1,76 @@
+import java.util.Scanner;
+public class MaxProdusScalar {
+
+static void AFISARE(int a[], int b[], int n,int s)
+{
+    System.out.println("Suma="+s);
+    for(int i=1; i<=n; i++) System.out.print(a[i] + " ");
+    
+    System.out.println();
+    
+    for(int i=1; i<=n; i++) System.out.print(b[i] + " ");
+}
+
+static void MAXIM1(int a[],int b[], int n, int s)
+{
+    s=0;
+    for(int i=1; i<=n; i++)
+    {
+        int k=i;
+        int m=a[i];
+        for(int j=i+1; j<=n; j++)
+        {
+            if(a[j]<m)
+            {
+                k=j;
+                m=a[j];
+            }
+        }
+        //Interschimbam
+        int temp=a[i];
+        a[i]=a[k];
+        a[k]=temp;
+        
+        k=i;
+        m=b[i];
+        
+        for(int j=i+1; j<=n; j++)
+        {
+            if(b[j]<m)
+            {
+                k=j;
+                m=b[j];
+            }
+        }
+        
+        temp=b[i];
+        b[i]=b[k];
+        b[k]=temp;
+        
+        s=s+a[i]*b[i];
+    }
+    AFISARE(a,b,n,s);
+}
+
+public static void main(String[] args)
+{
+//Produs Scalar Maxim/Minim
+int n,s=0,i,a[], b[];
+Scanner cin=new Scanner(System.in);
+
+System.out.print("Nr elemente=");
+n=cin.nextInt();
+
+a=new int [n+1];
+b=new int [n+1];
+
+System.out.print("Elementele din a[]: ");
+for(i=1;i<=n;i++) a[i]=cin.nextInt();
+        
+System.out.print("Elementele din b[]: ");
+for(i=1;i<=n;i++) b[i]=cin.nextInt();
+
+MAXIM1(a,b,n,s);
+
+}
+}

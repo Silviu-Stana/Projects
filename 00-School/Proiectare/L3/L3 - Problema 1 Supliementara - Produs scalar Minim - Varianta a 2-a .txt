@@ -1,0 +1,88 @@
+import java.util.Scanner;
+public class MaxProdusScalar {
+
+static void AFISARE(int a[], int b[], int n,int s)
+{
+    System.out.println("Suma="+s);
+    for(int i=1; i<=n; i++) System.out.print(a[i] + " ");
+    
+    System.out.println();
+    
+    for(int i=1; i<=n; i++) System.out.print(b[i] + " ");
+}
+
+static void SortareCrescatoare(int a[], int n)
+{
+    int temp;
+    
+    //Sortare de complexitate O(n^2), are 2 for-uri
+    //Cu interschimbare
+    for(int i=1; i<=n; i++)
+    {
+        for(int j=1; j<=n; j++)
+        {
+            if(a[i]<a[j])
+            {
+                temp=a[i];
+                a[i]=a[j];
+                a[j]=temp;
+            }
+        }
+    }
+}
+
+static void SortareDescrescatoare(int a[], int n)
+{
+    int temp;
+    
+    //Sortare de complexitate O(n^2), are 2 for-uri
+    //Cu interschimbare
+    for(int i=1; i<=n; i++)
+    {
+        for(int j=1; j<=n; j++)
+        {
+            if(a[i]>a[j])
+            {
+                temp=a[i];
+                a[i]=a[j];
+                a[j]=temp;
+            }
+        }
+    }
+}
+
+static void MAXIM2(int a[],int b[], int n, int s)
+{
+    SortareCrescatoare(a,n);
+    SortareDescrescatoare(b,n);
+    s=0;
+    
+    for(int i=1; i<=n; i++){
+        s=s+a[i]*b[i];
+    }
+    
+    AFISARE(a,b,n,s);
+}
+
+public static void main(String[] args)
+{
+//Produs Scalar Maxim/Minim
+int n,s=0,i,a[], b[];
+Scanner cin=new Scanner(System.in);
+
+System.out.print("Nr elemente=");
+n=cin.nextInt();
+
+a=new int [n+1];
+b=new int [n+1];
+
+System.out.print("Elementele din a[]: ");
+for(i=1;i<=n;i++) a[i]=cin.nextInt();
+        
+System.out.print("Elementele din b[]: ");
+for(i=1;i<=n;i++) b[i]=cin.nextInt();
+
+MAXIM2(a,b,n,s);
+
+}
+}

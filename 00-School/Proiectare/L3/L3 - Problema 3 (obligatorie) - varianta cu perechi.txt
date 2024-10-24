@@ -1,0 +1,41 @@
+import java.util.Scanner;
+public class MaxMin {
+    
+public static void MaxMinPer(int a[], int n, int M, int m)
+{
+    M=a[n];
+    m=a[n];
+    
+    for(int i=1; i<=n/2; i++)
+    {
+        if(a[2*i-1]>a[2*i])
+        {
+         if(a[2*i-1]>M) M=a[2*i-1];
+         if(a[2*i]<m) m=a[2*i];
+        }
+        else{
+            if(a[2*i]>M)M=a[2*i];
+            if(a[2*i-1]<m)m=a[2*i-1];
+        }
+    }
+    
+    System.out.println("Nr Min din vector este: " + m);
+System.out.println("Nr Max din vector este: " + M);
+}
+    
+public static void main(String[] args) {
+
+//MaxMin
+int n,i,x[],min=0,max=0;
+Scanner cin=new Scanner(System.in);
+
+System.out.print("Nr elemente=");
+n=cin.nextInt();
+x=new int [n+1];
+
+System.out.print("Ce numere sunt in vector:");
+for(i=1;i<=n;i++) x[i]=cin.nextInt();
+
+MaxMinPer(x,n,max,min);
+}
+}
