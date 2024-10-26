@@ -47,7 +47,7 @@ const initialState = {
 };
 
 export default function App() {
-        const [{ balance, loan, isActive, activeLoan }, dispatch] = useReducer(reducer, initialState);
+        const [{ balance, loan, isActive }, dispatch] = useReducer(reducer, initialState);
 
         return (
                 <div className="App">
