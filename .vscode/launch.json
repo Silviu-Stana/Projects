@@ -5,6 +5,27 @@
         "version": "0.2.0",
         "configurations": [
                 {
+                        "type": "java",
+                        "name": "L4Spectacole",
+                        "request": "launch",
+                        "mainClass": "L4Spectacole",
+                        "projectName": "Projects_e646fa13"
+                },
+                {
+                        "type": "java",
+                        "name": "L4Rucsac",
+                        "request": "launch",
+                        "mainClass": "L4Rucsac",
+                        "projectName": "Projects_e646fa13"
+                },
+                {
+                        "type": "java",
+                        "name": "L4Rucsacs",
+                        "request": "launch",
+                        "mainClass": "L4Rucsacs",
+                        "projectName": "Projects_e646fa13"
+                },
+                {
                         "type": "chrome",
                         "request": "launch",
                         "name": "Open index.html",
