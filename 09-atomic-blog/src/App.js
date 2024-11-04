@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import Results from './Results';
 import Test from './Test';
 import { faker } from '@faker-js/faker';
@@ -60,14 +60,14 @@ function SearchPosts() {
         return <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Search posts..." />;
 }
 
-function Main() {
+const Main = memo(function Main() {
         return (
                 <main>
                         <FormAddPost />
                         <Posts />
                 </main>
         );
-}
+});
 
 function Posts() {
         return (
