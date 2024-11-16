@@ -1,0 +1,80 @@
+import java.io.Reader;
+import java.io.StringReader;
+import java.util.Scanner;
+class Main {
+    static Scanner cin = new Scanner(System.in);
+    static public int[] m;
+    static public char[][] a;
+
+    public static void PRODUS_CARTEZIAN(int n, int[] m){
+        int k=1;
+        int[] x;
+        x= new int[n+1];
+        x[1]=0;
+
+        while(k>0)
+        {
+            if(x[k]<m[k]){
+                x[k]++;
+                if(k==n)AFISARE(x,n);
+                else{
+                    k++;
+                    x[k]=0;
+                }
+            }
+            else{
+                k--;
+            }
+        }
+    }
+
+
+    public static void AFISARE(int[] x, int n){
+        for(int i=1; i<=n; i++)System.out.print(a[i][x[i]]);
+        System.out.println();
+    }
+
+    public static void SETEAZA_LUNGIMI_SIRURI(int n){
+        m = new int[n+1];
+        a = new char[n+1][];
+
+        System.out.print("Citeste toate lungimile de sir 'm': ");
+        for(int i=1; i<=n; i++){
+            m[i] = cin.nextInt();
+            a[i] = new char[m[i]+1];
+        }
+        //Goleste caracterul \n
+        cin.nextLine();
+    }
+
+    public static void CITESTE_SIRURI(int n){
+        for(int i=1; i<=n; i++){
+            System.out.print("Citeste Sir" + i + " de lungime " + m[i] + ": ");
+
+            String line;
+            do{
+                line = cin.nextLine();
+                if(line.length() < m[i])System.out.println("Linie prea scurta! Incearca din nou.");
+            }
+            while(line.length() < m[i]);
+
+            line = line.substring(0, m[i]); //Taie toate caracterele peste lungimea maxima.
+
+            for(int j=0; j<m[i]; j++){
+                a[i][j+1] = line.charAt(j); //Stocheaza la pozitia corecta.
+                // "j" incepe de la 0 deoarece String incepe tot de la 0.
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int n;
+        System.out.print("n=");
+        n=cin.nextInt();
+
+        SETEAZA_LUNGIMI_SIRURI(n);
+        CITESTE_SIRURI(n);
+
+        PRODUS_CARTEZIAN(n,m);
+    }
+}

@@ -1,0 +1,44 @@
+import java.util.Scanner;
+class Main {
+    static public int[] a;
+
+    public static void SUBMULTIMI_OARECARE(int[] a, int n){
+        int k=1;
+        int[] x;
+        x= new int[n+1];
+        x[1]=0;
+
+        while(k>0)
+        {
+            if(x[k]<2){
+                x[k]++;
+                if(k==n)AFISARE(x,a,n);
+                else{
+                    k++;
+                    x[k]=0;
+                }
+            }
+            else k--;
+        }
+    }
+
+    public static void AFISARE(int[] x, int[] a, int n){
+        for(int i=1; i<=n; i++)if(x[i]==1) System.out.print(a[i] + " ");
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        int n;
+        Scanner cin = new Scanner(System.in);
+        System.out.print("n=");
+        n=cin.nextInt();
+
+        a = new int[n+1];
+        System.out.print("Citeste toate nr oarecare: ");
+        for(int i=1; i<=n; i++){
+            a[i] = cin.nextInt();
+        }
+
+        SUBMULTIMI_OARECARE(a,n);
+    }
+}

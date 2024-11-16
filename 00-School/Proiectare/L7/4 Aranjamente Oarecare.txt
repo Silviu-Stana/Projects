@@ -1,0 +1,56 @@
+import java.util.Scanner;
+class Main {
+    static int[] a;
+
+    public static void ARANJAMENTE1(int m, int n){
+        int k=1;
+        int[] x;
+        x= new int[m+1];
+        x[1]=0;
+
+        while(k>0)
+        {
+            if(x[k]<m){
+                x[k]++;
+                if(VALID(x,k))
+                {
+                    if(k==n)AFISARE(x,n);
+                    else{
+                        k++;
+                        x[k]=0;
+                    }
+                }
+            }
+            else k--;
+        }
+    }
+
+    public static boolean VALID(int[] x, int k){
+        for(int i=1;i<=k-1;i++){
+            if(x[k]==x[i])return false;
+        }
+        return true;
+    }
+
+    public static void AFISARE(int[] x, int n){
+        for(int i=1; i<=n; i++)System.out.print(a[x[i]] + " ");
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        int n, m;
+        Scanner cin = new Scanner(System.in);
+        System.out.print("n=");
+        n=cin.nextInt();
+
+        System.out.print("m=");
+        m=cin.nextInt();
+
+        a = new int[m+1];
+        System.out.print("Numere oarecare=");
+        for(int i=1; i<=m; i++)a[i]=cin.nextInt();
+
+
+        ARANJAMENTE1(m,n);
+    }
+}
