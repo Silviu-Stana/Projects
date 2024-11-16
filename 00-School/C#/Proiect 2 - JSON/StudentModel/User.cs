@@ -4,6 +4,8 @@ using System.Linq;
 using UserModel;
 using System.IO;
 using Newtonsoft.Json;
+using AppLogging.Internal;
+using AppLogging;
 
 namespace UserModel
 {
@@ -24,6 +26,7 @@ namespace UserModel
 
     public class User
     {
+        private ConsoleLogging ConsoleLogging { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
@@ -47,6 +50,22 @@ namespace UserModel
             Console.WriteLine('\n');
         }
 
+        private void PrintLog(string message)
+        {
+            // Create a log model
+            var log = new LogModel
+            {
+                Message = message,
+                Level = (int)LogLevel.Info
+            };
+
+            // Get the logging instance from the factory (will use ConsoleLogging by default)
+            var logger = LogFactory.Instance;
+
+            // Log the message
+            logger.Log(log);
+        }
+
         public void Login()
         {
             Console.WriteLine("What is your Username?");
@@ -55,8 +74,14 @@ namespace UserModel
             JsonAccountObject account;
             while (!File.Exists(Username + ".json"))
             {
-                Console.WriteLine("User not found! Search again:");
+                string message = $"User `{Username}` not found! Search again:";
+                Console.WriteLine(message);
+
+                //(1) Log info cand apare exceptia: email gresit.
+                PrintLog(message);
+
                 Username = Console.ReadLine();
+
             }
 
             account = JsonConvert.DeserializeObject<JsonAccountObject>(File.ReadAllText(Username + ".json"));
@@ -67,7 +92,11 @@ namespace UserModel
             Password = Console.ReadLine();
             while (Password != account.User.Password)
             {
-                Console.WriteLine("WRONG Password. Try again.");
+                string message = $"WRONG Password! Try again.";
+                Console.WriteLine(message);
+
+                PrintLog(message);
+
                 Password = Console.ReadLine();
             }
 
