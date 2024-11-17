@@ -1,0 +1,4 @@
+m[] reprezinta lungimea fiecărui sir, care o citim
+
+
+-programul de Submultimi din curs este cu numere "oarecare"

@@ -1,0 +1,172 @@
+Tipuri generice in C#
+
+Un tip generic (clasa sau interfata) este o clasa/interfata care are cel putin un tip 
+de data parametrizat (generic) (necunoscut la momentul implementarii).
+
+De exemplu: implementarea unui container de obiecte capabil
+sa stocheze orice tip de obiecte, cu mentiunea ca acestea sunt tip referinta.
+(nu valoare).
+
+Exemplu:
+
+containere generale de obiecte
+
+avem doua solutii:
+
+1) cu tipul Object (object) (ca tip suport al elementelor);
+2) cu tip generic T;
+
+1) 
+public class MyGenericObjectContainer
+{
+	private Object[] _values;
+	//....
+
+	public void Add(Object obj){}
+	public Object GetFromPosition(int position){...}
+}
+
+-dezavantaj: nu stim tipul concret / efectiv al obiectelor din container decat la momentul
+executiei; prin urmare, pot aparea diverse erori de conversie;
+
+solutia este sa verificam de fiecare tipul efectiv al obiectului;
+
+Object o1 = new Car();
+o1 = new Student();
+
+ca sa putem utiliza efectiv obiecte, este nevoie de conversie explicita!!
+
+cu operatorul "is" verificam referinta, cu operatorul "as" efectuam converia!!
+
+if(o1 is Car)
+{
+	Car car = o1 as Car;  //(Car)o1
+}
+
+-daca efectuam conversie fara verificare (cu operatorul "is"), rezultatul va fi o referinta null!!
+
+Avantaje: flexibilitate ridicata; putem stoca in container orice tip de obiect C#!!
+
+
+2)
+namespace MyGeneric
+{
+    
+    //container de obiecte de tip T, tip referinta!
+    public class MyGenericContainer<T> where T : class
+    {
+        private T[] _values; //array de tip "T"
+        private int _size;
+
+        public MyGenericContainer()
+        {
+            _size = 0;
+            _values = new T[_size];
+        }
+
+        public MyGenericContainer<T> Add(T value)
+        {
+            if (!Contains(value))
+            {
+                T[] temp = new T[_size + 1];
+                for(int i = 0; i < _size; i++)
+                {
+                    temp[i] = _values[i];
+                }
+
+                temp[_size] = value;
+
+                _values = temp;
+                _size++;
+            }
+
+            return this; //returnam referinta catre obiectul curent
+        }
+
+        public MyGenericContainer<T> Remove(T value)
+        {
+            if (!Contains(value))
+            {
+                return this;
+            }
+
+            //aici value exista!
+
+            //gasiti in array pe value (pozitia!)
+
+            //deplasati elementele la dreapta cu o pozitie
+            //scade _size cu o unitate!!
+
+            return this;
+        }
+
+        public bool Contains(T value)
+        {
+            foreach(var item in _values)
+            {
+                if (item.Equals(value))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+            
+            //return _values.Contains(value);
+        }
+
+    }
+}
+
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            MyGenericContainer<Contact> myGenericContainer = new MyGenericContainer<Contact>();
+
+            myGenericContainer.Add(new Contact()
+            {
+                Id = 12,
+                Name = "cocolino",
+                Age = 30
+            });
+
+            Console.ReadKey();
+        }
+    }
+
+List<T> (System.Collection.Generic)
+
+Alte constrangeri asupra tipului generic:
+
+- constructor default:  "where: new()"
+
+- implementarea unei interfete (sau derivare dintr-o clasa) 
+
+Exemplul2: implementarea unui "repository" generic
+
+Ce este un "repository"?
+
+Un obiect (tip, clasa) capabil sa stocheze informatii intr-un anumit mediu; ofera
+posibilitate de acces la aceste informatii.
+
+namespace GenericRepository
+{
+    public interface IRepository<T> where T : class, IEntity
+    {
+        T GetById(int id);
+        List<T> GetAll();
+        int Create(T entity);
+        void Update(T entity);
+        void Delete(int id);
+    }
+}
+
+
+Tema: sa se utilizeze repository pattern in aplicatiile existente (unde s-a folosit baza de date) - exemplu: aplicatia logging
+
+
+
+
+
+

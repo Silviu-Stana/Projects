@@ -1,0 +1,99 @@
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace L4_VirtualDatabase
+{
+    class Cursuri
+    {
+        //scoala.tCursuri
+        //codCurs, denumire, tip, nrCredite
+
+        DataSet ds;
+        DataTable dtCursuri;
+
+        public Cursuri() { 
+            dtCursuri = new DataTable("scoala.tCursuri");
+            dtCursuri.Columns.Add("codCurs", Type.GetType("System.Int16"));
+            dtCursuri.Columns.Add("denumire", Type.GetType("System.String"));
+            dtCursuri.Columns.Add("tip", Type.GetType("System.String"));
+            dtCursuri.Columns.Add("nrCredite", Type.GetType("System.Int16"));
+
+
+            DataColumn[] pk = new DataColumn[1];
+            pk[0] = dtCursuri.Columns["codCurs"];
+            dtCursuri.PrimaryKey = pk;
+
+            //Cheie primara este deja unica
+            //UniqueConstraint u = new UniqueConstraint(dtCursuri.Columns["codCurs"]);
+
+            dtCursuri.Columns["codCurs"].AutoIncrement = true;
+
+            //Fara chei straine in acest tabel. Dar asa se defineste:
+            //ForeignKeyConstraint fk =new ForeignKeyConstraint("FK_spec", dtCursuri.Columns[""])
+            ds = new DataSet();
+            ds.Tables.Add(dtCursuri);
+        }
+
+        public void CursRandNou(int codCurs, string denumire, string tip, int nrCredite)
+        {
+            DataRow row = dtCursuri.NewRow();
+            //nu e nevoie de aceasta coloana, speram ca se introduce corect automat cu incrementare
+            //row["codCurs"] = codCurs;
+            row["codCurs"] = codCurs;
+            row["denumire"] = denumire;
+            row["tip"] = tip;
+            row["nrCredite"] = nrCredite;
+
+            dtCursuri.Rows.Add(row);
+        }
+
+        public void AfiseazaListaCursuri()
+        {
+            foreach (DataRow row in dtCursuri.Rows) Console.WriteLine("{0,-10}{1,-30}{2,-20}{3,-5}", row["codCurs"], row["denumire"], row["tip"], row["nrCredite"]);
+        }
+
+        /*
+        public void UtilizareRelatie()
+        {
+            DataRelation rel = new DataRelation("", PARENT.Columns[""], CHILD.Columns[""]);
+            ds.Relations.Add(rel);
+            foreach (DataRow spec in dtSpecializari.Rows)
+            {
+                Console.WriteLine("Specializarea {0}", spec["Denumire"]);
+
+                foreach (DataRow curs in dtCursuri.Rows)
+                {
+                    Console.WriteLine(curs["Curs"]);
+                }
+            }
+        }
+        */
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Cursuri obiect = new Cursuri();
+            obiect.CursRandNou(1,"Integrale", "Mate", 5);
+            obiect.CursRandNou(2,"Proiectare Algoritmi", "Informatica", 5);
+            obiect.CursRandNou(3,"Programare Logica", "Informatica", 4);
+            obiect.CursRandNou(4,"Baze Date", "Informatica", 6);
+            obiect.CursRandNou(5,"Medii si Instrumente", "Informatica", 5);
+
+            Console.WriteLine("Cursuri:");
+            obiect.AfiseazaListaCursuri();
+
+            //Console.WriteLine("Utilizare relatie");
+            //obiect.UtilizareRelatie();
+
+            Console.ReadKey();
+
+        }
+    }
+
+}

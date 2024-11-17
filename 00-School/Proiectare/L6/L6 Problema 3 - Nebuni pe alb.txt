@@ -1,0 +1,69 @@
+import java.util.Scanner;
+
+class HelloWorld {
+    public static Scanner cin = new Scanner(System.in);
+    
+    
+    
+    public static void AFISARE(int[] x, int n){
+        for(int i=1; i<=n-1; i++){
+            System.out.print(x[i] + " ");
+        }
+        System.out.println();
+    }
+    
+    public static void NEBUNI2(int n){
+        int k=2, ult=3;
+        int[] y;
+        y = new int[n+1];
+        y[2]=0;
+        
+        while(k>1){
+            if(y[k]<ult){
+                y[k]++;
+                if(VALID(y,k)==1){
+                    if(k==n-1)
+                    {
+                        y[1]=1;
+                        AFISARE(y,n);
+                        y[1]=n;
+                        AFISARE(y,n);
+                    }
+                    else{
+                    k++;
+                    if(k<=(n+1)/2)
+                    {
+                        y[k]=0;
+                        ult=2*k-1;
+                    }
+                    else{
+                        y[k]=2*k-n-1;
+                        ult=n;
+                    }
+                    }
+                }
+            }
+            else{
+                k--;
+                if(k<=n/2)ult=2*k;
+                else ult=n;
+            }
+        }
+        
+    }
+    
+    public static int VALID(int[] y, int k){
+        if(y[k]==k)return 0;
+        
+        for(int i=2; i<=k-1; i++){
+            if(y[k]-y[i]==k-i) return 0;
+        }
+        return 1;
+    }
+    public static void main(String[] args) {
+        int n;
+        System.out.print("n=");
+        n = cin.nextInt();
+        NEBUNI2(n);
+    }
+}

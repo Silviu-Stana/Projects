@@ -1,0 +1,116 @@
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BDApp
+{
+    public class DbSqlServer
+    {
+        static string stringConectare = @"Data Source=virtualDB1;Initial Catalog=dbstudentiStana2024;User ID=student;Password=Student_2023";
+        public static SqlConnection con;
+
+        public DbSqlServer()
+        {
+            try
+            {
+                con = new SqlConnection(stringConectare);
+                con.Open();
+                con.Close();
+                Console.WriteLine("Conectare cu succes!");
+            }
+            catch {
+                Console.WriteLine("Esec conectare!");
+            }
+        }
+
+        public void ListareClienti()
+        {
+            SqlDataReader rdr;
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand("select * from scoala.tStudenti", con);
+                con.Open();
+                rdr = cmd.ExecuteReader();
+            }
+            catch {Console.WriteLine("Esec rdr"); return;}
+
+            Console.WriteLine("Lista Studenti:");
+
+            Console.WriteLine("{0,-10}{1,-20}", "Cod ", "Nume");
+
+            while(rdr.Read()) Console.WriteLine("{0,-10}{1,-20}", rdr["codStud"], rdr["nume"]);
+
+            rdr.Close();
+            con.Close();
+        }
+
+        public void InserareStudent(string codStud, string nume)
+        {
+            string strInsert = "insert into scoala.tStudenti(codStud, nume) values ('" + codStud + "','" + nume + "')";
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(strInsert, con);
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch{Console.WriteLine("Error: DB insert failed\n" +  strInsert);}
+            con.Close();
+        }
+
+        public void ChangeStudentName(string codStudent, string nume)
+        {
+            string strUpdate = "update scoala.tStudenti set nume='" + nume + "'where codStud='" + codStudent + "'";
+            try
+            {
+                SqlCommand cmd = new SqlCommand(strUpdate, con);
+                con.Open();
+
+                int n = cmd.ExecuteNonQuery(); //nr lines affected
+                if (n == 0) throw new Exception("CodStudent inexistent");
+            }
+            catch(Exception e) {Console.WriteLine("Error During: DB Student Name Update\n" + strUpdate + "\n" + e.ToString());}
+
+            con.Close();
+        }
+
+        public void StergeStudent(string codStudent)
+        {
+            string strDelete = "delete scoala.tStudenti where codStud='" + codStudent + "'";
+            int n;
+            try
+            {
+                SqlCommand cmd = new SqlCommand(strDelete, con);
+                con.Open();
+                n = cmd.ExecuteNonQuery();
+                con.Close();
+                if (n == 0) throw new Exception("Cod student NOT found");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: DB Delete Operation Failed!\n" + strDelete + "\n" + e.ToString());
+            };
+        }
+    }
+
+    
+
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            DbSqlServer db = new DbSqlServer();
+            db.StergeStudent("2");
+            db.InserareStudent("2", "Silviu2");
+            db.ChangeStudentName("2", "Silviu3");
+            db.ListareClienti();
+
+            Console.ReadKey();
+        }
+    }
+}

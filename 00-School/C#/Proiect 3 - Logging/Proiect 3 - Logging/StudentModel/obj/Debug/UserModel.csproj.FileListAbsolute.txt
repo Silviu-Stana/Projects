@@ -1,0 +1,15 @@
+C:\Users\silviu\source\repos\StudentApplication\StudentModel\bin\Debug\StudentModel.dll
+C:\Users\silviu\source\repos\StudentApplication\StudentModel\bin\Debug\StudentModel.pdb
+C:\Users\silviu\source\repos\StudentApplication\StudentModel\obj\Debug\UserModel.csproj.AssemblyReference.cache
+C:\Users\silviu\source\repos\StudentApplication\StudentModel\obj\Debug\UserModel.csproj.CoreCompileInputs.cache
+C:\Users\silviu\source\repos\StudentApplication\StudentModel\obj\Debug\StudentModel.dll
+C:\Users\silviu\source\repos\StudentApplication\StudentModel\obj\Debug\StudentModel.pdb
+D:\Projects\00-School\C#\Proiect 2 - JSON\StudentModel\bin\Debug\StudentModel.dll
+D:\Projects\00-School\C#\Proiect 2 - JSON\StudentModel\bin\Debug\StudentModel.pdb
+D:\Projects\00-School\C#\Proiect 2 - JSON\StudentModel\bin\Debug\Newtonsoft.Json.dll
+D:\Projects\00-School\C#\Proiect 2 - JSON\StudentModel\bin\Debug\Newtonsoft.Json.xml
+D:\Projects\00-School\C#\Proiect 2 - JSON\StudentModel\obj\Debug\UserModel.csproj.AssemblyReference.cache
+D:\Projects\00-School\C#\Proiect 2 - JSON\StudentModel\obj\Debug\UserModel.csproj.CoreCompileInputs.cache
+D:\Projects\00-School\C#\Proiect 2 - JSON\StudentModel\obj\Debug\UserModel.csproj.Up2Date
+D:\Projects\00-School\C#\Proiect 2 - JSON\StudentModel\obj\Debug\StudentModel.dll
+D:\Projects\00-School\C#\Proiect 2 - JSON\StudentModel\obj\Debug\StudentModel.pdb
