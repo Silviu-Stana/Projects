@@ -1,4 +1,4 @@
-import { createCabin } from '../../services/apiCabins';
+import { createOrEditCabin } from '../../services/apiCabins';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
@@ -17,7 +17,7 @@ function CreateCabinForm() {
       const queryClient = useQueryClient();
 
       const { mutate, isLoading: isCreating } = useMutation({
-            mutationFn: createCabin,
+            mutationFn: createOrEditCabin,
             onSuccess: () => {
                   toast.success('New cabin successfully created');
                   queryClient.invalidateQueries({
@@ -105,8 +105,7 @@ function CreateCabinForm() {
                         />
                   </FormRow>
 
-                  <FormRow>
-                        <Label label="Cabin photo">Cabin photo</Label>
+                  <FormRow label="Cabin photo">
                         <FileInput
                               id="image"
                               accept="image/*"
@@ -116,13 +115,13 @@ function CreateCabinForm() {
                         />
                   </FormRow>
 
-                  <FormRow2>
+                  <FormRow>
                         {/* type is an HTML attribute! */}
                         <Button variation="secondary" type="reset">
                               Cancel
                         </Button>
                         <Button disabled={isCreating}>Add cabin</Button>
-                  </FormRow2>
+                  </FormRow>
             </Form>
       );
 }
