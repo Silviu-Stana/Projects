@@ -1,0 +1,34 @@
+C:\Users\silviu\source\repos\StudentApplication\StudentApplication\bin\Debug\StudentApplication.exe.config
+C:\Users\silviu\source\repos\StudentApplication\StudentApplication\bin\Debug\StudentApplication.exe
+C:\Users\silviu\source\repos\StudentApplication\StudentApplication\bin\Debug\StudentApplication.pdb
+C:\Users\silviu\source\repos\StudentApplication\StudentApplication\bin\Debug\StudentModel.dll
+C:\Users\silviu\source\repos\StudentApplication\StudentApplication\bin\Debug\StudentModel.pdb
+C:\Users\silviu\source\repos\StudentApplication\StudentApplication\obj\Debug\UserApplication.csproj.AssemblyReference.cache
+C:\Users\silviu\source\repos\StudentApplication\StudentApplication\obj\Debug\UserApplication.csproj.CoreCompileInputs.cache
+C:\Users\silviu\source\repos\StudentApplication\StudentApplication\obj\Debug\UserAppl.FA5D1129.Up2Date
+C:\Users\silviu\source\repos\StudentApplication\StudentApplication\obj\Debug\StudentApplication.exe
+C:\Users\silviu\source\repos\StudentApplication\StudentApplication\obj\Debug\StudentApplication.pdb
+D:\Projects\00-School\C#\Proiect 2 - JSON\StudentApplication\bin\Debug\StudentApplication.exe.config
+D:\Projects\00-School\C#\Proiect 2 - JSON\StudentApplication\bin\Debug\StudentApplication.exe
+D:\Projects\00-School\C#\Proiect 2 - JSON\StudentApplication\bin\Debug\StudentApplication.pdb
+D:\Projects\00-School\C#\Proiect 2 - JSON\StudentApplication\bin\Debug\Newtonsoft.Json.dll
+D:\Projects\00-School\C#\Proiect 2 - JSON\StudentApplication\bin\Debug\StudentModel.dll
+D:\Projects\00-School\C#\Proiect 2 - JSON\StudentApplication\bin\Debug\StudentModel.pdb
+D:\Projects\00-School\C#\Proiect 2 - JSON\StudentApplication\bin\Debug\Newtonsoft.Json.xml
+D:\Projects\00-School\C#\Proiect 2 - JSON\StudentApplication\obj\Debug\UserApplication.csproj.AssemblyReference.cache
+D:\Projects\00-School\C#\Proiect 2 - JSON\StudentApplication\obj\Debug\UserApplication.csproj.CoreCompileInputs.cache
+D:\Projects\00-School\C#\Proiect 2 - JSON\StudentApplication\obj\Debug\UserAppl.FA5D1129.Up2Date
+D:\Projects\00-School\C#\Proiect 2 - JSON\StudentApplication\obj\Debug\StudentApplication.exe
+D:\Projects\00-School\C#\Proiect 2 - JSON\StudentApplication\obj\Debug\StudentApplication.pdb
+D:\Projects\00-School\C#\Proiect 4 -\Proiect 4\StudentApplication\bin\Debug\StudentApplication.exe.config
+D:\Projects\00-School\C#\Proiect 4 -\Proiect 4\StudentApplication\bin\Debug\StudentApplication.exe
+D:\Projects\00-School\C#\Proiect 4 -\Proiect 4\StudentApplication\bin\Debug\StudentApplication.pdb
+D:\Projects\00-School\C#\Proiect 4 -\Proiect 4\StudentApplication\bin\Debug\Newtonsoft.Json.dll
+D:\Projects\00-School\C#\Proiect 4 -\Proiect 4\StudentApplication\bin\Debug\StudentModel.dll
+D:\Projects\00-School\C#\Proiect 4 -\Proiect 4\StudentApplication\bin\Debug\StudentModel.pdb
+D:\Projects\00-School\C#\Proiect 4 -\Proiect 4\StudentApplication\bin\Debug\Newtonsoft.Json.xml
+D:\Projects\00-School\C#\Proiect 4 -\Proiect 4\StudentApplication\obj\Debug\UserApplication.csproj.AssemblyReference.cache
+D:\Projects\00-School\C#\Proiect 4 -\Proiect 4\StudentApplication\obj\Debug\UserApplication.csproj.CoreCompileInputs.cache
+D:\Projects\00-School\C#\Proiect 4 -\Proiect 4\StudentApplication\obj\Debug\UserAppl.FA5D1129.Up2Date
+D:\Projects\00-School\C#\Proiect 4 -\Proiect 4\StudentApplication\obj\Debug\StudentApplication.exe
+D:\Projects\00-School\C#\Proiect 4 -\Proiect 4\StudentApplication\obj\Debug\StudentApplication.pdb

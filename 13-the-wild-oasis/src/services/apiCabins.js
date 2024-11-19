@@ -45,6 +45,8 @@ export async function createOrEditCabin(newCabin, id) {
       }
 
       //4. Upload image if it's a new image
+      if (hasImagePath) return data;
+
       const { error: storrageError } = await supabase.storage.from('cabin-images').upload(imgName, newCabin.image);
       //5. Delete cabin IF there was error uploading image
       if (storrageError) {
