@@ -1,0 +1,186 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Projects\\00-Code\\C#\\Utilizare_XML\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7F7B314F-C47B-4DE7-A90D-71D68DFAFEAA}|Utilizare_XML\\Utilizare_XML.csproj|d:\\projects\\00-code\\c#\\utilizare_xml\\utilizare_xml\\frmimportxml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F7B314F-C47B-4DE7-A90D-71D68DFAFEAA}|Utilizare_XML\\Utilizare_XML.csproj|solutionrelative:utilizare_xml\\frmimportxml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F7B314F-C47B-4DE7-A90D-71D68DFAFEAA}|Utilizare_XML\\Utilizare_XML.csproj|d:\\projects\\00-code\\c#\\utilizare_xml\\utilizare_xml\\frmimportxml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7F7B314F-C47B-4DE7-A90D-71D68DFAFEAA}|Utilizare_XML\\Utilizare_XML.csproj|solutionrelative:utilizare_xml\\frmimportxml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F7B314F-C47B-4DE7-A90D-71D68DFAFEAA}|Utilizare_XML\\Utilizare_XML.csproj|d:\\projects\\00-code\\c#\\utilizare_xml\\utilizare_xml\\frmexportxml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F7B314F-C47B-4DE7-A90D-71D68DFAFEAA}|Utilizare_XML\\Utilizare_XML.csproj|solutionrelative:utilizare_xml\\frmexportxml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F7B314F-C47B-4DE7-A90D-71D68DFAFEAA}|Utilizare_XML\\Utilizare_XML.csproj|d:\\projects\\00-code\\c#\\utilizare_xml\\utilizare_xml\\frmexportxml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7F7B314F-C47B-4DE7-A90D-71D68DFAFEAA}|Utilizare_XML\\Utilizare_XML.csproj|solutionrelative:utilizare_xml\\frmexportxml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F7B314F-C47B-4DE7-A90D-71D68DFAFEAA}|Utilizare_XML\\Utilizare_XML.csproj|d:\\projects\\00-code\\c#\\utilizare_xml\\utilizare_xml\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F7B314F-C47B-4DE7-A90D-71D68DFAFEAA}|Utilizare_XML\\Utilizare_XML.csproj|solutionrelative:utilizare_xml\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F7B314F-C47B-4DE7-A90D-71D68DFAFEAA}|Utilizare_XML\\Utilizare_XML.csproj|d:\\projects\\00-code\\c#\\utilizare_xml\\utilizare_xml\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F7B314F-C47B-4DE7-A90D-71D68DFAFEAA}|Utilizare_XML\\Utilizare_XML.csproj|solutionrelative:utilizare_xml\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F7B314F-C47B-4DE7-A90D-71D68DFAFEAA}|Utilizare_XML\\Utilizare_XML.csproj|d:\\projects\\00-code\\c#\\utilizare_xml\\utilizare_xml\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7F7B314F-C47B-4DE7-A90D-71D68DFAFEAA}|Utilizare_XML\\Utilizare_XML.csproj|solutionrelative:utilizare_xml\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F7B314F-C47B-4DE7-A90D-71D68DFAFEAA}|Utilizare_XML\\Utilizare_XML.csproj|d:\\projects\\00-code\\c#\\utilizare_xml\\utilizare_xml\\frmxml2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F7B314F-C47B-4DE7-A90D-71D68DFAFEAA}|Utilizare_XML\\Utilizare_XML.csproj|solutionrelative:utilizare_xml\\frmxml2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F7B314F-C47B-4DE7-A90D-71D68DFAFEAA}|Utilizare_XML\\Utilizare_XML.csproj|d:\\projects\\00-code\\c#\\utilizare_xml\\utilizare_xml\\frmxml2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7F7B314F-C47B-4DE7-A90D-71D68DFAFEAA}|Utilizare_XML\\Utilizare_XML.csproj|solutionrelative:utilizare_xml\\frmxml2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F7B314F-C47B-4DE7-A90D-71D68DFAFEAA}|Utilizare_XML\\Utilizare_XML.csproj|d:\\projects\\00-code\\c#\\utilizare_xml\\utilizare_xml\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{7F7B314F-C47B-4DE7-A90D-71D68DFAFEAA}|Utilizare_XML\\Utilizare_XML.csproj|solutionrelative:utilizare_xml\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "App.config",
+              "DocumentMoniker": "D:\\Projects\\00-Code\\C#\\Utilizare_XML\\Utilizare_XML\\App.config",
+              "RelativeDocumentMoniker": "Utilizare_XML\\App.config",
+              "ToolTip": "D:\\Projects\\00-Code\\C#\\Utilizare_XML\\Utilizare_XML\\App.config",
+              "RelativeToolTip": "Utilizare_XML\\App.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-11-21T15:54:19.17Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "FrmXML2.cs",
+              "DocumentMoniker": "D:\\Projects\\00-Code\\C#\\Utilizare_XML\\Utilizare_XML\\FrmXML2.cs",
+              "RelativeDocumentMoniker": "Utilizare_XML\\FrmXML2.cs",
+              "ToolTip": "D:\\Projects\\00-Code\\C#\\Utilizare_XML\\Utilizare_XML\\FrmXML2.cs",
+              "RelativeToolTip": "Utilizare_XML\\FrmXML2.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAowBgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T15:52:55.647Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "FrmXML2.cs [Design]",
+              "DocumentMoniker": "D:\\Projects\\00-Code\\C#\\Utilizare_XML\\Utilizare_XML\\FrmXML2.cs",
+              "RelativeDocumentMoniker": "Utilizare_XML\\FrmXML2.cs",
+              "ToolTip": "D:\\Projects\\00-Code\\C#\\Utilizare_XML\\Utilizare_XML\\FrmXML2.cs [Design]",
+              "RelativeToolTip": "Utilizare_XML\\FrmXML2.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T15:52:41.556Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FrmImportXML.cs",
+              "DocumentMoniker": "D:\\Projects\\00-Code\\C#\\Utilizare_XML\\Utilizare_XML\\FrmImportXML.cs",
+              "RelativeDocumentMoniker": "Utilizare_XML\\FrmImportXML.cs",
+              "ToolTip": "D:\\Projects\\00-Code\\C#\\Utilizare_XML\\Utilizare_XML\\FrmImportXML.cs*",
+              "RelativeToolTip": "Utilizare_XML\\FrmImportXML.cs*",
+              "ViewState": "AgIAAAwAAAAAAAAAAAArwBwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T15:52:08.962Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FrmImportXML.cs [Design]",
+              "DocumentMoniker": "D:\\Projects\\00-Code\\C#\\Utilizare_XML\\Utilizare_XML\\FrmImportXML.cs",
+              "RelativeDocumentMoniker": "Utilizare_XML\\FrmImportXML.cs",
+              "ToolTip": "D:\\Projects\\00-Code\\C#\\Utilizare_XML\\Utilizare_XML\\FrmImportXML.cs [Design]*",
+              "RelativeToolTip": "Utilizare_XML\\FrmImportXML.cs [Design]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T15:51:44.148Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FrmExportXML.cs",
+              "DocumentMoniker": "D:\\Projects\\00-Code\\C#\\Utilizare_XML\\Utilizare_XML\\FrmExportXML.cs",
+              "RelativeDocumentMoniker": "Utilizare_XML\\FrmExportXML.cs",
+              "ToolTip": "D:\\Projects\\00-Code\\C#\\Utilizare_XML\\Utilizare_XML\\FrmExportXML.cs",
+              "RelativeToolTip": "Utilizare_XML\\FrmExportXML.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAArwBoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T15:50:37.17Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FrmExportXML.cs [Design]",
+              "DocumentMoniker": "D:\\Projects\\00-Code\\C#\\Utilizare_XML\\Utilizare_XML\\FrmExportXML.cs",
+              "RelativeDocumentMoniker": "Utilizare_XML\\FrmExportXML.cs",
+              "ToolTip": "D:\\Projects\\00-Code\\C#\\Utilizare_XML\\Utilizare_XML\\FrmExportXML.cs [Design]",
+              "RelativeToolTip": "Utilizare_XML\\FrmExportXML.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T15:50:30.713Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Projects\\00-Code\\C#\\Utilizare_XML\\Utilizare_XML\\Program.cs",
+              "RelativeDocumentMoniker": "Utilizare_XML\\Program.cs",
+              "ToolTip": "D:\\Projects\\00-Code\\C#\\Utilizare_XML\\Utilizare_XML\\Program.cs",
+              "RelativeToolTip": "Utilizare_XML\\Program.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAxwCgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T15:46:50.202Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "D:\\Projects\\00-Code\\C#\\Utilizare_XML\\Utilizare_XML\\Form1.cs",
+              "RelativeDocumentMoniker": "Utilizare_XML\\Form1.cs",
+              "ToolTip": "D:\\Projects\\00-Code\\C#\\Utilizare_XML\\Utilizare_XML\\Form1.cs",
+              "RelativeToolTip": "Utilizare_XML\\Form1.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAApwBsAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T15:46:34.013Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "D:\\Projects\\00-Code\\C#\\Utilizare_XML\\Utilizare_XML\\Form1.cs",
+              "RelativeDocumentMoniker": "Utilizare_XML\\Form1.cs",
+              "ToolTip": "D:\\Projects\\00-Code\\C#\\Utilizare_XML\\Utilizare_XML\\Form1.cs [Design]",
+              "RelativeToolTip": "Utilizare_XML\\Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T15:46:16.534Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
