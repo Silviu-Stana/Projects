@@ -1,0 +1,37 @@
+/*
+3. Generalizati problema turnurilor din Hanoi pentru doua tije de manevra.
+Deci enuntul suna astfel: Se dau 4 tije numerotate: 1,2,3,4, si n discuri de diametre diferite.
+Initial, toate discurile sunt plasate pe tija 1 in ordinea descrescatoare a diametrelor,
+considerand sensul de la baza la varf. Problema cere sa se mute discurile de pe tija 1 pe tija 2,
+folosind ca tije de manevra tijele 3 si 4 si respectand regulile: la fiecare pas se muta un singur disc,
+un disc poate fi asezat peste un alt disc mai mare sau poate fi primul disc de la baza tijei.
+*/
+
+import java.util.Scanner;
+
+class Main {
+    public static Scanner cin = new Scanner(System.in);
+
+    public static void AFISARE(int i, int j){
+        System.out.println(i + "->" + j);
+    }
+
+    public static void HANOI(int n, int i, int j, int tijaManevra1, int tijaManevra2){
+        if (n == 1) AFISARE(i, j);
+        else {
+            // Mutăm n-1 discuri de pe "i" pe "tija de manevra 1" folosind "j" pe "tija de manevra 2"
+            HANOI(n-1, i, tijaManevra1, tijaManevra2, j);
+            AFISARE(i, j);
+            HANOI(n-1, tijaManevra1, j, i, tijaManevra2);
+        }
+    }
+
+    public static void main(String[] args) {
+        int n;
+        System.out.print("n = ");
+        n = cin.nextInt();
+
+        // Mutam discurile de pe tija 1 pe tija 2 (folosind tijele 3 și 4 ca manevra)
+        HANOI(n, 1, 2, 3, 4);
+    }
+}

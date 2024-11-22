@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+class Main {
+    public static Scanner cin = new Scanner(System.in);
+    
+    public static void AFISARE(int i, int j){
+        System.out.println(i + "," + j);
+    }
+    
+    public static void HANOI(int m, int i, int j){
+        if(m==1)AFISARE(i,j);
+        else{
+            int k=6-i-j;
+            HANOI(m-1, i, k);
+            AFISARE(i,j);
+            HANOI(m-1, k, j);
+        }
+    }
+    
+    public static void main(String[] args) {
+        int n;
+        cin = new Scanner(System.in);
+        
+        System.out.print("n=");
+        n = cin.nextInt();
+        
+        HANOI(n,1,2);
+        
+    }
+}

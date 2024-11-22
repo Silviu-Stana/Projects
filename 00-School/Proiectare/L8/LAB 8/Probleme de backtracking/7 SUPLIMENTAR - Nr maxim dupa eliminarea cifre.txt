@@ -1,0 +1,50 @@
+class Main {
+
+    public static void AFISARE(int[] x, int n){
+        for(int i=1; i<=n; i++)System.out.print(x[i] + " ");
+        System.out.println();
+    }
+
+    public static void NR_MAXIM_DUPA_ELIMINARE_CIFRE(int n, int k){
+        int max=0;
+        int temp=n;
+
+        //Calculam nr de cifre din numarul "n"
+        int nrCifre=0;
+        while(temp>0){
+            temp/=10;
+            nrCifre++;
+        }
+        int[] numar = new int[nrCifre+1];
+
+        //Le adaugam intr-un array in ordine corecta (nu inversa)
+        for(int i=1; i<nrCifre; i++){
+            numar[i]=n%10;
+            n/=10;
+        }
+
+        for(int i=1; i<=nrCifre-1; i++){
+            for(int j=i+1; j<=nrCifre; j++){
+                int suma=0, produs=1;
+                for(int l=1; l<=nrCifre; l++)
+                {
+                    if(l!=i && l!=j){
+                        suma+=numar[l]*produs;
+                        produs*=10;
+                    }
+                }
+
+                if(suma>max){
+                    max=suma;
+                    System.out.println(max + " este noul Maxim!");
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int n=1324, k=2; //asumam valorile din curs
+
+            NR_MAXIM_DUPA_ELIMINARE_CIFRE(n,k);
+    }
+}

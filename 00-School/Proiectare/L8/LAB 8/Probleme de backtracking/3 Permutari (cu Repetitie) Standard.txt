@@ -1,0 +1,74 @@
+import java.util.Scanner;
+
+class Main {
+    public static Scanner cin;
+
+    public static void AFISARE(int[] x, int n){
+        for(int i=1; i<=n; i++)System.out.print(x[i] + " ");
+        System.out.println();
+    }
+
+    public static void CITESTE(int[] t, int n){
+        for(int i=1; i<=n; i++)t[i] = cin.nextInt();
+    }
+
+    public static void PERMUTARI_CU_REPETITIE_STANDARD(int n, int[] t, int m){
+        n=0;
+        for(int i=1; i<=m; i++)n=n+t[i];
+        int k=1;
+
+        int[] x = new int[n+1];
+        x[1]=0;
+
+        while(k>0){
+            if(x[k]<m){
+                x[k]++;
+                int p = t[x[k]];
+                if(VALID(p,x,k)){
+                    if(k==n){
+                        AFISARE(x,n);
+                        k--;
+                    }
+                    else{
+                        k++;
+                        x[k]=0;
+                    }
+                }
+            }
+            else{
+                k--;
+            }
+        }
+    }
+
+    public static boolean VALID(int p, int[] x, int k){
+        int q=0;
+        if(p==0)return false;
+
+        for(int i=1; i<=k-1; i++){
+            if(x[i]==x[k]){
+                q++;
+                if(q>=p) return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static void main(String[] args) {
+        int m,n; int[] t;
+        cin = new Scanner(System.in);
+
+        System.out.print("n=");
+        n = cin.nextInt();
+        System.out.print("m=");
+        m = cin.nextInt();
+
+        t = new int[m+1];
+
+        CITESTE(t,m);
+
+        PERMUTARI_CU_REPETITIE_STANDARD(n,t,m);
+
+    }
+}

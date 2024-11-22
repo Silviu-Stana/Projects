@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+class Main {
+    public static Scanner cin;
+
+    public static void AFISARE(int[] x, int n){
+        for(int i=1; i<=n; i++)System.out.print(x[i] + " ");
+        System.out.println();
+    }
+
+    public static void COMBINARI_REPETITIE(int m, int n){
+        int k=1;
+        int[] x = new int[n+1];
+        x[1]=0;
+
+        while(k>0){
+            if(x[k]<m){
+                x[k]++;
+                if(k==n)AFISARE(x,n);
+                else{
+                    k++;
+                    x[k]=x[k-1]-1;
+                }
+            }
+            else{
+                k--;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int m,n;
+        cin = new Scanner(System.in);
+
+        System.out.print("n=");
+        n = cin.nextInt();
+        System.out.print("m=");
+        m = cin.nextInt();
+
+        COMBINARI_REPETITIE(m,n);
+
+    }
+}

@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+class Main {
+    public static Scanner cin = new Scanner(System.in);
+    public static int[] a;
+    
+    public static void AFISARE(int[] x, int n){
+        for(int i=1; i<=n; i++)System.out.print(a[x[i]] + " ");
+        System.out.println();
+    }
+    
+    public static void CITIRE(int[] a, int n){
+        for(int i=1; i<=n; i++)a[i] = cin.nextInt();
+    }
+    
+    public static void COMBINARI(int m, int n){
+        int k=1;
+        int[] x = new int[m+1];
+        x[1]=0;
+        
+        while(k>0){
+            if(x[k]<m-n+k){
+                x[k]++;
+                if(k==n)AFISARE(x,n);
+                else{
+                    k++;
+                    x[k]=x[k-1];
+                }
+            }
+            else{
+                k--;
+            }
+        }
+    }
+    
+    public static void main(String[] args) {
+        int m,n;
+        System.out.print("n=");
+        n = cin.nextInt();
+        System.out.print("m=");
+        m = cin.nextInt();
+        a = new int[m+1];
+        
+        CITIRE(a, m);
+        
+        COMBINARI(m,n);
+        
+    }
+}

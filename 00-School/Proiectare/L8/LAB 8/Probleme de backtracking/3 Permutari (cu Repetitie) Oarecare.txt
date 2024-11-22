@@ -1,0 +1,74 @@
+import java.util.Scanner;
+
+class Main {
+    public static Scanner cin;
+    public static int[] nr;
+
+    public static void AFISARE(int[] x, int n){
+        for(int i=1; i<=n; i++)System.out.print(nr[x[i]] + " ");
+        System.out.println();
+    }
+
+    public static void CITESTE(int[] t, int lungime){
+        for(int i=1; i<=lungime; i++)t[i] = cin.nextInt();
+    }
+
+    public static void PERMUTARI_CU_REPETITIE_OARECARE(int n, int[] t, int m){
+        n=0;
+        for(int i=1; i<=m; i++)n=n+t[i];
+        int k=1;
+
+        int[] x = new int[n+1];
+        x[1]=0;
+
+        while(k>0){
+            if(x[k]<m){
+                x[k]++;
+                int p = t[x[k]];
+                if(VALID(p,x,k)){
+                    if(k==n){
+                        AFISARE(x,n);
+                        k--;
+                    }
+                    else{
+                        k++;
+                        x[k]=0;
+                    }
+                }
+            }
+            else{
+                k--;
+            }
+        }
+    }
+
+    public static boolean VALID(int p, int[] x, int k){
+        int q=0;
+        if(p==0)return false;
+
+        for(int i=1; i<=k-1; i++){
+            if(x[i]==x[k]){
+                q++;
+                if(q>=p) return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static void main(String[] args) {
+        int m=3,n=4; int[] t;
+        cin = new Scanner(System.in);
+
+        System.out.println("Citeste " + m + " numere pt t[]:");
+        t = new int[m+1];
+        CITESTE(t,m);//t[] reprezinta de cate ori sa apara fiecare litera
+
+        System.out.println("Citeste " + m + " numere oarecare: ");
+        nr = new int[m+1];
+        CITESTE(nr,m);//nr oarecare
+
+        PERMUTARI_CU_REPETITIE_OARECARE(n,t,m);
+
+    }
+}
