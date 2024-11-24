@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{AEC9AFD6-071A-45E8-80CC-BE28C03F9DB8}|StudentModel\\UserModel.csproj|solutionrelative:studentmodel\\repositories\\logrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{AEC9AFD6-071A-45E8-80CC-BE28C03F9DB8}|StudentModel\\UserModel.csproj|d:\\projects\\00-school\\c#\\proiect 4 - logrepository\\proiect 4\\studentmodel\\services\\logservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AEC9AFD6-071A-45E8-80CC-BE28C03F9DB8}|StudentModel\\UserModel.csproj|solutionrelative:studentmodel\\services\\logservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{AEC9AFD6-071A-45E8-80CC-BE28C03F9DB8}|StudentModel\\UserModel.csproj|D:\\Projects\\00-School\\C#\\Proiect 4 - LogRepository\\Proiect 4\\studentmodel\\applogginginterface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AEC9AFD6-071A-45E8-80CC-BE28C03F9DB8}|StudentModel\\UserModel.csproj|solutionrelative:studentmodel\\applogginginterface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -30,11 +34,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "LogService.cs",
+              "DocumentMoniker": "D:\\Projects\\00-School\\C#\\Proiect 4 - LogRepository\\Proiect 4\\StudentModel\\Services\\LogService.cs",
+              "RelativeDocumentMoniker": "StudentModel\\Services\\LogService.cs",
+              "ToolTip": "D:\\Projects\\00-School\\C#\\Proiect 4 - LogRepository\\Proiect 4\\StudentModel\\Services\\LogService.cs",
+              "RelativeToolTip": "StudentModel\\Services\\LogService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-23T17:21:13.934Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "AppLoggingInterface.cs",
               "DocumentMoniker": "D:\\Projects\\00-School\\C#\\Proiect 4 - LogRepository\\Proiect 4\\StudentModel\\AppLoggingInterface.cs",
               "RelativeDocumentMoniker": "StudentModel\\AppLoggingInterface.cs",
@@ -46,7 +63,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\Projects\\00-School\\C#\\Proiect 4 - LogRepository\\Proiect 4\\StudentModel\\User.cs",
               "RelativeDocumentMoniker": "StudentModel\\User.cs",
@@ -58,7 +75,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "IRepository.cs",
               "DocumentMoniker": "D:\\Projects\\00-School\\C#\\Proiect 4 - LogRepository\\Proiect 4\\StudentModel\\Repositories\\IRepository.cs",
               "RelativeDocumentMoniker": "StudentModel\\Repositories\\IRepository.cs",
@@ -76,14 +93,14 @@
               "RelativeDocumentMoniker": "StudentModel\\Repositories\\LogRepository.cs",
               "ToolTip": "D:\\Projects\\00-School\\C#\\Proiect 4 - LogRepository\\Proiect 4\\StudentModel\\Repositories\\LogRepository.cs",
               "RelativeToolTip": "StudentModel\\Repositories\\LogRepository.cs",
-              "ViewState": "AgIAAG4AAAAAAAAAAAAQwH0AAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAIcAAAAAAAAAAAAAwKwAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-17T18:23:11.256Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Log.cs",
               "DocumentMoniker": "D:\\Projects\\00-School\\C#\\Proiect 4 - LogRepository\\Proiect 4\\StudentModel\\Entities\\Log.cs",
               "RelativeDocumentMoniker": "StudentModel\\Entities\\Log.cs",

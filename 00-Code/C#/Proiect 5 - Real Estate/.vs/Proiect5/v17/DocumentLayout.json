@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Projects\\00-Code\\C#\\Proiect 5 - Real Estate\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{128649BE-38DB-41D7-98BA-3C3531DBEA06}|EstateDataAccess\\EstateDataAccess.csproj|d:\\projects\\00-code\\c#\\proiect 5 - real estate\\estatedataaccess\\sqlrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{128649BE-38DB-41D7-98BA-3C3531DBEA06}|EstateDataAccess\\EstateDataAccess.csproj|solutionrelative:estatedataaccess\\sqlrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FDCCB57B-670C-4E67-BEA5-BC003D17C10F}|EstateModels\\EstateModels.csproj|d:\\projects\\00-code\\c#\\proiect 5 - real estate\\estatemodels\\estate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FDCCB57B-670C-4E67-BEA5-BC003D17C10F}|EstateModels\\EstateModels.csproj|solutionrelative:estatemodels\\estate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5F0D342D-1C2D-4331-8F37-5DA2A00891A0}|Proiect 5 - Real Estate\\EstateConsoleUI.csproj|d:\\projects\\00-code\\c#\\proiect 5 - real estate\\proiect 5 - real estate\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5F0D342D-1C2D-4331-8F37-5DA2A00891A0}|Proiect 5 - Real Estate\\EstateConsoleUI.csproj|solutionrelative:proiect 5 - real estate\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{128649BE-38DB-41D7-98BA-3C3531DBEA06}|EstateDataAccess\\EstateDataAccess.csproj|d:\\projects\\00-code\\c#\\proiect 5 - real estate\\estatedataaccess\\picturerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{128649BE-38DB-41D7-98BA-3C3531DBEA06}|EstateDataAccess\\EstateDataAccess.csproj|solutionrelative:estatedataaccess\\picturerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Estate.cs",
+              "DocumentMoniker": "D:\\Projects\\00-Code\\C#\\Proiect 5 - Real Estate\\EstateModels\\Estate.cs",
+              "RelativeDocumentMoniker": "EstateModels\\Estate.cs",
+              "ToolTip": "D:\\Projects\\00-Code\\C#\\Proiect 5 - Real Estate\\EstateModels\\Estate.cs",
+              "RelativeToolTip": "EstateModels\\Estate.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-23T19:29:20.856Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PictureRepository.cs",
+              "DocumentMoniker": "D:\\Projects\\00-Code\\C#\\Proiect 5 - Real Estate\\EstateDataAccess\\PictureRepository.cs",
+              "RelativeDocumentMoniker": "EstateDataAccess\\PictureRepository.cs",
+              "ToolTip": "D:\\Projects\\00-Code\\C#\\Proiect 5 - Real Estate\\EstateDataAccess\\PictureRepository.cs",
+              "RelativeToolTip": "EstateDataAccess\\PictureRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-23T19:24:27.605Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SqlRepository.cs",
+              "DocumentMoniker": "D:\\Projects\\00-Code\\C#\\Proiect 5 - Real Estate\\EstateDataAccess\\SqlRepository.cs",
+              "RelativeDocumentMoniker": "EstateDataAccess\\SqlRepository.cs",
+              "ToolTip": "D:\\Projects\\00-Code\\C#\\Proiect 5 - Real Estate\\EstateDataAccess\\SqlRepository.cs",
+              "RelativeToolTip": "EstateDataAccess\\SqlRepository.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAwCAAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-23T14:43:11.98Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Projects\\00-Code\\C#\\Proiect 5 - Real Estate\\Proiect 5 - Real Estate\\Program.cs",
+              "RelativeDocumentMoniker": "Proiect 5 - Real Estate\\Program.cs",
+              "ToolTip": "D:\\Projects\\00-Code\\C#\\Proiect 5 - Real Estate\\Proiect 5 - Real Estate\\Program.cs",
+              "RelativeToolTip": "Proiect 5 - Real Estate\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-23T18:09:47.063Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

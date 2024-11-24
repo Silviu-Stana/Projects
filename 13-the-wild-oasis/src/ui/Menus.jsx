@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { HiEllipsisVertical } from 'react-icons/hi2';
 import styled from 'styled-components';
@@ -72,14 +72,13 @@ function Menus({ children }) {
       const [position, setPosition] = useState(null);
 
       const close = () => setOpenId('');
-      const open = setOpenId;
+      const open = (id) => setOpenId(id);
 
       return <MenuContext.Provider value={{ openId, close, open, position, setPosition }}>{children}</MenuContext.Provider>;
 }
 
 function Toggle({ id }) {
       const { openId, close, open, setPosition } = useContext(MenuContext);
-
       function handleClick(e) {
             const rect = e.target.closest('button').getBoundingClientRect();
 
@@ -89,7 +88,15 @@ function Toggle({ id }) {
                   y: rect.y + rect.height + 8,
             });
 
-            openId === '' || openId !== id ? open(id) : close();
+            if (openId === id) {
+                  // console.log('close');
+                  close();
+            } else {
+                  // console.log('Calling open with id:', id);
+                  open(id);
+            }
+
+            openId === id ? close() : open(id);
       }
 
       return (
@@ -100,12 +107,12 @@ function Toggle({ id }) {
 }
 function List({ id, children }) {
       const { openId, position, close } = useContext(MenuContext);
-      const ref = useOutsideClick(close);
+      const ref = useOutsideClick(close, true);
 
       if (openId !== id) return null;
 
       return createPortal(
-            <StyledList position={position} ref={ref}>
+            <StyledList ref={ref} position={position}>
                   {children}
             </StyledList>,
             document.body
