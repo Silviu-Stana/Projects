@@ -23,11 +23,7 @@ namespace EstateModels
         public double Price { get; set; }
         public int Type { get; set; }
         public DateTime CreateDate { get; set; }
-        public List<Picture> Pictures { get; set; } //lista de poze atasata proprietatii
+        //Relatie de MANY-TO-MANY intre Estate si Pictures. (care o vem avea deja cu tabelul EstatePictures)
 
-        public Estate()
-        {
-            Pictures = new List<Picture>();
-        }
     }
 }

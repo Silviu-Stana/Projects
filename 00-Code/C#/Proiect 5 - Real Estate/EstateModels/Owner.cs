@@ -13,11 +13,5 @@ namespace EstateModels
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Cnp { get; set; }
-        public List<Estate> Estates { get; set; }
-
-        public Owner()
-        {
-            Estates = new List<Estate>();
-        }
     }
 }

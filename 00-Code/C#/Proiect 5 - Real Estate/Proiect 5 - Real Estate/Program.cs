@@ -14,21 +14,26 @@ namespace EstateConsoleUI
         {
             try
             {
-                SQLRepository<Estate> estateRepository = RepositoryFactory.CreateEstateRepository();
-
-                int id = 2;
-                Estate estate = estateRepository.GetById(id);
-                Console.WriteLine($"Estate with ID {id} retrieved successfully:");
+                EstateRepository estateRepository = new EstateRepository();
+                Estate estate = estateRepository.GetById(2);
                 Console.WriteLine($"Name: {estate.Name}");
-                Console.WriteLine($"Address: {estate.Address}");
-                Console.WriteLine($"Price: {estate.Price}");
-                Console.WriteLine($"Type: {estate.Type}");
-                Console.WriteLine($"CreateDate: {estate.CreateDate}");
+
+                PictureRepository pictureRepository = new PictureRepository();
+                Picture picture = pictureRepository.GetById(1);
+                Console.WriteLine($"Picture Date: {picture.CreateDate}");
+
+
+                OwnerRepository ownerRepository = new OwnerRepository();
+                Owner owner = ownerRepository.GetById(1);
+                Console.WriteLine($"Owner Name: {picture.CreateDate}");
+
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
+
+            Console.ReadKey();
         }
     }
 }

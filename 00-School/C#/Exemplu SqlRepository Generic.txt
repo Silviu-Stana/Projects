@@ -1,0 +1,116 @@
+using EstateDataAccess.Repository;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EstateDataAccess
+{
+    public class SQLRepository<T> : IRepository<T> where T : new()
+    {
+        public static string stringConectare = @"Data Source=SEAL\SEAL;Initial Catalog=RealEstate;Integrated Security=True";
+
+        public SQLRepository()
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(stringConectare))
+                {
+                    connection.Open();
+                    Console.WriteLine("Conectare cu succes!");
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"Eșec conectare! Mesaj eroare: {ex.Message}");
+            }
+        }
+
+        public T Create(T value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(int id)
+        {
+            string tableName = typeof(T).Name;
+            string primaryKey = $"{tableName}Id";
+
+            string strDelete = $"DELETE FROM {tableName} WHERE {primaryKey}=@id";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(stringConectare))
+                {
+                    SqlCommand cmd = new SqlCommand(strDelete, connection);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    connection.Open();
+                    int n = cmd.ExecuteNonQuery();
+                    connection.Close();
+                    if (n == 0) throw new Exception($"{tableName} with ID {id} not found");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Error: Deleting {tableName} with ID `{id}`\n" + e.ToString());
+            }
+        }
+
+        public List<T> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public T GetById(int id)
+        {
+            string tableName = typeof(T).Name;
+            string primaryKey = $"{tableName}Id";
+
+            string strSelect = $"SELECT * FROM {tableName} WHERE {primaryKey}=@id";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(stringConectare))
+                {
+                    SqlCommand cmd = new SqlCommand(strSelect, connection);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    connection.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        T entity = new T();
+                        foreach (PropertyInfo prop in typeof(T).GetProperties())
+                        {
+                            if (!reader.IsDBNull(reader.GetOrdinal(prop.Name)))
+                            {
+                                prop.SetValue(entity, reader.GetValue(reader.GetOrdinal(prop.Name)));
+                            }
+                        }
+                        connection.Close();
+                        return entity;
+                    }
+                    else
+                    {
+                        connection.Close();
+                        throw new Exception($"{tableName} with ID {id} not found");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Error: Retrieving {tableName} with ID `{id}`\n" + e.ToString());
+                throw;
+            }
+        }
+
+        public T Update(T value)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

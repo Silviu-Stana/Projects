@@ -15,16 +15,16 @@ namespace EstateDataAccess
 
     public class RepositoryFactory
     {
-        public static SQLRepository<Estate> CreateEstateRepository()
+        public static EstateRepository CreateEstateRepository()
         {
             return new EstateRepository();
         }
-        public static SQLRepository<Picture> CreatePictureRepository()
+        public static PictureRepository CreatePictureRepository()
         {
             return new PictureRepository();
         }
 
-        public static SQLRepository<Owner> CreateOwnerRepository()
+        public static OwnerRepository CreateOwnerRepository()
         {
             return new OwnerRepository();
         }

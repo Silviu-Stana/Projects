@@ -3,59 +3,78 @@ using EstateDataAccess.Repository;
 using EstateModels;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 
 namespace EstateDataAccess.Repository.SqlRepository
 {
-    internal class PictureRepository : SQLRepository<Picture>
+    public class PictureRepository : SQLRepository<Picture>
     {
-        //int Id
-        //string Name
-        //long Size
-        //DateTime CreateDate
+        string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
 
 
-        //public new Picture Create(Picture value)
-        //{
-        //    string strInsert = $"insert into Picture(Name,CreateDate,Size) values ('{value.Name}', '{value.CreateDate}', '{value.Size}')";
+        public override Picture Create(Picture value)
+        {
+            throw new NotImplementedException();
+        }
 
-        //    try
-        //    {
-        //        SqlCommand cmd = new SqlCommand(strInsert, con);
-        //        con.Open();
-        //        cmd.ExecuteNonQuery();
+        public override void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine("Error: Inserting picture.\n" + strInsert + "\n");
+        public override List<Picture> GetAll()
+        {
+            throw new NotImplementedException();
+        }
 
-        //        Console.WriteLine(ex.Message);
-        //    }
-        //    con.Close();
+        public override Picture GetById(int id)
+        {
+            string selectById = $"select * from Picture where PictureId={id}";
+            Picture picture = null;
 
-        //    return value;
-        //}
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand cmd = new SqlCommand(selectById, connection))
+                    {
+                        using (var row = cmd.ExecuteReader())
+                        {
+                            if (row.Read())
+                            {
+                                picture = new Picture()
+                                {
+                                    Id = (int)row["PictureId"],
+                                    Name = (string)row["Name"],
+                                    Size = (long)row["Size"],
+                                    CreateDate = (DateTime)row["CreateDate"],
+                                };
+                            }
+                            else
+                            {
+                                Console.WriteLine("Id not found");
+                                return null;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                return null;
+            }
 
-        //    public new Picture Update(Picture value)
-        //    {
-        //        string strUpdate = $"UPDATE Picture SET Name='{value.Name}' WHERE PictureId={value.Id}";
+            return picture;
+        }
 
-        //        try
-        //        {
-        //            SqlCommand cmd = new SqlCommand(strUpdate, con);
-        //            con.Open();
-        //            cmd.ExecuteNonQuery();
-        //        }
-        //        catch (Exception e)
-        //        {
-        //            Console.WriteLine($"Error: Updating log with code `{value.Id}`\n" + e.ToString());
-        //        }
-        //        con.Close();
-
-        //        return value;
-        //    }
+        public override Picture Update(Picture value)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

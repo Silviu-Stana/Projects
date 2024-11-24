@@ -30,85 +30,27 @@ namespace EstateDataAccess
             }
         }
 
-        public T Create(T value)
+        public virtual T Create(T value)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(int id)
-        {
-            string tableName = typeof(T).Name;
-            string primaryKey = $"{tableName}Id";
-
-            string strDelete = $"DELETE FROM {tableName} WHERE {primaryKey}=@id";
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(stringConectare))
-                {
-                    SqlCommand cmd = new SqlCommand(strDelete, connection);
-                    cmd.Parameters.AddWithValue("@id", id);
-                    connection.Open();
-                    int n = cmd.ExecuteNonQuery();
-                    connection.Close();
-                    if (n == 0) throw new Exception($"{tableName} with ID {id} not found");
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Error: Deleting {tableName} with ID `{id}`\n" + e.ToString());
-            }
-        }
-
-        public List<T> GetAll()
+        public virtual void Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public T GetById(int id)
+        public virtual List<T> GetAll()
         {
-            string tableName = typeof(T).Name;
-            string primaryKey = $"{tableName}Id";
-
-            string strSelect = $"SELECT * FROM {tableName} WHERE {primaryKey}=@id";
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(stringConectare))
-                {
-                    SqlCommand cmd = new SqlCommand(strSelect, connection);
-                    cmd.Parameters.AddWithValue("@id", id);
-                    connection.Open();
-                    SqlDataReader reader = cmd.ExecuteReader();
-
-                    if (reader.Read())
-                    {
-                        T entity = new T();
-                        foreach (PropertyInfo prop in typeof(T).GetProperties())
-                        {
-                            if (!reader.IsDBNull(reader.GetOrdinal(prop.Name)))
-                            {
-                                prop.SetValue(entity, reader.GetValue(reader.GetOrdinal(prop.Name)));
-                            }
-                        }
-                        connection.Close();
-                        return entity;
-                    }
-                    else
-                    {
-                        connection.Close();
-                        throw new Exception($"{tableName} with ID {id} not found");
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Error: Retrieving {tableName} with ID `{id}`\n" + e.ToString());
-                throw;
-            }
+            throw new NotImplementedException();
         }
 
-        public T Update(T value)
+        public virtual T GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual T Update(T value)
         {
             throw new NotImplementedException();
         }
