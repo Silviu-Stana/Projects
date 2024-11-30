@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Logo from './Logo';
 import MainNav from './MainNav';
-import { useCabins } from '../features/cabins/useCabins';
+// import { useCabins } from '../features/cabins/useCabins';
 import Uploader from '../data/Uploader';
 
 const StyledSidebar = styled.aside`
@@ -17,7 +17,7 @@ const StyledSidebar = styled.aside`
 
 function Sidebar() {
       //This helps preload the cabins page.
-      const { isLoading, cabins } = useCabins();
+      // const { isLoading, cabins } = useCabins();
 
       return (
             <StyledSidebar>

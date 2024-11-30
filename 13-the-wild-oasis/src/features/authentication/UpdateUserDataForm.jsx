@@ -27,7 +27,20 @@ function UpdateUserDataForm() {
       function handleSubmit(e) {
             e.preventDefault();
             if (!fullName) return;
-            updateUser({ fullName, avatar });
+            updateUser(
+                  { fullName, avatar },
+                  {
+                        onSuccess: () => {
+                              setAvatar(null);
+                              e.target.reset();
+                        },
+                  }
+            );
+      }
+
+      function handleCancel() {
+            setFullName(currentFullName);
+            setAvatar(null);
       }
 
       return (
@@ -42,8 +55,8 @@ function UpdateUserDataForm() {
                         <FileInput id="avatar" accept="image/*" disabled={isUpdating} onChange={(e) => setAvatar(e.target.files[0])} />
                   </FormRow>
                   <FormRow>
-                        <Button type="reset" variation="secondary" disabled={isUpdating}>
-                              Cancel
+                        <Button type="reset" variation="secondary" disabled={isUpdating} onClick={handleCancel}>
+                              Clear
                         </Button>
                         <Button disabled={isUpdating}>Update account</Button>
                   </FormRow>
