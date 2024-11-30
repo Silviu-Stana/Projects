@@ -73,7 +73,7 @@ function SalesChart({ bookings = [], numDays }) {
                               <Area
                                     formatter={(value) => `$${value}`}
                                     dataKey="extrasSales"
-                                    name="Total Sales"
+                                    name="Extras Sales"
                                     type="monotone"
                                     stroke={colors.extrasSales.stroke}
                                     fill={colors.extrasSales.fill}

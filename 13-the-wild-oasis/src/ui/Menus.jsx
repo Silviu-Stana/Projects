@@ -80,6 +80,7 @@ function Menus({ children }) {
 function Toggle({ id }) {
       const { openId, close, open, setPosition } = useContext(MenuContext);
       function handleClick(e) {
+            e.stopPropagation(); //the event won't travel up the DOM, so click outside won't be detected
             const rect = e.target.closest('button').getBoundingClientRect();
 
             //x: this aligns it to the right side of the window.
@@ -107,7 +108,7 @@ function Toggle({ id }) {
 }
 function List({ id, children }) {
       const { openId, position, close } = useContext(MenuContext);
-      const ref = useOutsideClick(close, true);
+      const ref = useOutsideClick(close, false);
 
       if (openId !== id) return null;
 

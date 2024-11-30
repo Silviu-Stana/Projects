@@ -26,6 +26,12 @@ const queryClient = new QueryClient({
       },
 });
 
+/* FEATURE SUGGESTIONS:
+1. Create bookings
+2. Edit a booking
+3. Schedule sales % off for a future date
+4. On click "Check out" go to a page where you generate a pdf invoice and email it to guest
+*/
 function App() {
       return (
             <DarkModeProvider>
