@@ -4,6 +4,7 @@ import Heading from '../../ui/Heading';
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { useDarkMode } from '../../context/DarkModeContext';
 import { eachDayOfInterval, format, isSameDay, subDays } from 'date-fns';
+import { useState } from 'react';
 
 const StyledSalesChart = styled(DashboardBox)`
       grid-column: 1 / -1;
@@ -17,6 +18,9 @@ const StyledSalesChart = styled(DashboardBox)`
 
 function SalesChart({ bookings = [], numDays }) {
       const { isDarkMode } = useDarkMode();
+
+      const [hoveredDot, setHoveredDot] = useState(null);
+      const [dotPosition, setDotPosition] = useState({ x: 0, y: 0 });
 
       const allDates = eachDayOfInterval({
             start: subDays(new Date(), numDays - 1),
@@ -49,6 +53,16 @@ function SalesChart({ bookings = [], numDays }) {
                     background: '#fff',
               };
 
+      // If the tooltip is active, get the active dot's position and data
+      const handleMouseMove = (e) => {
+            if (e.isTooltipActive) {
+                  setHoveredDot(e.activePayload[0].payload); // Get the data for the hovered dot
+                  setDotPosition({ x: e.activeCoordinate.x, y: e.activeCoordinate.y });
+            }
+      };
+
+      console.log(dotPosition);
+
       return (
             <StyledSalesChart>
                   <Heading as="h2">
@@ -56,11 +70,11 @@ function SalesChart({ bookings = [], numDays }) {
                   </Heading>
 
                   <ResponsiveContainer height={300} width="100%">
-                        <AreaChart data={data} height={300} width={700}>
+                        <AreaChart data={data} height={300} width={700} onMouseMove={handleMouseMove}>
                               <XAxis dataKey="label" tick={{ fill: colors.text }} tickLine={{ stroke: colors.text }} />
                               <YAxis tickFormatter={(value) => `$${value}`} tick={{ fill: colors.text }} tickLine={{ stroke: colors.text }} />
                               <CartesianGrid strokeDasharray="8" />
-                              <Tooltip contentStyle={{ backgroundColor: colors.background }} />
+                              <Tooltip isAnimationActive={false} contentStyle={{ backgroundColor: colors.background }} position={{ y: 100 }} />
                               <Area
                                     formatter={(value) => `$${value}`}
                                     dataKey="totalSales"
