@@ -1,7 +1,6 @@
 import Button from '../../ui/Button';
 import CreateCabinForm from './CreateCabinForm';
 import Window from '../../ui/Modal';
-import CabinTable from './CabinTable';
 import Modal from '../../ui/Modal';
 
 function AddCabin() {

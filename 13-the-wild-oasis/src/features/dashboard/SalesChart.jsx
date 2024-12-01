@@ -4,7 +4,6 @@ import Heading from '../../ui/Heading';
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { useDarkMode } from '../../context/DarkModeContext';
 import { eachDayOfInterval, format, isSameDay, subDays } from 'date-fns';
-import { useState } from 'react';
 
 const StyledSalesChart = styled(DashboardBox)`
       grid-column: 1 / -1;

@@ -52,7 +52,7 @@ export const cabins = [
             name: '006',
             maxCapacity: 6,
             regularPrice: 3,
-            discount: 3,
+            discount: 0,
             image: imageUrl + 'cabin-006.jpg',
             description:
                   'Experience the epitome of luxury with your group or family in our spacious wooden cabin 006. Designed to comfortably accommodate up to 6 people, this cabin offers a lavish retreat in the heart of nature. Inside, the cabin features opulent interiors crafted from premium wood, a grand living area with fireplace, and a fully-equipped gourmet kitchen. The bedrooms are adorned with plush beds and spa-like en-suite bathrooms. Step outside to your private deck and soak in the natural surroundings while relaxing in your own hot tub.',
