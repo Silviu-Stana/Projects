@@ -40,8 +40,8 @@ const Amount = styled.div`
       font-weight: 500;
 `;
 
-function BookingRow({
-      booking: {
+function BookingRow({ booking }) {
+      const {
             id: bookingId,
             created_at,
             startDate,
@@ -50,10 +50,10 @@ function BookingRow({
             numGuests,
             totalPrice,
             status,
-            guests: { fullName: guestName, email },
+            guests: { fullName: guestName = 'Unknown Guest', email = 'No email provided' } = {},
             cabins: { name: cabinName },
-      },
-}) {
+      } = booking;
+
       const navigate = useNavigate();
       const { checkout, isCheckingOut } = useCheckout();
       const { isDeleting, deleteBooking } = useDeleteBooking();
