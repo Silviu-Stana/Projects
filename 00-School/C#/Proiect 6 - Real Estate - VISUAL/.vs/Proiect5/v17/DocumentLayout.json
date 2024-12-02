@@ -1,0 +1,120 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5F0D342D-1C2D-4331-8F37-5DA2A00891A0}|Proiect 5 - Real Estate\\EstateConsoleUI.csproj|d:\\projects\\00-school\\c#\\proiect 6 - real estate - visual\\proiect 5 - real estate\\estateforms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5F0D342D-1C2D-4331-8F37-5DA2A00891A0}|Proiect 5 - Real Estate\\EstateConsoleUI.csproj|solutionrelative:proiect 5 - real estate\\estateforms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5F0D342D-1C2D-4331-8F37-5DA2A00891A0}|Proiect 5 - Real Estate\\EstateConsoleUI.csproj|D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\proiect 5 - real estate\\estateforms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5F0D342D-1C2D-4331-8F37-5DA2A00891A0}|Proiect 5 - Real Estate\\EstateConsoleUI.csproj|solutionrelative:proiect 5 - real estate\\estateforms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{128649BE-38DB-41D7-98BA-3C3531DBEA06}|EstateDataAccess\\EstateDataAccess.csproj|d:\\projects\\00-school\\c#\\proiect 6 - real estate - visual\\estatedataaccess\\sqlrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{128649BE-38DB-41D7-98BA-3C3531DBEA06}|EstateDataAccess\\EstateDataAccess.csproj|solutionrelative:estatedataaccess\\sqlrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5F0D342D-1C2D-4331-8F37-5DA2A00891A0}|Proiect 5 - Real Estate\\EstateConsoleUI.csproj|D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\proiect 5 - real estate\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5F0D342D-1C2D-4331-8F37-5DA2A00891A0}|Proiect 5 - Real Estate\\EstateConsoleUI.csproj|solutionrelative:proiect 5 - real estate\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5F0D342D-1C2D-4331-8F37-5DA2A00891A0}|Proiect 5 - Real Estate\\EstateConsoleUI.csproj|D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\proiect 5 - real estate\\estateforms.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5F0D342D-1C2D-4331-8F37-5DA2A00891A0}|Proiect 5 - Real Estate\\EstateConsoleUI.csproj|solutionrelative:proiect 5 - real estate\\estateforms.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5F0D342D-1C2D-4331-8F37-5DA2A00891A0}|Proiect 5 - Real Estate\\EstateConsoleUI.csproj|D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\proiect 5 - real estate\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{5F0D342D-1C2D-4331-8F37-5DA2A00891A0}|Proiect 5 - Real Estate\\EstateConsoleUI.csproj|solutionrelative:proiect 5 - real estate\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SqlRepository.cs",
+              "DocumentMoniker": "D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\EstateDataAccess\\SqlRepository.cs",
+              "RelativeDocumentMoniker": "EstateDataAccess\\SqlRepository.cs",
+              "ToolTip": "D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\EstateDataAccess\\SqlRepository.cs",
+              "RelativeToolTip": "EstateDataAccess\\SqlRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T20:04:00.771Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EstateForms.Designer.cs",
+              "DocumentMoniker": "D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\Proiect 5 - Real Estate\\EstateForms.Designer.cs",
+              "RelativeDocumentMoniker": "Proiect 5 - Real Estate\\EstateForms.Designer.cs",
+              "ToolTip": "D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\Proiect 5 - Real Estate\\EstateForms.Designer.cs",
+              "RelativeToolTip": "Proiect 5 - Real Estate\\EstateForms.Designer.cs",
+              "ViewState": "AgIAAAYCAAAAAAAAAAAhwBcCAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T18:49:48.047Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EstateForms.cs [Design]",
+              "DocumentMoniker": "D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\Proiect 5 - Real Estate\\EstateForms.cs",
+              "RelativeDocumentMoniker": "Proiect 5 - Real Estate\\EstateForms.cs",
+              "ToolTip": "D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\Proiect 5 - Real Estate\\EstateForms.cs [Design]",
+              "RelativeToolTip": "Proiect 5 - Real Estate\\EstateForms.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T05:01:18.758Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "App.config",
+              "DocumentMoniker": "D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\Proiect 5 - Real Estate\\App.config",
+              "RelativeDocumentMoniker": "Proiect 5 - Real Estate\\App.config",
+              "ToolTip": "D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\Proiect 5 - Real Estate\\App.config",
+              "RelativeToolTip": "Proiect 5 - Real Estate\\App.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-11-24T19:39:05.176Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\Proiect 5 - Real Estate\\Program.cs",
+              "RelativeDocumentMoniker": "Proiect 5 - Real Estate\\Program.cs",
+              "ToolTip": "D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\Proiect 5 - Real Estate\\Program.cs",
+              "RelativeToolTip": "Proiect 5 - Real Estate\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-23T18:09:47.063Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EstateForms.cs",
+              "DocumentMoniker": "D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\Proiect 5 - Real Estate\\EstateForms.cs",
+              "RelativeDocumentMoniker": "Proiect 5 - Real Estate\\EstateForms.cs",
+              "ToolTip": "D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\Proiect 5 - Real Estate\\EstateForms.cs",
+              "RelativeToolTip": "Proiect 5 - Real Estate\\EstateForms.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAALMAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T18:49:48.901Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
