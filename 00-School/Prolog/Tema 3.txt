@@ -1,0 +1,13 @@
+membru(X,[X|T]) :- !.
+membru(X,[H|T]) :- membru(X,T).
+
+%lungime lista
+lungime([],0).
+lungime([H|T],NR) :- lungime(T,Y), NR is Y+1.
+
+%suma lista
+sum([],0).
+sum([H|T], S) :- sum(T,S1), S is S1+H.
+
+media_aritmetica([], 0).
+media_aritmetica(L, M):- suma(L, S), lungime(L, NR), M is S / NR.
