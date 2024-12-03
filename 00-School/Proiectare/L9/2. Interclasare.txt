@@ -1,0 +1,79 @@
+import java.util.Scanner;
+
+class Main {
+    public static Scanner cin;
+    
+    public static void SORTARE(int[] a, int n){
+        for(int i=1; i<=n; i++){
+            for(int j=i+1; j<=n; j++){
+                if(a[i]>a[j]){
+                    int temp = a[i];
+                    a[i] = a[j];
+                    a[j] = temp;
+                }
+            }
+        }
+    }
+    
+    public static void AFISARE(int[] a, int n){
+        for(int i=1; i<=n; i++) System.out.print(a[i] + " ");
+        System.out.println();
+    }
+    
+    public static void INTERCLASARE(int[] A, int[] B, int[] C, int m, int n){
+        int i=1, j=1, k=1;
+        
+        while(i<=m && j<=n){
+            if(A[i]<=B[j]){
+                C[k]=A[i];
+                i++;
+            }
+            else{
+                C[k]=B[j];
+                j++;
+            }
+            k++;
+        }
+        while(i<=m){
+            C[k]=A[i];
+            i++;
+            k++;
+        }
+        while(j<=n){
+            C[k]=B[j];
+            j++;
+            k++;
+        }
+    }
+    
+    public static void main(String[] args) {
+        cin = new Scanner(System.in);
+        int m,n;
+        
+        System.out.print("n=");
+        n = cin.nextInt();
+        System.out.print("m=");
+        m = cin.nextInt();
+        int[] C=new int[m+n+1];
+        
+        System.out.print("Scrie " + m + " numere:");
+        int[] A = new int[m+1];
+        for(int i=1; i<=m; i++) A[i] = cin.nextInt();
+        
+        System.out.print("Scrie " + n + " numere:");
+        int[] B = new int[n+1];
+        for(int i=1; i<=n; i++) B[i] = cin.nextInt();
+        
+        
+        SORTARE(A,m);
+        AFISARE(A,m);
+        
+        SORTARE(B,n);
+        AFISARE(B,n);
+    
+        System.out.println();
+        INTERCLASARE(A,B,C,m,n);
+        AFISARE(C,m+n);
+    
+    }
+}

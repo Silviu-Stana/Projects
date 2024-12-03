@@ -1,13 +1,58 @@
-membru(X,[X|T]) :- !.
-membru(X,[H|T]) :- membru(X,T).
+membru(X,[X|_]) :- !.
+membru(X,[_|T]) :- membru(X,T).
 
 %lungime lista
 lungime([],0).
-lungime([H|T],NR) :- lungime(T,Y), NR is Y+1.
+lungime([_|T],NR) :- lungime(T,Y), NR is Y+1.
 
 %suma lista
 sum([],0).
 sum([H|T], S) :- sum(T,S1), S is S1+H.
 
-media_aritmetica([], 0).
-media_aritmetica(L, M):- suma(L, S), lungime(L, NR), M is S / NR.
+sumaPara([], 0).
+sumaPara([H|T], S) :- H mod 2 =:= 0, sumaPara(T, S1), S is S1 + H. %Daca H este par, adaugam.
+sumaPara([H|T], S) :-  H mod 2 =\= 0, sumaPara(T, S). %Daca H impar, ignoram.
+
+
+%Max dintr-o lista
+maxim([H|T], Max) :-
+    maxim_aux(T, H, Max).
+
+%Functie auxiliara ca sa tine cont de maximul curent
+maxim_aux([], Max, Max).
+maxim_aux([H|T], CurMax, Max) :-
+    H > CurMax,
+    maxim_aux(T, H, Max).
+maxim_aux([H|T], CurMax, Max) :-
+    H =< CurMax,
+    maxim_aux(T, CurMax, Max).
+
+
+%Max dintr-o lista de liste
+maxime([], []).
+maxime([H1|H2], [T1|T2]) :-
+    maxim(H1, T1), % Determina maximul din prima sublista
+    maxime(H2, T2). % Recursiv pentru restul listelor
+
+  %maxime([[3, 5, 2], [1, 9, 8], [7, 4]], Rezultat).
+  %Rezultat = [5, 9, 7]
+
+media([], 0).
+media(L, M):- sum(L, S), lungime(L, NR), M is S / NR.
+
+% TEMA EXERCITIU 1: Media maximelor dintr-o lista de liste
+media_maxime(ListaDeListe, Media) :-
+    maxime(ListaDeListe, Maxime), % Calculam lista de maxime
+    sum(Maxime, Suma),           % Calculam suma maximelor
+    lungime(Maxime, Lungime),    % Determinam lungimea listei de maxime
+    Lungime > 0,                 % Verificam daca lungimea este mai mare decât 0
+    Media is Suma / Lungime.     % Calculam media.
+
+
+% TEMA EXERCITIU 2: Suma elementelor pare din maximul listelor
+suma_valorilor_pare(ListaDeListe,SUMA) :-
+    maxime(ListaDeListe, Maxime),
+    sumaPara(Maxime,SUMA).
+
+    %exemplu apelare: suma_valorilor_pare([[3, 5, 10], [1, 9, 8], [1, 4]], SUMA).
+%SUMA = 14
