@@ -1,0 +1,58 @@
+import java.util.Scanner;
+
+class Main {
+    public static Scanner cin = new Scanner(System.in);
+
+    public static void AFISARE(int sumaMax, int n, int[] numere, int[] aparitii){
+        System.out.println("Suma maxima este -> " + sumaMax);
+
+        System.out.println("Compusa din submultimea:");
+
+        System.out.print("{");
+        for(int i=1; i<=n; i++){
+            if(aparitii[i] == 1) System.out.print(numere[i] + " ");
+        }
+        System.out.println("}");
+    }
+
+    public static void SUBMULTIME_SUMA_MAXIMA(int n, int[] numere, int sumaMax, int[] aparitii){
+        sumaMax=0;
+
+        for(int i=1; i<=n; i++){
+            //Daca e nr negativ, sau 0, sarim peste el.
+            if(numere[i] <= 0) continue;
+
+            sumaMax += numere[i];
+            aparitii[i]=1;//numarul curent apare in submultime
+        }
+
+        AFISARE(sumaMax, n, numere, aparitii);
+    }
+
+    public static void main(String[] args) {
+        int n, sumaMax=0; int[] numere, aparitii;
+        System.out.print("n = ");
+        n = cin.nextInt();
+        numere = new int[n+1];
+        aparitii = new int[n+1];
+
+        System.out.print("Dati " + n + " numere: ");
+        for (int i=1; i<=n; i++){
+            numere[i] = cin.nextInt();
+        }
+
+        SUBMULTIME_SUMA_MAXIMA(n, numere, sumaMax, aparitii);
+    }
+}
+
+/*
+  Exemplu de apelare:
+n = 5
+Dati 5 numere: 0 3 -2 5 -4
+
+
+  Rezultat:
+Suma maxima este -> 8
+Compusa din submultimea:
+{3 5 }
+ */

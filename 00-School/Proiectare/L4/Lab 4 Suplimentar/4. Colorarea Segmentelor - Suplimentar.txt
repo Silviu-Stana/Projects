@@ -1,0 +1,128 @@
+/*
+Fie n segmente situate pe o aceeasi dreapta, numerotate distinct, de la 1 la n.
+Sa se scrie un program care determina numarul minim de culori necesare pentru a colora cele n segmente
+astfel incat oricare doua segmente care se intersecteaza sa fie colorate diferit
+si, de asemenea, sa se determine o astfel de colorare.
+Pentru fiecare segment de dreapta se da pozitia initiala a segmentului si lungimea sa.
+ */
+
+import java.util.Scanner;
+class Main {
+    static Scanner cin = new Scanner(System.in);
+    public static int[][] acoperit;
+
+    public static int MAXIM(int n, int[] poz, int[] lungimi){
+        int max=poz[0];
+
+        //Spre exemplu, din exemplu din laborator:
+        //Pozitia maxima este: 11
+        //Lungimea maxima este: 6
+
+        /*
+        Rezulta ca maximul la care are putea ajunge un segment este pozitia 11+6=17
+        (in cel mai rau caz, daca ar incepe la ultima pozitie, si ar merge lungime maxima la dreapta)
+        */
+
+        for(int i=1; i<=n; i++){
+            for(int j=1; j<=n; j++){
+                if(poz[i]+lungimi[j]>max) max=poz[i]+lungimi[j];
+            }
+        }
+
+        return max;
+    }
+
+    static void MATRICEA_DE_INTERSECTIE(int n, int max, int[] poz, int[] lungimi){
+        acoperit=new int[n+1][max+1];
+
+        System.out.println("Matricea de intersectie:");
+        for(int i=1; i<=n; i++){
+            //startul segmentului = poz[i];
+            //sfarsitul segmentului = poz[i]+lungimi[i];
+
+            for(int j=1; j<=max; j++){
+                if(j>poz[i] && j<=poz[i]+lungimi[i]) //atunci este inclus in segment
+                {
+                    acoperit[i][j]=1;
+                }
+            }
+        }
+
+        for(int i=1; i<=n; i++){
+            for(int j=1; j<=max; j++){
+                System.out.print(acoperit[i][j]+" ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void COLORARE_SEGMENTE(int n, int max, int[] cul, int[] poz, int[] lungimi){
+        for(int i=1; i<=n; i++) cul[i]=1; //toate segmentele au culoarea >=1
+
+        /*
+        Putem verifica intersectia segmentelor printr-un mod mai simplu, care l-am observat dupa ce am facut desenul
+        (fisierul ".png" atasat in folder)
+
+        2 segmente sunt intersectate daca pe acelasi index de pozitie "i" au ambele valoarea "1".
+
+        Prima pozitie a fiecarui segment am setat-o la "0" deoarece nu se pune ca intersectie.
+        Spre exemplu, daca "Segmentul5" ar fii inceput cu o pozitie mai la dreapta, atunci nu ar fii fost intersectat.
+
+        Intersectia se poate calcula doar incepand de la poz+1
+
+        0 0 0 0 0 0 0 0 0 1 1 1 0 0 0
+        0 0 1 1 1 1 0 0 0 0 0 0 0 0 0
+        0 0 0 1 1 1 1 1 1 0 0 0 0 0 0
+        0 1 1 1 0 0 0 0 0 0 0 0 0 0 0
+        0 0 0 0 0 0 0 0 0 0 0 0 1 1 1
+
+        */
+        for(int j=1; j<n; j++){
+            int k=1;//culoarea
+
+            for(int i=1; i<=n; i++){ //incepem de pe a 2-a linie (ca sa putem compara cu linia i-1 mereu)
+                if(acoperit[i][j]==1)
+                {
+                    k++;
+                    if(k>cul[i]) cul[i]=k; //am gasit un nou maxim de intersectii (deci creste nr culorii al segmentului)
+                    //verificarea unui maxim ne ajuta sa nu resetam din greseala mai tarziu culoarea la 1.
+                }
+            }
+        }
+
+        AFISARE_VECTOR_CULORI(n, cul);
+    }
+
+    public static void AFISARE_VECTOR_CULORI(int n, int[] cul){
+        for(int i=1; i<=n; i++){
+            System.out.println("Segmentul " + i + " culoarea " + cul[i]);
+        }
+    }
+
+    public static void main(String[] args) {
+        int n=5; //nr segmente
+        int[] cul = new int[n+1];
+        int[] poz = new int[n+1];//asa de mari ca sa aiba loc toate pozitiile
+        int[] lungimi = new int[n+1];
+
+        System.out.print("Scrie " + n + " pozitii de pornire ale segmentelor: ");
+        for(int i=1; i<=n; i++) poz[i]=cin.nextInt();
+
+        System.out.print("Scrie " + n + " lungimi ale segmentelor: ");
+        for(int i=1; i<=n; i++) lungimi[i]=cin.nextInt();
+
+        int max = MAXIM(n, poz, lungimi);
+
+        System.out.println("Max: " + max);
+
+        MATRICEA_DE_INTERSECTIE(n, max, poz, lungimi);
+
+
+
+
+        COLORARE_SEGMENTE(n, max, cul, poz, lungimi);
+        //apel:
+        //9 2 3 1 11
+        //3 4 6 3 4
+    }
+}

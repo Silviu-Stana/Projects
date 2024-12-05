@@ -1,0 +1,98 @@
+public class Main {
+    static int n=5; // Dimensiunea tablei
+    static int[][] tabla=new int[6][6];
+    static String[] pasi=new String[n*n]; // Vector pentru stocarea pașilor
+    static int[] dx = {2, 1, -1, -2, -2, -1, 1, 2}; // Miscarile posibile pe axa x
+    static int[] dy = {1, 2, 2, 1, -1, -2, -2, -1}; // Miscarile posibile pe axa y
+    //Spre exemplu x = x + dx[i]
+    //Si y = y + dy[i].
+    //Pentru i=1, calul incearca sa mearga 2 pozitii la dreapta, si 1 pozitie in sus. (daca poate)
+    //Acest array simplifica mult codul. Putem testa toate miscarile calului cu doar un singur "for" de la 0 la 7.
+
+
+    static int k=0; // Pozitia curenta în vectorul de pasi
+    static int numarSolutii;
+
+    public static void PREGATIM_TABLA(){
+        /*
+        sa arate ca cea din laborator
+        1 0 2 0 0
+        2 0 1 0 0
+        0 1 1 1 0
+        0 1 0 0 1
+        0 0 2 0 0
+         */
+        tabla[1][1]=1; tabla[1][3]=2;
+        tabla[2][1]=2; tabla[2][3]=1;
+        tabla[3][2] = tabla[3][3] = tabla[3][4] =1;
+        tabla[4][2] = tabla[4][5] =1;
+        tabla[5][3]=2;
+
+    }
+
+    public static void AFISAM_TABLA_CURENTA(){
+        for(int i=1; i<=n; i++){
+            for(int j=1; j<=n; j++){
+                System.out.print(tabla[i][j]+" ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+    public static void CALUL(int x, int y) {
+        pasi[k] = "(" + x + "," + y + ")"; // Adaugam pozitia curenta
+        k++; // Incrementam pozitia curenta
+
+        // Exploram toate miscarile posibile
+        boolean blocat = true;
+        for (int i = 0; i < 8; i++) {
+            int nx = x + dx[i]; // Noua pozitie x
+            int ny = y + dy[i]; // Noua pozitie y
+
+            // Verificam dacă noua pozitie este valida (daca nu am iesit din tabla si mai poate fii vizitata)
+            if (nx >= 1 && nx <= n && ny >= 1 && ny <= n && tabla[nx][ny] > 0) {
+                tabla[nx][ny]--; //Scadem nr ori, in care mai avem voie sa mai atingem pozitia.
+                CALUL(nx, ny);  // Continuam recursiv
+                tabla[nx][ny]++; //Mergem inapoi
+                blocat = false;  // Daca am gasit o miscare valida, nu ne-am blocat
+            }
+        }
+
+        // Daca nu am gasit miscari valide), afisam solutia partiala
+        if (blocat) {
+            //Dar doar daca tabla este si goala. Altfel am afisa 139 de solutii posibile.
+            //(in care tabla mai avea cateva pozitii ne-consumate)
+            if(VERIFICA_DACA_TABLA_A_RAMAS_GOALA())
+            {
+                numarSolutii++;
+
+                System.out.println("Solutia " + numarSolutii);
+                for (int i = 0; i < k; i++) {
+                    System.out.print(pasi[i] + "->");
+                }
+                System.out.println();
+                AFISAM_TABLA_CURENTA(); // Afisam tabla in momentul in care ne-am blocat
+            }
+        }
+
+        k--; // Backtracking - revenim la pasul anterior
+    }
+
+    public static boolean VERIFICA_DACA_TABLA_A_RAMAS_GOALA(){
+        for(int i=1; i<=n; i++){
+            for(int j=1; j<=n; j++){
+                if(tabla[i][j] != 0)return false; //NU, deci solutia este invalida
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        int x0=1, y0=1;
+        PREGATIM_TABLA();
+        tabla[x0][y0]=0;
+
+        CALUL(x0, y0);
+    }
+}

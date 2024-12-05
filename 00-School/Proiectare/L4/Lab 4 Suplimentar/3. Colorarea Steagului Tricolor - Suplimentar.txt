@@ -1,0 +1,33 @@
+import java.util.Scanner;
+class Main {
+    static Scanner cin = new Scanner(System.in);
+
+
+    public static void COLORARE_STEAG_TRICOLOR(int n, String[] c){
+        //"i" reprezinta culoarea pusa pe prima pozitie.
+        //"j" reprezinta culoare pusa pe a 3-a pozitie.
+        //Dar toate culorile steagului trebuie sa fie diferite.
+        for(int i=1; i<=n; i++){
+            for(int j=1; j<=n; j++) {
+                //n-1 este penultima culoare (punem la mijloc)
+                if(i!=j && i!=n-1 && j!=n-1) System.out.println(c[i] + " " + c[n-1] + " " + c[j] );
+
+                //"n" este ultima culoare (punem la mijloc)
+                if(i!=j && i!=n && j!=n)System.out.println(c[i] + " " + c[n] + " " + c[j] );
+
+                //Fac cu 2 if-uri ca sa putem afisa toate solutiile.
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int n=4; //n- nr culori
+        String[] c = new String[n+1];//culorile
+        c[1] = "rosu";
+        c[2] = "albastru";
+        c[3] = "galben";
+        c[4] = "alb";
+
+        COLORARE_STEAG_TRICOLOR(n,c);
+    }
+}

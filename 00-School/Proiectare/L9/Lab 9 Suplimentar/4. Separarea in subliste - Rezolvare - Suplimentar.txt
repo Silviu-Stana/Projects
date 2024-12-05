@@ -1,0 +1,56 @@
+public class Main {
+    static int[] x;
+    static int p;
+
+    public static void imparteIn3(int n) {
+        int part1 = Math.ceilDiv(n,3);
+        int part2 = part1 + Math.ceilDiv(n,3);
+
+        imparteIn2(1, part1, 0);
+        imparteIn2(part1 + 1, part2, 0);
+        imparteIn2(part2 + 1, n, 0);
+    }
+
+
+    public static void imparteIn2(int start, int end, int nrImpartiri) {
+        System.out.print("Subgrupa: ");
+        for (int i = start; i <= end; i++) System.out.print(x[i] + " ");
+        System.out.println();
+
+        if (nrImpartiri >= p) return;
+
+        int middle = (start+end)/2;
+
+        int nrElementeInSubLista=0;
+        for(int i=start; i<=end; i++) nrElementeInSubLista++;
+        if(nrElementeInSubLista%2==0) {
+            x[middle]=0; //daca subgrupa are lungime para, avem de eliminat 2 elemente din mijloc
+            x[middle+1]=0;
+        }
+        else{
+            x[middle]=0; //altfel eliminam doar 1 element
+        }
+
+        imparteIn2(start, middle - 1, nrImpartiri + 1);
+
+        // Daca nr e par are 2 nr la mijloc. Deci a doua jumatate incepe de la mijloc (end/2) + 2
+        // Daca nr e impar si are doar 1 nr la mijloc este (end/2) + 1
+        if (nrElementeInSubLista % 2 == 0) imparteIn2(middle + 2, end, nrImpartiri + 1);
+        else imparteIn2(middle+1, end, nrImpartiri + 1);
+    }
+
+    public static void main(String[] args) {
+        int n = 50;
+        p=3;
+
+        x = new int[n + 1];
+        for (int i = 1; i <= n; i++) x[i] = i;
+
+        imparteIn3(n);
+
+        System.out.println();
+        System.out.println("Rezultat final: ");
+        for (int i = 1; i <= n; i++) if(x[i]!=0) System.out.print(x[i] + " ");
+        System.out.println();
+    }
+}

@@ -1,0 +1,29 @@
+public class Main {
+    static String maxNumber = "";
+
+    public static void cautaCifraMax(String n, int k, String curent) {
+        if (k == 0) {
+            curent += n;
+
+            if (curent.compareTo(maxNumber) > 0) maxNumber = curent;
+
+            return;
+        }
+
+        System.out.println(curent);
+
+        if (n.length() <= k) return;
+
+        for (int i = 0; i < n.length(); i++) {
+            String ramas = n.substring(0, i) + n.substring(i + 1); //elimina cifra "i"
+            cautaCifraMax(ramas, k - 1, curent);
+        }
+    }
+
+    public static void main(String[] args) {
+        String n = "1324";
+        int k = 2;
+        cautaCifraMax(n, k, "");
+        System.out.println("Nr maxim este: " + maxNumber);
+    }
+}
