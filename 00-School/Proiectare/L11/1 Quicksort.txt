@@ -1,0 +1,51 @@
+import java.util.Scanner;
+class Main {
+public static Scanner cin = new Scanner(System.in);
+
+
+public static void AFISARE(int[] x, int n){
+        for(int i=1; i<=n; i++){
+            System.out.print(x[i] + " ");
+        }
+        System.out.println();
+    }
+
+public static int PIVOT(int[] A, int p, int u){
+    int cp=0,cu=-1;
+    while(p<u){
+        if(A[p]>A[u]){
+            int temp = A[p];
+            A[p]=A[u];
+            A[u]=temp;
+            
+            int m=cp;
+            cp=-cu;
+            cu=-m;
+        }
+        p=p+cp;
+        u=u+cu;
+    }
+    int k=p;
+    return k;
+}
+
+public static void QUICKSORT(int[] A, int p, int u)
+{
+    if(p<u){
+        int k=PIVOT(A,p,u);
+        QUICKSORT(A,p,k-1);
+        QUICKSORT(A,k+1,u);
+    }
+}    
+    public static void main(String[] args) {
+        int n;
+        System.out.print("n="); n = cin.nextInt();
+        int[] A= new int[n+1];
+        
+        System.out.print("Dati numerele: ");
+        for(int i=1; i<=n; i++) A[i] = cin.nextInt();
+        
+        QUICKSORT(A,1,n);
+        AFISARE(A,n);
+    }
+}

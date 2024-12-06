@@ -1,0 +1,50 @@
+import java.util.Scanner;
+class Main {
+    public static Scanner cin = new Scanner(System.in);
+    public static int[] sir;
+
+    public static int K_lea_MINIM(int[] arr, int p, int u, int k)
+    {
+        int i = p; //i = Cate elementele sunt mai mici decat ultimul (arr[u]), care l-am ales ca un fel de pivot.
+
+        for(int j=p; j<u; j++){
+            if(arr[j]<=arr[u]){
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+                i++;
+            }
+        }
+
+        //Muta pivot la poz corecta.
+        int temp=arr[i];
+        arr[i]=arr[u];
+        arr[u]=temp;
+
+        //Acest algoritm este ca o sortare, dar doar partiala,
+        //deoarece cand a gasit al k-lea element, se va opri din sortat.
+
+        //Verifica poz pivot:
+        if(i==k) return arr[i];
+        else if(i>k) return K_lea_MINIM(arr,p,i-1,k);
+        else return K_lea_MINIM(arr,i+1,u,k);
+    }
+
+
+    public static void main(String[] args) {
+        int n, k, min;
+        //if n<min[0]
+
+        System.out.print("n="); n = cin.nextInt();
+        sir= new int[n+1];
+
+        System.out.print("Dati numerele: ");
+        for(int i=1; i<=n; i++) sir[i] = cin.nextInt();
+
+        System.out.print("k="); k = cin.nextInt();
+
+
+        min= K_lea_MINIM(sir,1,n, k);
+        System.out.println("Al " + k + "-lea minim nr este: " + min);
+    }
+}

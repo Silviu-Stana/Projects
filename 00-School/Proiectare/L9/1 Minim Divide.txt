@@ -1,0 +1,31 @@
+import java.util.Scanner;
+class Main {
+public static Scanner cin = new Scanner(System.in);
+public static int[] sir;
+
+public static int MIN_SIR(int[] sir, int p, int u)
+{
+    if(p==u) return sir[p];
+    
+    int m = (p+u)/2;
+    int a = MIN_SIR(sir,p,m);
+    int b = MIN_SIR(sir,m+1,u);
+    
+    if(a<b) return a;
+    else return b;
+}
+
+
+    public static void main(String[] args) {
+        int n, min;
+        System.out.print("n="); n = cin.nextInt();
+        sir= new int[n+1];
+        
+        System.out.print("Dati numerele: ");
+        for(int i=1; i<=n; i++) sir[i] = cin.nextInt();
+        
+        
+        min=MIN_SIR(sir,1,n);
+        System.out.print("Minim: " + min);
+    }
+}

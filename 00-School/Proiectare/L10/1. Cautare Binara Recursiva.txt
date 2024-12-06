@@ -1,0 +1,62 @@
+import java.util.Scanner;
+
+class Main {
+    public static Scanner cin;
+    
+    public static void SORTARE(int[] a, int n){
+        for(int i=1; i<=n; i++){
+            for(int j=i+1; j<=n; j++){
+                if(a[i]>a[j]){
+                    int temp = a[i];
+                    a[i] = a[j];
+                    a[j] = temp;
+                }
+            }
+        }
+    }
+    
+    public static void AFISARE(int[] a, int n){
+        for(int i=1; i<=n; i++) System.out.print(a[i] + " ");
+        System.out.println();
+    }
+    
+    public static int CAUTBIN_REC(int[] A, int n, int p, int u, int x){
+        int m;
+        
+        if(p>u) return -1;
+        else{
+            m=(p+u)/2;
+            if(x==A[m]) return m;
+            else{
+                if(x<A[m])return CAUTBIN_REC(A,n,p,m-1,x);
+                else return CAUTBIN_REC(A,n,m+1,u,x);
+            }
+        }
+    }
+    
+    public static void main(String[] args) {
+        cin = new Scanner(System.in);
+        System.out.print("n=");
+        int n,x, poz;
+        n = cin.nextInt();
+        
+        System.out.print("Scrie " + n + " numere:");
+        int[] A = new int[n+1];
+        
+        for(int i=1; i<=n; i++) A[i] = cin.nextInt();
+        
+        System.out.print("x=");
+        x = cin.nextInt();
+        
+        SORTARE(A,n);
+        AFISARE(A,n);
+        
+        poz =  CAUTBIN_REC(A,n,1,n,x);
+        if(poz==-1) System.out.println("Elementul nu a fost gasit.");
+        else{
+           System.out.println("A fost gasit la pozitia: " + poz); 
+        }
+        System.out.println();
+    
+    }
+}

@@ -1,0 +1,36 @@
+import java.util.Scanner;
+class Main {
+public static Scanner cin = new Scanner(System.in);
+public static int[] sir;
+
+public static int CMMMDC_SIR(int[] sir, int p, int u)
+{
+    if(p==u) return sir[p];
+    
+    int m = (p+u)/2;
+    int a = CMMMDC_SIR(sir,p,m);
+    int b = CMMMDC_SIR(sir,m+1,u);
+    
+    while(b!=0){
+        int r = a%b;
+        a=b;
+        b=r;
+    }
+  
+    return a;
+}
+
+
+    public static void main(String[] args) {
+        int n, min;
+        System.out.print("n="); n = cin.nextInt();
+        sir= new int[n+1];
+        
+        System.out.print("Dati numerele: ");
+        for(int i=1; i<=n; i++) sir[i] = cin.nextInt();
+        
+        
+        min=CMMMDC_SIR(sir,1,n);
+        System.out.print("CMMDC: " + min);
+    }
+}
