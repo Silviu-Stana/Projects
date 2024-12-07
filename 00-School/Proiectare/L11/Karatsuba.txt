@@ -1,34 +1,66 @@
 import java.util.Scanner;
 class Main {
-public static Scanner cin = new Scanner(System.in);
+    public static Scanner cin = new Scanner(System.in);
 
 
-public static void AFISARE(int[] x, int n){
+    public static void AFISARE(int[] x, int n){
         for(int i=1; i<=n; i++){
             System.out.print(x[i] + " ");
         }
         System.out.println();
     }
 
-public static void KARATSUBA(int num1, int num2)
-{
-    if(num1<10 || num2<10) return num1*num2;
-    
-    int m = max(size_base10(num1), size_base10(num2));
-    int m2 = Math.floor(m/2);
-}
+    public static int Baza10(int num){
+        return (int)Math.log10(Math.abs(num))+1;
+    }
+
+    //Folosesc long ca sa putem arata numere foarte mari (fara notatia stintifica cu "E")
+    //Formulele matematice le-am luat din exemplul de la link-ul oferit in laborator.
+    public static long KARATSUBA(int num1, int num2)
+    {
+        if(num1<10 || num2<10) return (long)num1*num2;
+
+        int m = Math.max(Baza10(num1), Baza10(num2));
+        int m2 = m/2;
+
+        //Impartim la 10^m2
+        int divizor = (int)Math.pow(10,m2);
+
+        //Imparte secventa de cifre: spre exemplu "12345" cu m2=3  => high=12, low=345 (adica taie m2 cifre)
+        int high1 = num1/divizor;
+        int high2 = num2/divizor;
+
+        int low1 = num1%divizor;
+        int low2 = num2%divizor;
+
+
+        //3 apeluri recursive la numere aproximativ de 2 ori mai mici
+        double z0 = KARATSUBA(low1,low2);
+        double z1 = KARATSUBA(low1+high1, low2+high2);
+        double z2 = KARATSUBA(high1,high2);
+
+
+        return (long)((z2*Math.pow(Math.pow(10,m2),2)) + ((z1-z2-z0)*Math.pow(10,m2)) + z0);
+    }
 
 
     public static void main(String[] args) {
-        int n;
-        System.out.print("n="); n = cin.nextInt();
-        int[] A= new int[n+1];
-        
-        System.out.print("Dati numerele: ");
-        for(int i=1; i<=n; i++) A[i] = cin.nextInt();
-        
-        //QUICKSORT(A,1,n);
-        QUICKSORT2(A,1,n);
-        AFISARE(A,n);
+        int nr1,nr2, m;
+        System.out.print("nr1="); nr1 = cin.nextInt();
+        System.out.print("nr2="); nr2 = cin.nextInt();
+        System.out.print("m="); m = cin.nextInt();
+
+        long rezultat = KARATSUBA(nr1,nr2);
+        System.out.println("rezultat="+rezultat);
+
+        /*
+        EXEMPLU DE APEL:
+
+        nr1=12345
+        nr2=6789
+        m=3
+
+        rezultat=83810205
+         */
     }
 }
