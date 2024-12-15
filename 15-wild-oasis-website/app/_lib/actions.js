@@ -25,9 +25,40 @@ export async function updateGuest(formData) {
       revalidatePath('/account/profile');
 }
 
-export async function deleteReservation(bookingId) {
-      await new Promise((res) => setTimeout(res, 2000));
-      throw new Error();
+export async function createBooking(bookingData, formData) {
+      const session = await auth();
+      if (!session) throw new Error('You must be logged in');
+
+      const newBooking = {
+            ...bookingData,
+            guestId: session.user.guestId,
+            numGuests: Number(formData.get('numGuests')),
+            observations: formData.get('observations').slice(0, 1000),
+            extrasPrice: 0,
+            totalPrice: bookingData.cabinPrice,
+            status: 'unconfirmed',
+            isPaid: false,
+            hasBreakfast: false,
+      };
+
+      ///TODO:
+      //validate on the backend that the selected range of days has not been booked yet
+      //even tho we already checked on the front end
+      //malicious actors can still intervene here
+
+      console.log(newBooking);
+
+      const { error } = await supabase.from('bookings').insert([newBooking]);
+
+      if (error) throw new Error('Booking could not be created');
+
+      revalidatePath(`/cabins/${bookingData.cabinId}`);
+      redirect('/cabins/thankyou');
+}
+
+export async function deleteBooking(bookingId) {
+      // await new Promise((res) => setTimeout(res, 2000));
+      // throw new Error();
 
       const session = await auth();
       if (!session) throw new Error('You must be logged in');
@@ -43,7 +74,7 @@ export async function deleteReservation(bookingId) {
       revalidatePath('/account/reservations');
 }
 
-export async function editReservation(formData) {
+export async function editBooking(formData) {
       const bookingId = formData.get('reservationId');
       const numGuests = Number(formData.get('numGuests'));
       const observations = formData.get('observations').slice(0, 1000); //only 1000 characters to prevent user from inserting too much text

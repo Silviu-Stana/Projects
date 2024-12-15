@@ -2,7 +2,7 @@
 import { useFormStatus } from 'react-dom';
 import SpinnerMini from './SpinnerMini';
 
-function EditReservationButton() {
+function SubmitButton({ children }) {
       const { pending } = useFormStatus();
 
       return (
@@ -10,9 +10,9 @@ function EditReservationButton() {
                   disabled={pending}
                   className="bg-accent-500 px-8 py-4 text-primary-800 font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300"
             >
-                  {pending ? <SpinnerMini /> : 'Update reservation'}
+                  {pending ? <SpinnerMini /> : children}
             </button>
       );
 }
 
-export default EditReservationButton;
+export default SubmitButton;
