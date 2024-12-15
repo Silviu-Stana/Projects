@@ -4,6 +4,7 @@ import { revalidatePath } from 'next/cache';
 import { auth, signIn, signOut } from './auth';
 import { supabase } from './supabase';
 import { getBookings } from './data-service';
+import { redirect } from 'next/navigation';
 
 export async function updateGuest(formData) {
       console.log(formData);
@@ -37,6 +38,29 @@ export async function deleteReservation(bookingId) {
       if (error) throw new Error('Booking could not be deleted');
 
       revalidatePath('/account/reservations');
+}
+
+export async function editReservation(formData) {
+      const bookingId = formData.get('reservationId');
+      const numGuests = formData.get('numGuests');
+      const observations = formData.get('observations');
+
+      const session = await auth();
+      if (!session) throw new Error('You must be logged in');
+
+      //What are all the bookings of the logged in user?
+      //He should only be allowed to edit his own bookings.
+      const guestBookings = await getBookings(session.user.guestId);
+      const guestBookingIds = guestBookings.map((booking) => booking.id);
+      //console.log(guestBookingIds);
+
+      if (!guestBookingIds.includes(Number(bookingId))) throw new Error('You are not allowed to edit this booking.');
+
+      const { error } = await supabase.from('bookings').update({ numGuests, observations }).eq('id', bookingId);
+      if (error) throw new Error('Reservation could not be updated.');
+
+      revalidatePath('/account/reservations');
+      redirect('/account/reservations');
 }
 
 export async function signInAction() {
