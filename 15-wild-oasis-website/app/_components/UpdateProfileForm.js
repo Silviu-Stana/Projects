@@ -54,6 +54,8 @@ function UpdateProfileForm({ children, guest }) {
 
 function Button() {
       //useFormStatus hook can only be used in a component rendered inside a <form>
+      //we can only use this hook for <form>
+      //for <button> we have to use useTransition hook instead
       const { pending } = useFormStatus();
 
       return (
