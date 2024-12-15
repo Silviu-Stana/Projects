@@ -26,6 +26,9 @@ export async function updateGuest(formData) {
 }
 
 export async function deleteReservation(bookingId) {
+      await new Promise((res) => setTimeout(res, 2000));
+      throw new Error();
+
       const session = await auth();
       if (!session) throw new Error('You must be logged in');
 
@@ -42,8 +45,8 @@ export async function deleteReservation(bookingId) {
 
 export async function editReservation(formData) {
       const bookingId = formData.get('reservationId');
-      const numGuests = formData.get('numGuests');
-      const observations = formData.get('observations');
+      const numGuests = Number(formData.get('numGuests'));
+      const observations = formData.get('observations').slice(0, 1000); //only 1000 characters to prevent user from inserting too much text
 
       const session = await auth();
       if (!session) throw new Error('You must be logged in');
@@ -60,6 +63,7 @@ export async function editReservation(formData) {
       if (error) throw new Error('Reservation could not be updated.');
 
       revalidatePath('/account/reservations');
+      revalidatePath(`/account/reservations/edit/${bookingId}`);
       redirect('/account/reservations');
 }
 

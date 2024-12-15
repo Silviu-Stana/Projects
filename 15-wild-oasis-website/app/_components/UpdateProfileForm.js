@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { updateGuest } from '../_lib/actions';
 import { useFormStatus } from 'react-dom';
-const countryFlag = 'pt.jpg';
 
 function UpdateProfileForm({ children, guest }) {
       const [count, setCount] = useState();

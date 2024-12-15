@@ -1,15 +1,14 @@
 'use client';
 import { TrashIcon } from '@heroicons/react/24/solid';
-import { deleteReservation } from '../_lib/actions';
 import { useTransition } from 'react';
 import SpinnerMini from './SpinnerMini';
 
-function DeleteReservation({ bookingId }) {
+function DeleteReservation({ bookingId, onDelete }) {
       const [isPending, startTransition] = useTransition();
 
       function handleDelete() {
             //this is the hook to call server actions from a button:
-            if (confirm('Are you sure you want to delete this reservation?')) startTransition(() => deleteReservation(bookingId));
+            if (confirm('Are you sure you want to delete this reservation?')) startTransition(() => onDelete(bookingId));
       }
 
       return (
