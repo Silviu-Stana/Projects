@@ -1,4 +1,4 @@
-import { supabase } from '../starter/others/supabase';
+import { supabase } from '@/lib/supabase';
 
 export async function getCabin(id) {
       const { data, error } = await supabase.from('cabins').select('*').eq('id', id).single();
