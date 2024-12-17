@@ -1,0 +1,101 @@
+import java.util.Scanner;
+
+class Main {
+    public static Scanner cin;
+    public static int[] solutie;
+
+    public static void AFISARE(int[] a, int n){
+        for(int i=1; i<=n; i++) if(a[i]!=0) System.out.print(a[i] + " ");
+        System.out.println();
+    }
+
+    public static void SUBSIRMAX_INTERCALAT(int[] a, int n){
+        int[] L = new int[n+1];
+        int[] P = new int[n+1];
+        int[] t = new int[n+1];
+
+        solutie = new int[n+1];
+
+        L[1]=1;
+        for(int i=2; i<=n; i++){
+            L[i]=1;
+            P[i]=-1;
+
+            for(int j=1; j<=i-1; j++){
+                if(a[j]<=a[i] && 1+L[j]>L[i]){
+                    L[i]=1+L[j];
+                    P[i]=j;
+                }
+            }
+        }
+
+        int k=L[1];
+        int m=1;
+
+        for(int i=2; i<=n; i++){
+            if(L[i]>k){
+                k=L[i];
+                m=i;
+            }
+        }
+
+        t[k]=m;
+        for(int j=k-1; j>=1; j--) t[j]=P[t[j+1]];
+        for(int j=1; j<=k; j++)
+        {
+            System.out.print(a[t[j]] + " ");
+            solutie[j]=a[t[j]];
+        }
+
+        System.out.println();
+    }
+
+    public static int[] INTERCALARE_VECTORI(int[] a, int[] b, int lungimeTotala){
+    int[] rezultat = new int[lungimeTotala+1];
+    int i=1,j=1,k=1;
+        //Pt a tine cont de lungime:
+        //rezultat[k], a[i], b[j]
+
+    while(i<a.length || j<b.length){
+        for(int nr=1; nr<3 && i<a.length; nr++){
+            rezultat[k] = a[i];
+            k++;
+            i++;
+        }
+        for(int nr=1; nr<3 && j<b.length; nr++){
+            rezultat[k] = b[j];
+            k++;
+            j++;
+        }
+
+//        System.out.println("i:" + i);
+//        System.out.println("a.length:" + a.length);
+//        System.out.println("j:" + j);
+//        System.out.println("b.length:" + b.length);
+
+    }
+
+    //In laborator am observat ca intercalarea se face adaugand cate 2 element alternativ din fiecare vector
+        //Rezultat: 3 1, 2 2, 4 1, 5
+        //Fiecare vector pastreaza ordinea elementelor initiala.
+    AFISARE(rezultat,k);
+
+    return rezultat;
+    }
+
+
+
+    public static void main(String[] args) {
+        cin = new Scanner(System.in);
+
+        //EXEMPLE DIN LABORATOR (exercitiu suplimentar 4)
+        int[] a = {0, 3, 1, 4};
+        int[] b = {0, 2, 2, 1, 5};
+        int k = a.length+b.length;
+
+        int[] sirIntercalat = INTERCALARE_VECTORI(a, b, k);
+
+
+        SUBSIRMAX_INTERCALAT(sirIntercalat,k);
+    }
+}
