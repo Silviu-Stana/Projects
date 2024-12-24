@@ -1,17 +1,15 @@
-import axios, { AxiosResponse } from 'axios';
+//START COMMAND:
+//json-server --watch db.json
+import { Eventing } from './Eventing';
 
-interface UserProps {
+export interface UserProps {
       id?: number;
       name?: string;
       age?: number;
-} //
-
-type Callback = () => void;
+}
 
 export class User {
-      //Use this syntax when you just don't know what properties (events) our object will have ahead of time.
-      events: { [key: string]: Callback[] } = {};
-
+      public events: Eventing = new Eventing();
       constructor(private data: UserProps) {}
 
       get(propName: string): number | string {
@@ -20,37 +18,5 @@ export class User {
 
       set(update: UserProps): void {
             Object.assign(this.data, update);
-      }
-
-      on(eventName: string, callback: Callback): void {
-            const handlers = this.events[eventName] || [];
-            handlers.push(callback);
-            this.events[eventName] = handlers;
-      }
-
-      trigger(eventName: string): void {
-            const handlers = this.events[eventName];
-
-            if (!handlers || handlers.length === 0) return;
-
-            handlers.forEach((callback) => {
-                  callback();
-            });
-      }
-
-      fetch(): void {
-            axios.get(`http://localhost:3000/users/${this.get('id')}`).then((response: AxiosResponse): void => {
-                  this.set(response.data);
-            });
-      }
-
-      save(): void {
-            const id = this.get('id');
-
-            if (id) {
-                  axios.put(`http://localhost:3000/users/${id}`, this.data);
-            } else {
-                  axios.post('http://localhost:3000/users', this.data);
-            }
       }
 }
