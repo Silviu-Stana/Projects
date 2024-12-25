@@ -1,8 +1,10 @@
 //START COMMAND:
 //json-server --watch db.json
+
+import { ApiSync } from './ApiSync';
 import { Attributes } from './Attributes';
 import { Eventing } from './Eventing';
-import { Sync } from './Sync';
+import { Model } from './Model';
 
 export interface UserProps {
       id?: number;
@@ -12,25 +14,8 @@ export interface UserProps {
 
 const rootUrl = 'http://localhost:3000/users';
 
-export class User {
-      public events: Eventing = new Eventing();
-      public sync: Sync<UserProps> = new Sync<UserProps>(rootUrl);
-      public attributes: Attributes<UserProps>;
-
-      constructor(attrib: UserProps) {
-            this.attributes = new Attributes<UserProps>(attrib);
-      }
-
-      //NOT calling a function here. Just returning a reference to a function, makes it easier to access
-      get on() {
-            return this.events.on;
-      }
-
-      get trigger() {
-            return this.events.trigger;
-      }
-
-      get get() {
-            return this.attributes.get;
+export class User extends Model<UserProps> {
+      static buildUser(attribs: UserProps): User {
+            return new User(new Attributes<UserProps>(attribs), new Eventing(), new ApiSync<UserProps>(rootUrl));
       }
 }
