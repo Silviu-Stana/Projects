@@ -16,21 +16,6 @@ function requireAuth(req: Request, res: Response, next: NextFunction): void {
 
 const router = Router();
 
-router.get('/login', (req: Request, res: Response) => {
-      res.send(`
-               <form method="post">
-                  <div>
-                        <label>Email</label>
-                        <input name="email"></input>
-                  </div>
-                  <div>
-                  <label>Password</label>
-                  <input name="password" type="password"></input>
-                  </div>
-                  <button>Submit</button>
-               </form>`);
-});
-
 router.post('/login', (req: RequestWithBody, res: Response) => {
       const { email, password } = req.body;
 
@@ -45,18 +30,18 @@ router.post('/login', (req: RequestWithBody, res: Response) => {
 router.get('/', (req: Request, res: Response) => {
       if (req.session && req.session.loggedIn) {
             res.send(`
-                                                         <div>
-                                                            <div>You are logged in</div>
-                                                            <a href="/logout">Logout</a>
-                                                         </div
-                                                         `);
+                     <div>
+                        <div>You are logged in</div>
+                        <a href="/logout">Logout</a>
+                     </div
+                     `);
       } else {
             res.send(`
-                                                         <div>
-                                                            <div>You are NOT logged in</div>
-                                                            <a href="/login">Login</a>
-                                                         </div
-                                                         `);
+                     <div>
+                        <div>You are NOT logged in</div>
+                        <a href="/login">Login</a>
+                     </div
+                     `);
       }
 });
 
