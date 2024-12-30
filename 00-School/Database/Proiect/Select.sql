@@ -1,9 +1,10 @@
-create synonym tFunctii for Pachete.tFunctii
-create synonym tAngajati for Pachete.tAngajati
-create synonym tClienti for Pachete.tClienti
-create synonym tProduse for Pachete.tProduse
-create synonym tComenzi for Pachete.tComenzi
-create synonym tDetaliiComanda for Pachete.tDetaliiComanda
+
+select * from Pachete.tFunctii
+select * from Pachete.tAngajati
+select * from Pachete.tClienti
+select * from Pachete.tProduse
+select * from Pachete.tComenzi
+select * from Pachete.tDetaliiComanda
 
 
 --Determina nr clienti
@@ -269,3 +270,11 @@ select nrComanda, cantitate
 from tDetaliiComanda as A
 where exists(select * from tDetaliiComanda
 			where nrComanda=A.nrComanda and cantitate>100)
+
+
+--create synonym tFunctii for Pachete.tFunctii
+--create synonym tAngajati for Pachete.tAngajati
+--create synonym tClienti for Pachete.tClienti
+--create synonym tProduse for Pachete.tProduse
+--create synonym tComenzi for Pachete.tComenzi
+--create synonym tDetaliiComanda for Pachete.tDetaliiComanda
