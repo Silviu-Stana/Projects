@@ -1,0 +1,130 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\silviu\\source\\repos\\SGBP Project - Silviu\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{34062C63-4488-4C27-8929-84DE8761A181}|SGBP Project - Silviu\\SGBP Project - Silviu.csproj|c:\\users\\silviu\\source\\repos\\sgbp project - silviu\\sgbp project - silviu\\form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{34062C63-4488-4C27-8929-84DE8761A181}|SGBP Project - Silviu\\SGBP Project - Silviu.csproj|solutionrelative:sgbp project - silviu\\form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{34062C63-4488-4C27-8929-84DE8761A181}|SGBP Project - Silviu\\SGBP Project - Silviu.csproj|C:\\Users\\silviu\\source\\repos\\SGBP Project - Silviu\\sgbp project - silviu\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{34062C63-4488-4C27-8929-84DE8761A181}|SGBP Project - Silviu\\SGBP Project - Silviu.csproj|solutionrelative:sgbp project - silviu\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{34062C63-4488-4C27-8929-84DE8761A181}|SGBP Project - Silviu\\SGBP Project - Silviu.csproj|C:\\Users\\silviu\\source\\repos\\SGBP Project - Silviu\\sgbp project - silviu\\cautacomanda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{34062C63-4488-4C27-8929-84DE8761A181}|SGBP Project - Silviu\\SGBP Project - Silviu.csproj|solutionrelative:sgbp project - silviu\\cautacomanda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{34062C63-4488-4C27-8929-84DE8761A181}|SGBP Project - Silviu\\SGBP Project - Silviu.csproj|C:\\Users\\silviu\\source\\repos\\SGBP Project - Silviu\\sgbp project - silviu\\cautacomanda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{34062C63-4488-4C27-8929-84DE8761A181}|SGBP Project - Silviu\\SGBP Project - Silviu.csproj|solutionrelative:sgbp project - silviu\\cautacomanda.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{34062C63-4488-4C27-8929-84DE8761A181}|SGBP Project - Silviu\\SGBP Project - Silviu.csproj|C:\\Users\\silviu\\source\\repos\\SGBP Project - Silviu\\sgbp project - silviu\\form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{34062C63-4488-4C27-8929-84DE8761A181}|SGBP Project - Silviu\\SGBP Project - Silviu.csproj|solutionrelative:sgbp project - silviu\\form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{34062C63-4488-4C27-8929-84DE8761A181}|SGBP Project - Silviu\\SGBP Project - Silviu.csproj|C:\\Users\\silviu\\source\\repos\\SGBP Project - Silviu\\sgbp project - silviu\\listaangajatiform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{34062C63-4488-4C27-8929-84DE8761A181}|SGBP Project - Silviu\\SGBP Project - Silviu.csproj|solutionrelative:sgbp project - silviu\\listaangajatiform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{34062C63-4488-4C27-8929-84DE8761A181}|SGBP Project - Silviu\\SGBP Project - Silviu.csproj|C:\\Users\\silviu\\source\\repos\\SGBP Project - Silviu\\sgbp project - silviu\\listaangajatiform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{34062C63-4488-4C27-8929-84DE8761A181}|SGBP Project - Silviu\\SGBP Project - Silviu.csproj|solutionrelative:sgbp project - silviu\\listaangajatiform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form.cs",
+              "DocumentMoniker": "C:\\Users\\silviu\\source\\repos\\SGBP Project - Silviu\\SGBP Project - Silviu\\Form.cs",
+              "RelativeDocumentMoniker": "SGBP Project - Silviu\\Form.cs",
+              "ToolTip": "C:\\Users\\silviu\\source\\repos\\SGBP Project - Silviu\\SGBP Project - Silviu\\Form.cs",
+              "RelativeToolTip": "SGBP Project - Silviu\\Form.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAQwBMAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-30T14:58:41.404Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\silviu\\source\\repos\\SGBP Project - Silviu\\SGBP Project - Silviu\\Program.cs",
+              "RelativeDocumentMoniker": "SGBP Project - Silviu\\Program.cs",
+              "ToolTip": "C:\\Users\\silviu\\source\\repos\\SGBP Project - Silviu\\SGBP Project - Silviu\\Program.cs",
+              "RelativeToolTip": "SGBP Project - Silviu\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-30T13:32:50.766Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CautaComanda.cs",
+              "DocumentMoniker": "C:\\Users\\silviu\\source\\repos\\SGBP Project - Silviu\\SGBP Project - Silviu\\CautaComanda.cs",
+              "RelativeDocumentMoniker": "SGBP Project - Silviu\\CautaComanda.cs",
+              "ToolTip": "C:\\Users\\silviu\\source\\repos\\SGBP Project - Silviu\\SGBP Project - Silviu\\CautaComanda.cs",
+              "RelativeToolTip": "SGBP Project - Silviu\\CautaComanda.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJwAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-30T13:19:16.323Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CautaComanda.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\silviu\\source\\repos\\SGBP Project - Silviu\\SGBP Project - Silviu\\CautaComanda.cs",
+              "RelativeDocumentMoniker": "SGBP Project - Silviu\\CautaComanda.cs",
+              "ToolTip": "C:\\Users\\silviu\\source\\repos\\SGBP Project - Silviu\\SGBP Project - Silviu\\CautaComanda.cs [Design]",
+              "RelativeToolTip": "SGBP Project - Silviu\\CautaComanda.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-30T13:19:06.265Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Form.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\silviu\\source\\repos\\SGBP Project - Silviu\\SGBP Project - Silviu\\Form.cs",
+              "RelativeDocumentMoniker": "SGBP Project - Silviu\\Form.cs",
+              "ToolTip": "C:\\Users\\silviu\\source\\repos\\SGBP Project - Silviu\\SGBP Project - Silviu\\Form.cs [Design]",
+              "RelativeToolTip": "SGBP Project - Silviu\\Form.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-30T13:18:15.362Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ListaAngajatiForm.cs",
+              "DocumentMoniker": "C:\\Users\\silviu\\source\\repos\\SGBP Project - Silviu\\SGBP Project - Silviu\\ListaAngajatiForm.cs",
+              "RelativeDocumentMoniker": "SGBP Project - Silviu\\ListaAngajatiForm.cs",
+              "ToolTip": "C:\\Users\\silviu\\source\\repos\\SGBP Project - Silviu\\SGBP Project - Silviu\\ListaAngajatiForm.cs",
+              "RelativeToolTip": "SGBP Project - Silviu\\ListaAngajatiForm.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAADwvy4AAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-30T09:53:18.203Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ListaAngajatiForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\silviu\\source\\repos\\SGBP Project - Silviu\\SGBP Project - Silviu\\ListaAngajatiForm.cs",
+              "RelativeDocumentMoniker": "SGBP Project - Silviu\\ListaAngajatiForm.cs",
+              "ToolTip": "C:\\Users\\silviu\\source\\repos\\SGBP Project - Silviu\\SGBP Project - Silviu\\ListaAngajatiForm.cs [Design]",
+              "RelativeToolTip": "SGBP Project - Silviu\\ListaAngajatiForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-30T09:05:13.244Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
