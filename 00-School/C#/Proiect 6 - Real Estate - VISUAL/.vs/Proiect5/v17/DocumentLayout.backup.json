@@ -3,24 +3,28 @@
   "WorkspaceRootPath": "D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5F0D342D-1C2D-4331-8F37-5DA2A00891A0}|Proiect 5 - Real Estate\\EstateConsoleUI.csproj|D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\proiect 5 - real estate\\estateforms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5F0D342D-1C2D-4331-8F37-5DA2A00891A0}|Proiect 5 - Real Estate\\EstateConsoleUI.csproj|solutionrelative:proiect 5 - real estate\\estateforms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5F0D342D-1C2D-4331-8F37-5DA2A00891A0}|Proiect 5 - Real Estate\\EstateConsoleUI.csproj|d:\\projects\\00-school\\c#\\proiect 6 - real estate - visual\\proiect 5 - real estate\\estateforms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{5F0D342D-1C2D-4331-8F37-5DA2A00891A0}|Proiect 5 - Real Estate\\EstateConsoleUI.csproj|solutionrelative:proiect 5 - real estate\\estateforms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{128649BE-38DB-41D7-98BA-3C3531DBEA06}|EstateDataAccess\\EstateDataAccess.csproj|d:\\projects\\00-school\\c#\\proiect 6 - real estate - visual\\estatedataaccess\\sqlrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5F0D342D-1C2D-4331-8F37-5DA2A00891A0}|Proiect 5 - Real Estate\\EstateConsoleUI.csproj|D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\proiect 5 - real estate\\estateforms.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5F0D342D-1C2D-4331-8F37-5DA2A00891A0}|Proiect 5 - Real Estate\\EstateConsoleUI.csproj|solutionrelative:proiect 5 - real estate\\estateforms.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{128649BE-38DB-41D7-98BA-3C3531DBEA06}|EstateDataAccess\\EstateDataAccess.csproj|D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\estatedataaccess\\sqlrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{128649BE-38DB-41D7-98BA-3C3531DBEA06}|EstateDataAccess\\EstateDataAccess.csproj|solutionrelative:estatedataaccess\\sqlrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{128649BE-38DB-41D7-98BA-3C3531DBEA06}|EstateDataAccess\\EstateDataAccess.csproj|d:\\projects\\00-school\\c#\\proiect 6 - real estate - visual\\estatedataaccess\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{128649BE-38DB-41D7-98BA-3C3531DBEA06}|EstateDataAccess\\EstateDataAccess.csproj|solutionrelative:estatedataaccess\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5F0D342D-1C2D-4331-8F37-5DA2A00891A0}|Proiect 5 - Real Estate\\EstateConsoleUI.csproj|D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\proiect 5 - real estate\\estateforms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5F0D342D-1C2D-4331-8F37-5DA2A00891A0}|Proiect 5 - Real Estate\\EstateConsoleUI.csproj|solutionrelative:proiect 5 - real estate\\estateforms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5F0D342D-1C2D-4331-8F37-5DA2A00891A0}|Proiect 5 - Real Estate\\EstateConsoleUI.csproj|D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\proiect 5 - real estate\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5F0D342D-1C2D-4331-8F37-5DA2A00891A0}|Proiect 5 - Real Estate\\EstateConsoleUI.csproj|solutionrelative:proiect 5 - real estate\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5F0D342D-1C2D-4331-8F37-5DA2A00891A0}|Proiect 5 - Real Estate\\EstateConsoleUI.csproj|D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\proiect 5 - real estate\\estateforms.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5F0D342D-1C2D-4331-8F37-5DA2A00891A0}|Proiect 5 - Real Estate\\EstateConsoleUI.csproj|solutionrelative:proiect 5 - real estate\\estateforms.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5F0D342D-1C2D-4331-8F37-5DA2A00891A0}|Proiect 5 - Real Estate\\EstateConsoleUI.csproj|D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\proiect 5 - real estate\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
@@ -34,8 +38,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IRepository.cs",
+              "DocumentMoniker": "D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\EstateDataAccess\\IRepository.cs",
+              "RelativeDocumentMoniker": "EstateDataAccess\\IRepository.cs",
+              "ToolTip": "D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\EstateDataAccess\\IRepository.cs",
+              "RelativeToolTip": "EstateDataAccess\\IRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-01T13:24:16.938Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
@@ -51,7 +68,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "EstateForms.Designer.cs",
               "DocumentMoniker": "D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\Proiect 5 - Real Estate\\EstateForms.Designer.cs",
               "RelativeDocumentMoniker": "Proiect 5 - Real Estate\\EstateForms.Designer.cs",
@@ -64,7 +81,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
+              "Title": "EstateForms.cs [Design]",
+              "DocumentMoniker": "D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\Proiect 5 - Real Estate\\EstateForms.cs",
+              "RelativeDocumentMoniker": "Proiect 5 - Real Estate\\EstateForms.cs",
+              "ToolTip": "D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\Proiect 5 - Real Estate\\EstateForms.cs [Design]",
+              "RelativeToolTip": "Proiect 5 - Real Estate\\EstateForms.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T05:01:18.758Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "App.config",
               "DocumentMoniker": "D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\Proiect 5 - Real Estate\\App.config",
               "RelativeDocumentMoniker": "Proiect 5 - Real Estate\\App.config",
@@ -76,7 +105,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\Proiect 5 - Real Estate\\Program.cs",
               "RelativeDocumentMoniker": "Proiect 5 - Real Estate\\Program.cs",
@@ -84,54 +113,19 @@
               "RelativeToolTip": "Proiect 5 - Real Estate\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-23T18:09:47.063Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-23T18:09:47.063Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "EstateForms.cs",
               "DocumentMoniker": "D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\Proiect 5 - Real Estate\\EstateForms.cs",
               "RelativeDocumentMoniker": "Proiect 5 - Real Estate\\EstateForms.cs",
               "ToolTip": "D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\Proiect 5 - Real Estate\\EstateForms.cs",
               "RelativeToolTip": "Proiect 5 - Real Estate\\EstateForms.cs",
-              "ViewState": "AgIAAKkAAAAAAAAAAAArwLgAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAALMAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T18:49:48.901Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "c608a28d-2afe-45ac-b70a-d882d5abade8",
-        "Display": 1,
-        "X": 72,
-        "Y": 7,
-        "Width": 1715,
-        "Height": 1062,
-        "WindowState": 0
-      },
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "EstateForms.cs [Design]",
-              "DocumentMoniker": "D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\Proiect 5 - Real Estate\\EstateForms.cs",
-              "RelativeDocumentMoniker": "Proiect 5 - Real Estate\\EstateForms.cs",
-              "ToolTip": "D:\\Projects\\00-School\\C#\\Proiect 6 - Real Estate - VISUAL\\Proiect 5 - Real Estate\\EstateForms.cs [Design]",
-              "RelativeToolTip": "Proiect 5 - Real Estate\\EstateForms.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T05:01:18.758Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-12-01T18:49:48.901Z"
             }
           ]
         }
