@@ -5,6 +5,8 @@ SELECT * FROM Category;
 SELECT * FROM ProductEvaluation;
 SELECT * FROM ProductCategory;
 
+SELECT AVG(Value) from ProductEvaluation where ProductId=1
+SELECT AVG(CAST(Value AS DECIMAL(5, 2))) FROM ProductEvaluation WHERE ProductId=1;
 
 -- Create a new foreign key constraint with ON DELETE CASCADE
 ALTER TABLE ProductCategory
