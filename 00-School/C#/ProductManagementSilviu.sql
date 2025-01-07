@@ -5,6 +5,31 @@ SELECT * FROM Category;
 SELECT * FROM ProductEvaluation;
 SELECT * FROM ProductCategory;
 
+
+-- Create a new foreign key constraint with ON DELETE CASCADE
+ALTER TABLE ProductCategory
+ADD CONSTRAINT FK__Product1
+FOREIGN KEY (ProductId) REFERENCES Product(Id)
+ON DELETE CASCADE;
+
+ALTER TABLE ProductCategory
+ADD CONSTRAINT FK__Category1
+FOREIGN KEY (CategoryId) REFERENCES Category(Id)
+ON DELETE CASCADE;
+
+-- Create a new foreign key constraint with ON DELETE CASCADE
+ALTER TABLE ProductEvaluation
+ADD CONSTRAINT FK__Product2
+FOREIGN KEY (ProductId) REFERENCES Product(Id)
+ON DELETE CASCADE;
+
+ALTER TABLE ProductEvaluation
+ADD CONSTRAINT FK__User1
+FOREIGN KEY (ProductId) REFERENCES [User](Id)
+ON DELETE CASCADE;
+
+--UPDATE Product SET IsDisabled=1 WHERE Id=1
+
 CREATE TABLE [User] (
     Id INT PRIMARY KEY IDENTITY(1,1),
     Username VARCHAR(255) NOT NULL,

@@ -6,7 +6,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
+using System.IO;
 
 namespace ProductManagement.DataAccess.Repositories
 {
@@ -20,12 +20,12 @@ namespace ProductManagement.DataAccess.Repositories
             {
                 if (db.State == ConnectionState.Closed) db.Open();
                 var query = @"
-                    INSERT INTO Product(Title,Description,Price,Category,UserId,Phone) 
-                    VALUES(@Title,@Description,@Price,@Category,@UserId,@Phone);
+                    INSERT INTO Product(Title,Description,Price,FabricationDate,Brand,IsDisabled) 
+                    VALUES(@Title,@Description,@Price,@FabricationDate,@Brand,@IsDisabled);
                     SELECT CAST(SCOPE_IDENTITY() as int)";
 
                 //Get back newly created id
-                var id = db.Query<int>(query, new { value.Title, value.Description, value.Price }).Single();
+                var id = db.Query<int>(query, new { value.Title, value.Description, value.Price, value.FabricationDate, value.Brand, value.IsDisabled }).Single();
                 value.Id = id;
                 return value;
             }
@@ -36,9 +36,35 @@ namespace ProductManagement.DataAccess.Repositories
             using (IDbConnection db = new SqlConnection(ConnectionString))
             {
                 if (db.State == ConnectionState.Closed) db.Open();
-                db.Query<ProductModel>($"DELETE FROM Product WHERE Id={id}", commandType: CommandType.Text);
+                using (var transaction = db.BeginTransaction())
+                {
+                    try
+                    {
+                        var query = "DELETE FROM Product WHERE Id = @ProductId";
+                        db.Execute(query, new { ProductId = id }, transaction);
+
+                        DeletePicturesFolder(id);
+
+                        transaction.Commit();
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
+                }
             }
         }
+
+        private void DeletePicturesFolder(int productId)
+        {
+            string folderPath = Path.Combine("Pictures", productId.ToString());
+            if (Directory.Exists(folderPath))
+            {
+                Directory.Delete(folderPath, true);
+            }
+        }
+
 
         public List<ProductModel> GetAll()
         {
@@ -58,22 +84,36 @@ namespace ProductManagement.DataAccess.Repositories
             }
         }
 
-        public List<ProductModel> GetByTitlePattern(string pattern, string ProductCategory)
+        public List<ProductModel> GetByTitlePattern(string pattern, string ProductCategory, string orderBy)
         {
+            string howToOrderBy = "ASC";
+            string ordering = "Id";
+            //"Title, Price, FabricationDate, Brand, Rating"
+            if (orderBy.Contains("Title")) ordering = "Title";
+            else if (orderBy.Contains("Price")) ordering = "Price";
+            else if (orderBy.Contains("Fabrication Date")) ordering = "FabricationDate";
+            else if (orderBy.Contains("Brand")) ordering = "Brand";
+
+
+
+            if (orderBy.Contains("Ascending")) howToOrderBy = "ASC";
+            else if (orderBy.Contains("Descending")) howToOrderBy = "DESC";
+
+
             using (IDbConnection db = new SqlConnection(ConnectionString))
             {
                 if (db.State == ConnectionState.Closed) db.Open();
 
                 if (ProductCategory == "" || ProductCategory == null || ProductCategory == "None")
                     return db.Query<ProductModel>(
-                        "SELECT * FROM Product WHERE LOWER(Title) LIKE LOWER(@Pattern)",
+                        $"SELECT * FROM Product WHERE LOWER(Title) LIKE LOWER(@Pattern) ORDER BY {ordering} {howToOrderBy}",
                         new { Pattern = $"%{pattern}%" }
                     ).ToList();
                 else
                     return db.Query<ProductModel>(
-                    "SELECT * FROM Product WHERE LOWER(Title) LIKE LOWER(@Pattern) AND Category=@ProductCategory",
-                    new { Pattern = $"%{pattern}%", ProductCategory }
-                ).ToList();
+                        $"SELECT A.* FROM Product A INNER JOIN ProductCategory B ON A.Id=B.ProductId INNER JOIN Category C ON B.CategoryId=C.Id WHERE LOWER(A.Title) LIKE LOWER(@Pattern) AND C.CategoryName=@ProductCategory ORDER BY {ordering} {howToOrderBy}",
+                        new { Pattern = $"%{pattern}%", ProductCategory, ordering, howToOrderBy }
+                    ).ToList();
             }
         }
 
@@ -82,8 +122,8 @@ namespace ProductManagement.DataAccess.Repositories
             using (IDbConnection db = new SqlConnection(ConnectionString))
             {
                 if (db.State == ConnectionState.Closed) db.Open();
-                var query = "UPDATE Product SET Title=@Title, Description=@Description, Price=@Price, Category=@Category, UserId=@UserId, Phone=@Phone WHERE Id=@Id";
-                db.Execute(query, new { value.Title, value.Description, value.Price, value.Id });
+                var query = "UPDATE Product SET Title=@Title, Description=@Description, Price=@Price, FabricationDate=@FabricationDate, Brand=@Brand, IsDisabled=@IsDisabled WHERE Id=@Id";
+                db.Execute(query, new { value.Title, value.Description, value.Price, value.FabricationDate, value.Brand, value.IsDisabled, value.Id });
                 return value;
             }
         }

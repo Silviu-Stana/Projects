@@ -1,4 +1,6 @@
-﻿using ProductManagement.DataAccess.Repositories;
+﻿using Ad.UserInterface;
+using ProductManagement.BusinessModel;
+using ProductManagement.DataAccess.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,21 +15,37 @@ namespace ProductManagement.UserInterface
 {
     public partial class ProductSearchResult : UserControl
     {
-        public ProductSearchResult(int LoggedInUserId, int UserId)
+        public Delete form;
+        int ProductIdIs = 0, UserIdIs = 0;
+        bool IsAdminLoggedIn = false;
+
+        public ProductSearchResult(int productId, int userId, bool IsAdmin, bool isDisabled)
         {
             InitializeComponent();
 
-            if (UserId == LoggedInUserId)
+            GetAverageUserRatingForProduct(productId);
+
+            EditButton.Visible = true;
+            if (IsAdmin)
             {
-                EditButton.Visible = true;
                 DeleteButton.Visible = true;
+                IsAdminLoggedIn = true;
             }
+
+            ProductIdIs = productId;
+            UserIdIs = userId;
+
+            if (isDisabled) OnDisable();
+            else OnEnable();
+
         }
 
-        private void Title_Click(object sender, EventArgs e)
+        void GetAverageUserRatingForProduct(int productId)
         {
-            Ad ad = new Ad(Id);
-            ad.Show();
+            var ratingRepository = new ProductRatingRepository();
+            var rating = ratingRepository.GetAverageRating(productId);
+            if (rating == 0) AvgRating.Text = "No ratings yet";
+            else AvgRating.Text = "Average rating: " + rating.ToString("F1"); // Ensure floating point number with precision 1
         }
 
         public Image ProductImage
@@ -38,11 +56,18 @@ namespace ProductManagement.UserInterface
 
         public int Id { get; set; }
         public int UserId { get; set; }
+        public bool IsDisabled { get; set; }
 
         public string Title
         {
             get { return TitleLabel.Text; }
             set { TitleLabel.Text = value; }
+        }
+
+        public string Brand
+        {
+            get { return BrandLabel.Text; }
+            set { BrandLabel.Text = value; }
         }
 
         public string Description
@@ -71,42 +96,103 @@ namespace ProductManagement.UserInterface
         {
         }
 
+        public void OpenProductWindow(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Title_Click(object sender, EventArgs e)
+        {
+            OpenProductInfoPage();
+        }
+
         private void PictureBox_Click(object sender, EventArgs e)
         {
-            Ad ad = new Ad(Id);
-            ad.Show();
+            OpenProductInfoPage();
         }
 
         private void PriceLabel_Click(object sender, EventArgs e)
         {
-            Ad ad = new Ad(Id);
-            ad.Show();
+            OpenProductInfoPage();
         }
 
         private void DescriptionLabel_Click(object sender, EventArgs e)
         {
-            Ad ad = new Ad(Id);
-            ad.Show();
+            OpenProductInfoPage();
         }
 
         private void AdCard_MouseDown(object sender, MouseEventArgs e)
         {
-            Ad ad = new Ad(Id);
-            ad.Show();
+            OpenProductInfoPage();
         }
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-            Create editAd = new Create(Id, UserId);
+            Create editAd = new Create(ProductIdIs, UserIdIs);
             editAd.Show();
+        }
+
+        void OpenProductInfoPage()
+        {
+            Ad ad = new Ad(ProductIdIs, UserIdIs);
+            ad.RatingChanged += (s, args) => GetAverageUserRatingForProduct(ProductIdIs);
+            ad.Show();
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            var adRepository = new ProductRepository();
-            adRepository.Delete(Id);
+            form = new Delete(Id);
+            form.Show();
 
+            form.ProductDeleted += (s, args) => OnDelete();
+            form.ProductDisabled += (s, args) => OnDisable();
+        }
+
+        private void Enable_Click(object sender, EventArgs e)
+        {
+
+            OnEnable();
+        }
+
+        void OnDelete()
+        {
             this.Dispose();
         }
+
+        void OnEnable()
+        {
+            AdCard.BackColor = Color.White;
+            TitleLabel.ForeColor = Color.Black;
+            DescriptionLabel.ForeColor = Color.Black;
+            PriceLabel.ForeColor = Color.Black;
+            PictureBox.BackColor = Color.White;
+
+            Enable.Visible = false;
+            if (IsAdminLoggedIn) DeleteButton.Visible = true;
+
+            var productRepository = new ProductRepository();
+            var product = productRepository.GetById(ProductIdIs);
+            product.IsDisabled = false;
+            productRepository.Update(product);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        void OnDisable()
+        {
+            AdCard.BackColor = Color.LightGray;
+            TitleLabel.ForeColor = Color.Gray;
+            DescriptionLabel.ForeColor = Color.Gray;
+            PriceLabel.ForeColor = Color.Gray;
+            PictureBox.BackColor = Color.DarkGray;
+
+            Enable.Visible = true;
+            DeleteButton.Visible = false;
+        }
+
+
     }
 }

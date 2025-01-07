@@ -14,5 +14,6 @@ namespace ProductManagement.BusinessModel
         public double Price { get; set; }
         public DateTime FabricationDate { get; set; }
         public List<PictureModel> Pictures { get; set; } = new List<PictureModel>();
+        public bool IsDisabled { get; set; }
     }
 }

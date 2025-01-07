@@ -184,12 +184,13 @@ namespace ProductManagement.UserInterface
 
         void SaveProductCategoryToDatabase()
         {
-            //Delete all categories (of this product) from the database
+            // Delete all categories (of this product) from the database
             var productCategoryRepository = new ProductCategoryRepository();
             productCategoryRepository.Delete(ProductIdIs);
 
-            //Re add all categories back to the product
-            foreach (int id in GetSelectedCategoryIds())
+            // Re-add all categories back to the product
+            var selectedCategoryIds = GetSelectedCategoryIds();
+            foreach (int id in selectedCategoryIds)
             {
                 productCategoryRepository.Create(new ProductCategory { CategoryId = id, ProductId = ProductIdIs });
             }
@@ -229,7 +230,7 @@ namespace ProductManagement.UserInterface
                 var category = item as CategoryModel;
 
                 if (category != null) selectedCategoryIds.Add(category.Id);
-                MessageBox.Show(category.Id.ToString());
+                //MessageBox.Show(category.Id.ToString());
             }
 
             return selectedCategoryIds;
@@ -264,6 +265,7 @@ namespace ProductManagement.UserInterface
 
         void SaveUploadedPictures()
         {
+
             string tempDirectory = Path.Combine("Pictures", "Temp", UserIdIs.ToString());
             string targetDirectory = Path.Combine("Pictures", ProductIdIs.ToString());
 

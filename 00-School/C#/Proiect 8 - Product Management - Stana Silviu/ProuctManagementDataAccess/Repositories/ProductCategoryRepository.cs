@@ -19,13 +19,10 @@ namespace ProductManagement.DataAccess.Repositories
             {
                 if (db.State == ConnectionState.Closed) db.Open();
                 var query = @"
-                    INSERT INTO ProductCategory(ProductId, CategoryId) 
-                    VALUES(@ProductId,@CategoryId);
-                    SELECT CAST(SCOPE_IDENTITY() as int)";
+                                    INSERT INTO ProductCategory(ProductId, CategoryId) 
+                                    VALUES(@ProductId, @CategoryId)";
 
-                //Get back newly created id
-                var id = db.Query<int>(query, new { value.ProductId, value.CategoryId }).Single();
-                value.CategoryId = id;
+                db.Execute(query, new { value.ProductId, value.CategoryId });
                 return value;
             }
         }

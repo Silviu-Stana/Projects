@@ -3,36 +3,56 @@
   "WorkspaceRootPath": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{62BD6EC8-CFA2-461D-A9F6-69AEF011D84A}|ProductManagementUI\\ProductManagementUI.csproj|c:\\users\\silviu\\source\\repos\\proiect 8 - product management - stana silviu\\productmanagementui\\create.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{62BD6EC8-CFA2-461D-A9F6-69AEF011D84A}|ProductManagementUI\\ProductManagementUI.csproj|solutionrelative:productmanagementui\\create.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{62BD6EC8-CFA2-461D-A9F6-69AEF011D84A}|ProductManagementUI\\ProductManagementUI.csproj|c:\\users\\silviu\\source\\repos\\proiect 8 - product management - stana silviu\\productmanagementui\\create.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{62BD6EC8-CFA2-461D-A9F6-69AEF011D84A}|ProductManagementUI\\ProductManagementUI.csproj|solutionrelative:productmanagementui\\create.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{62BD6EC8-CFA2-461D-A9F6-69AEF011D84A}|ProductManagementUI\\ProductManagementUI.csproj|C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\productmanagementui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{62BD6EC8-CFA2-461D-A9F6-69AEF011D84A}|ProductManagementUI\\ProductManagementUI.csproj|solutionrelative:productmanagementui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2B3A6E92-579D-42F5-A893-30736C8E17D6}|ProuctManagementDataAccess\\ProuctManagementDataAccess.csproj|c:\\users\\silviu\\source\\repos\\proiect 8 - product management - stana silviu\\prouctmanagementdataaccess\\repositories\\productcategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2B3A6E92-579D-42F5-A893-30736C8E17D6}|ProuctManagementDataAccess\\ProuctManagementDataAccess.csproj|solutionrelative:prouctmanagementdataaccess\\repositories\\productcategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2B3A6E92-579D-42F5-A893-30736C8E17D6}|ProuctManagementDataAccess\\ProuctManagementDataAccess.csproj|c:\\users\\silviu\\source\\repos\\proiect 8 - product management - stana silviu\\prouctmanagementdataaccess\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2B3A6E92-579D-42F5-A893-30736C8E17D6}|ProuctManagementDataAccess\\ProuctManagementDataAccess.csproj|solutionrelative:prouctmanagementdataaccess\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{62BD6EC8-CFA2-461D-A9F6-69AEF011D84A}|ProductManagementUI\\ProductManagementUI.csproj|c:\\users\\silviu\\source\\repos\\proiect 8 - product management - stana silviu\\productmanagementui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62BD6EC8-CFA2-461D-A9F6-69AEF011D84A}|ProductManagementUI\\ProductManagementUI.csproj|solutionrelative:productmanagementui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2B3A6E92-579D-42F5-A893-30736C8E17D6}|ProuctManagementDataAccess\\ProuctManagementDataAccess.csproj|c:\\users\\silviu\\source\\repos\\proiect 8 - product management - stana silviu\\prouctmanagementdataaccess\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2B3A6E92-579D-42F5-A893-30736C8E17D6}|ProuctManagementDataAccess\\ProuctManagementDataAccess.csproj|solutionrelative:prouctmanagementdataaccess\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{62BD6EC8-CFA2-461D-A9F6-69AEF011D84A}|ProductManagementUI\\ProductManagementUI.csproj|C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\productmanagementui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{62BD6EC8-CFA2-461D-A9F6-69AEF011D84A}|ProductManagementUI\\ProductManagementUI.csproj|solutionrelative:productmanagementui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DF8F6599-1B1E-4C67-A68F-4B0EA212B1E1}|ProductManagementBusiness\\ProductManagementBusiness.csproj|c:\\users\\silviu\\source\\repos\\proiect 8 - product management - stana silviu\\productmanagementbusiness\\picturemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF8F6599-1B1E-4C67-A68F-4B0EA212B1E1}|ProductManagementBusiness\\ProductManagementBusiness.csproj|solutionrelative:productmanagementbusiness\\picturemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{62BD6EC8-CFA2-461D-A9F6-69AEF011D84A}|ProductManagementUI\\ProductManagementUI.csproj|c:\\users\\silviu\\source\\repos\\proiect 8 - product management - stana silviu\\productmanagementui\\delete.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62BD6EC8-CFA2-461D-A9F6-69AEF011D84A}|ProductManagementUI\\ProductManagementUI.csproj|solutionrelative:productmanagementui\\delete.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62BD6EC8-CFA2-461D-A9F6-69AEF011D84A}|ProductManagementUI\\ProductManagementUI.csproj|c:\\users\\silviu\\source\\repos\\proiect 8 - product management - stana silviu\\productmanagementui\\delete.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{62BD6EC8-CFA2-461D-A9F6-69AEF011D84A}|ProductManagementUI\\ProductManagementUI.csproj|solutionrelative:productmanagementui\\delete.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{62BD6EC8-CFA2-461D-A9F6-69AEF011D84A}|ProductManagementUI\\ProductManagementUI.csproj|c:\\users\\silviu\\source\\repos\\proiect 8 - product management - stana silviu\\productmanagementui\\productsearchresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62BD6EC8-CFA2-461D-A9F6-69AEF011D84A}|ProductManagementUI\\ProductManagementUI.csproj|solutionrelative:productmanagementui\\productsearchresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62BD6EC8-CFA2-461D-A9F6-69AEF011D84A}|ProductManagementUI\\ProductManagementUI.csproj|c:\\users\\silviu\\source\\repos\\proiect 8 - product management - stana silviu\\productmanagementui\\productsearchresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{62BD6EC8-CFA2-461D-A9F6-69AEF011D84A}|ProductManagementUI\\ProductManagementUI.csproj|solutionrelative:productmanagementui\\productsearchresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62BD6EC8-CFA2-461D-A9F6-69AEF011D84A}|ProductManagementUI\\ProductManagementUI.csproj|c:\\users\\silviu\\source\\repos\\proiect 8 - product management - stana silviu\\productmanagementui\\ad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62BD6EC8-CFA2-461D-A9F6-69AEF011D84A}|ProductManagementUI\\ProductManagementUI.csproj|solutionrelative:productmanagementui\\ad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2B3A6E92-579D-42F5-A893-30736C8E17D6}|ProuctManagementDataAccess\\ProuctManagementDataAccess.csproj|C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\prouctmanagementdataaccess\\repositories\\productcategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2B3A6E92-579D-42F5-A893-30736C8E17D6}|ProuctManagementDataAccess\\ProuctManagementDataAccess.csproj|solutionrelative:prouctmanagementdataaccess\\repositories\\productcategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62BD6EC8-CFA2-461D-A9F6-69AEF011D84A}|ProductManagementUI\\ProductManagementUI.csproj|C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\productmanagementui\\create.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{62BD6EC8-CFA2-461D-A9F6-69AEF011D84A}|ProductManagementUI\\ProductManagementUI.csproj|solutionrelative:productmanagementui\\create.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF8F6599-1B1E-4C67-A68F-4B0EA212B1E1}|ProductManagementBusiness\\ProductManagementBusiness.csproj|C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\productmanagementbusiness\\picturemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF8F6599-1B1E-4C67-A68F-4B0EA212B1E1}|ProductManagementBusiness\\ProductManagementBusiness.csproj|solutionrelative:productmanagementbusiness\\picturemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF8F6599-1B1E-4C67-A68F-4B0EA212B1E1}|ProductManagementBusiness\\ProductManagementBusiness.csproj|c:\\users\\silviu\\source\\repos\\proiect 8 - product management - stana silviu\\productmanagementbusiness\\productmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF8F6599-1B1E-4C67-A68F-4B0EA212B1E1}|ProductManagementBusiness\\ProductManagementBusiness.csproj|solutionrelative:productmanagementbusiness\\productmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF8F6599-1B1E-4C67-A68F-4B0EA212B1E1}|ProductManagementBusiness\\ProductManagementBusiness.csproj|c:\\users\\silviu\\source\\repos\\proiect 8 - product management - stana silviu\\productmanagementbusiness\\productcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF8F6599-1B1E-4C67-A68F-4B0EA212B1E1}|ProductManagementBusiness\\ProductManagementBusiness.csproj|solutionrelative:productmanagementbusiness\\productcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,33 +62,96 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
+              "Title": "ProductSearchResult.cs",
+              "DocumentMoniker": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProductManagementUI\\ProductSearchResult.cs",
+              "RelativeDocumentMoniker": "ProductManagementUI\\ProductSearchResult.cs",
+              "ToolTip": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProductManagementUI\\ProductSearchResult.cs",
+              "RelativeToolTip": "ProductManagementUI\\ProductSearchResult.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAEwH4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-07T18:00:33.12Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProductRepository.cs",
+              "DocumentMoniker": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProuctManagementDataAccess\\Repositories\\ProductRepository.cs",
+              "RelativeDocumentMoniker": "ProuctManagementDataAccess\\Repositories\\ProductRepository.cs",
+              "ToolTip": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProuctManagementDataAccess\\Repositories\\ProductRepository.cs",
+              "RelativeToolTip": "ProuctManagementDataAccess\\Repositories\\ProductRepository.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAAADAAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-07T17:38:36.309Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ProductSearchResult.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProductManagementUI\\ProductSearchResult.cs",
+              "RelativeDocumentMoniker": "ProductManagementUI\\ProductSearchResult.cs",
+              "ToolTip": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProductManagementUI\\ProductSearchResult.cs [Design]",
+              "RelativeToolTip": "ProductManagementUI\\ProductSearchResult.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-07T13:28:11.82Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "ProductCategoryRepository.cs",
               "DocumentMoniker": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProuctManagementDataAccess\\Repositories\\ProductCategoryRepository.cs",
               "RelativeDocumentMoniker": "ProuctManagementDataAccess\\Repositories\\ProductCategoryRepository.cs",
               "ToolTip": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProuctManagementDataAccess\\Repositories\\ProductCategoryRepository.cs",
               "RelativeToolTip": "ProuctManagementDataAccess\\Repositories\\ProductCategoryRepository.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAowEgAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBsAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-06T18:56:59.677Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ProductRepository.cs",
-              "DocumentMoniker": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProuctManagementDataAccess\\Repositories\\ProductRepository.cs",
-              "RelativeDocumentMoniker": "ProuctManagementDataAccess\\Repositories\\ProductRepository.cs",
-              "ToolTip": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProuctManagementDataAccess\\Repositories\\ProductRepository.cs",
-              "RelativeToolTip": "ProuctManagementDataAccess\\Repositories\\ProductRepository.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAUwEEAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "Delete.cs",
+              "DocumentMoniker": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProductManagementUI\\Delete.cs",
+              "RelativeDocumentMoniker": "ProductManagementUI\\Delete.cs",
+              "ToolTip": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProductManagementUI\\Delete.cs",
+              "RelativeToolTip": "ProductManagementUI\\Delete.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEAAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-06T14:22:17.941Z",
+              "WhenOpened": "2025-01-07T14:10:02.022Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProductManagementUI\\Form1.cs",
+              "RelativeDocumentMoniker": "ProductManagementUI\\Form1.cs",
+              "ToolTip": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProductManagementUI\\Form1.cs",
+              "RelativeToolTip": "ProductManagementUI\\Form1.cs",
+              "ViewState": "AgIAAMwAAAAAAAAAAAAEwLsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-06T16:04:51.548Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Delete.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProductManagementUI\\Delete.cs",
+              "RelativeDocumentMoniker": "ProductManagementUI\\Delete.cs",
+              "ToolTip": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProductManagementUI\\Delete.cs [Design]",
+              "RelativeToolTip": "ProductManagementUI\\Delete.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-07T13:30:31.017Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -84,7 +167,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
+              "Title": "Ad.cs",
+              "DocumentMoniker": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProductManagementUI\\Ad.cs",
+              "RelativeDocumentMoniker": "ProductManagementUI\\Ad.cs",
+              "ToolTip": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProductManagementUI\\Ad.cs",
+              "RelativeToolTip": "ProductManagementUI\\Ad.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAI4AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-07T18:07:30.217Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Create.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProductManagementUI\\Create.cs",
+              "RelativeDocumentMoniker": "ProductManagementUI\\Create.cs",
+              "ToolTip": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProductManagementUI\\Create.cs [Design]",
+              "RelativeToolTip": "ProductManagementUI\\Create.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-06T16:56:18.281Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "PictureModel.cs",
               "DocumentMoniker": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProductManagementBusiness\\PictureModel.cs",
               "RelativeDocumentMoniker": "ProductManagementBusiness\\PictureModel.cs",
@@ -97,53 +205,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Create.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProductManagementUI\\Create.cs",
-              "RelativeDocumentMoniker": "ProductManagementUI\\Create.cs",
-              "ToolTip": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProductManagementUI\\Create.cs [Design]",
-              "RelativeToolTip": "ProductManagementUI\\Create.cs [Design]",
+              "DocumentIndex": 12,
+              "Title": "ProductCategory.cs",
+              "DocumentMoniker": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProductManagementBusiness\\ProductCategory.cs",
+              "RelativeDocumentMoniker": "ProductManagementBusiness\\ProductCategory.cs",
+              "ToolTip": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProductManagementBusiness\\ProductCategory.cs",
+              "RelativeToolTip": "ProductManagementBusiness\\ProductCategory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-06T16:56:18.281Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Create.cs",
-              "DocumentMoniker": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProductManagementUI\\Create.cs",
-              "RelativeDocumentMoniker": "ProductManagementUI\\Create.cs",
-              "ToolTip": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProductManagementUI\\Create.cs",
-              "RelativeToolTip": "ProductManagementUI\\Create.cs",
-              "ViewState": "AgIAAMIAAAAAAAAAAAAQwNIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-06T14:21:59.62Z",
+              "WhenOpened": "2025-01-07T13:52:14.711Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProductManagementUI\\Form1.cs",
-              "RelativeDocumentMoniker": "ProductManagementUI\\Form1.cs",
-              "ToolTip": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProductManagementUI\\Form1.cs",
-              "RelativeToolTip": "ProductManagementUI\\Form1.cs",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAQwGkAAAAOAAAAAAAAAA==",
+              "DocumentIndex": 11,
+              "Title": "ProductModel.cs",
+              "DocumentMoniker": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProductManagementBusiness\\ProductModel.cs",
+              "RelativeDocumentMoniker": "ProductManagementBusiness\\ProductModel.cs",
+              "ToolTip": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProductManagementBusiness\\ProductModel.cs",
+              "RelativeToolTip": "ProductManagementBusiness\\ProductModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-06T16:04:51.548Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ProductSearchResult.cs",
-              "DocumentMoniker": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProductManagementUI\\ProductSearchResult.cs",
-              "RelativeDocumentMoniker": "ProductManagementUI\\ProductSearchResult.cs",
-              "ToolTip": "C:\\Users\\silviu\\source\\repos\\Proiect 8 - Product Management - Stana Silviu\\ProductManagementUI\\ProductSearchResult.cs",
-              "RelativeToolTip": "ProductManagementUI\\ProductSearchResult.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-06T16:05:15.263Z",
+              "WhenOpened": "2025-01-07T13:52:17.024Z",
               "EditorCaption": ""
             }
           ]

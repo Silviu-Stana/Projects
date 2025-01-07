@@ -45,6 +45,10 @@
             this.SearchCategory = new System.Windows.Forms.ComboBox();
             this.UserButtonsPanel = new System.Windows.Forms.Panel();
             this.RegisterUser = new System.Windows.Forms.Button();
+            this.OrderByBox = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.ExportToCSV = new System.Windows.Forms.Button();
+            this.ExportJSON = new System.Windows.Forms.Button();
             this.LoginPanel.SuspendLayout();
             this.SearchResultsPanel.SuspendLayout();
             this.UserButtonsPanel.SuspendLayout();
@@ -175,7 +179,7 @@
             // SearchResults
             // 
             this.SearchResults.AutoScroll = true;
-            this.SearchResults.Location = new System.Drawing.Point(15, 112);
+            this.SearchResults.Location = new System.Drawing.Point(15, 163);
             this.SearchResults.Name = "SearchResults";
             this.SearchResults.Size = new System.Drawing.Size(775, 736);
             this.SearchResults.TabIndex = 16;
@@ -183,6 +187,8 @@
             // 
             // SearchResultsPanel
             // 
+            this.SearchResultsPanel.Controls.Add(this.label2);
+            this.SearchResultsPanel.Controls.Add(this.OrderByBox);
             this.SearchResultsPanel.Controls.Add(this.label1);
             this.SearchResultsPanel.Controls.Add(this.SearchCategory);
             this.SearchResultsPanel.Controls.Add(this.SearchResults);
@@ -190,7 +196,7 @@
             this.SearchResultsPanel.Controls.Add(this.SEARCH);
             this.SearchResultsPanel.Location = new System.Drawing.Point(27, 67);
             this.SearchResultsPanel.Name = "SearchResultsPanel";
-            this.SearchResultsPanel.Size = new System.Drawing.Size(834, 872);
+            this.SearchResultsPanel.Size = new System.Drawing.Size(834, 905);
             this.SearchResultsPanel.TabIndex = 17;
             this.SearchResultsPanel.Visible = false;
             // 
@@ -243,13 +249,74 @@
             this.RegisterUser.Visible = false;
             this.RegisterUser.Click += new System.EventHandler(this.RegisterUser_Click);
             // 
+            // OrderByBox
+            // 
+            this.OrderByBox.DropDownWidth = 200;
+            this.OrderByBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OrderByBox.FormattingEnabled = true;
+            this.OrderByBox.ItemHeight = 29;
+            this.OrderByBox.Items.AddRange(new object[] {
+            "Title (Ascending)",
+            "Title (Descending)",
+            "Price (Ascending)",
+            "Price (Descending)",
+            "Brand (Ascending)",
+            "Brand (Descending)",
+            "Fabrication Date (Ascending)",
+            "Fabrication Date (Descending)"});
+            this.OrderByBox.Location = new System.Drawing.Point(377, 106);
+            this.OrderByBox.Name = "OrderByBox";
+            this.OrderByBox.Size = new System.Drawing.Size(173, 37);
+            this.OrderByBox.TabIndex = 19;
+            this.OrderByBox.SelectedIndexChanged += new System.EventHandler(this.SortBox_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.label2.Location = new System.Drawing.Point(374, 85);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 18);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "Results Order";
+            // 
+            // ExportToCSV
+            // 
+            this.ExportToCSV.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.ExportToCSV.FlatAppearance.BorderSize = 5;
+            this.ExportToCSV.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExportToCSV.Location = new System.Drawing.Point(81, 990);
+            this.ExportToCSV.Name = "ExportToCSV";
+            this.ExportToCSV.Size = new System.Drawing.Size(109, 65);
+            this.ExportToCSV.TabIndex = 5;
+            this.ExportToCSV.Text = "Export CSV";
+            this.ExportToCSV.UseVisualStyleBackColor = false;
+            this.ExportToCSV.Visible = false;
+            this.ExportToCSV.Click += new System.EventHandler(this.ExportToCSV_Click);
+            // 
+            // ExportJSON
+            // 
+            this.ExportJSON.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.ExportJSON.FlatAppearance.BorderSize = 5;
+            this.ExportJSON.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExportJSON.Location = new System.Drawing.Point(207, 990);
+            this.ExportJSON.Name = "ExportJSON";
+            this.ExportJSON.Size = new System.Drawing.Size(113, 65);
+            this.ExportJSON.TabIndex = 19;
+            this.ExportJSON.Text = "Export JSON";
+            this.ExportJSON.UseVisualStyleBackColor = false;
+            this.ExportJSON.Visible = false;
+            this.ExportJSON.Click += new System.EventHandler(this.ExportJSON_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1290, 935);
+            this.ClientSize = new System.Drawing.Size(1290, 1067);
+            this.Controls.Add(this.ExportJSON);
             this.Controls.Add(this.LoginPanel);
             this.Controls.Add(this.SearchResultsPanel);
+            this.Controls.Add(this.ExportToCSV);
             this.Controls.Add(this.UserButtonsPanel);
             this.Name = "Form1";
             this.Text = "ACCOUNT PAGE";
@@ -283,6 +350,10 @@
         private System.Windows.Forms.ComboBox SearchCategory;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button RegisterUser;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox OrderByBox;
+        private System.Windows.Forms.Button ExportToCSV;
+        private System.Windows.Forms.Button ExportJSON;
     }
 }
 

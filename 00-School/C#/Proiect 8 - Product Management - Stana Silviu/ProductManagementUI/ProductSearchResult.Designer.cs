@@ -29,12 +29,15 @@
         private void InitializeComponent()
         {
             this.AdCard = new System.Windows.Forms.Panel();
+            this.DeleteButton = new System.Windows.Forms.Button();
+            this.EditButton = new System.Windows.Forms.Button();
             this.PriceLabel = new System.Windows.Forms.Label();
             this.DescriptionLabel = new System.Windows.Forms.Label();
             this.TitleLabel = new System.Windows.Forms.Label();
             this.PictureBox = new System.Windows.Forms.PictureBox();
-            this.EditButton = new System.Windows.Forms.Button();
-            this.DeleteButton = new System.Windows.Forms.Button();
+            this.Enable = new System.Windows.Forms.Button();
+            this.AvgRating = new System.Windows.Forms.Label();
+            this.BrandLabel = new System.Windows.Forms.Label();
             this.AdCard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox)).BeginInit();
             this.SuspendLayout();
@@ -42,6 +45,9 @@
             // AdCard
             // 
             this.AdCard.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.AdCard.Controls.Add(this.BrandLabel);
+            this.AdCard.Controls.Add(this.AvgRating);
+            this.AdCard.Controls.Add(this.Enable);
             this.AdCard.Controls.Add(this.DeleteButton);
             this.AdCard.Controls.Add(this.EditButton);
             this.AdCard.Controls.Add(this.PriceLabel);
@@ -55,6 +61,32 @@
             this.AdCard.Paint += new System.Windows.Forms.PaintEventHandler(this.AdCard_Paint);
             this.AdCard.MouseClick += new System.Windows.Forms.MouseEventHandler(this.AdCard_MouseClick);
             this.AdCard.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AdCard_MouseDown);
+            // 
+            // DeleteButton
+            // 
+            this.DeleteButton.BackColor = System.Drawing.Color.LightCoral;
+            this.DeleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.DeleteButton.Location = new System.Drawing.Point(516, 106);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(106, 35);
+            this.DeleteButton.TabIndex = 14;
+            this.DeleteButton.Text = "Delete";
+            this.DeleteButton.UseVisualStyleBackColor = false;
+            this.DeleteButton.Visible = false;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
+            // EditButton
+            // 
+            this.EditButton.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.EditButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.EditButton.Location = new System.Drawing.Point(628, 106);
+            this.EditButton.Name = "EditButton";
+            this.EditButton.Size = new System.Drawing.Size(106, 35);
+            this.EditButton.TabIndex = 13;
+            this.EditButton.Text = "Edit";
+            this.EditButton.UseVisualStyleBackColor = false;
+            this.EditButton.Visible = false;
+            this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
             // PriceLabel
             // 
@@ -99,38 +131,46 @@
             this.PictureBox.TabStop = false;
             this.PictureBox.Click += new System.EventHandler(this.PictureBox_Click);
             // 
-            // EditButton
+            // Enable
             // 
-            this.EditButton.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.EditButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.EditButton.Location = new System.Drawing.Point(509, 106);
-            this.EditButton.Name = "EditButton";
-            this.EditButton.Size = new System.Drawing.Size(106, 35);
-            this.EditButton.TabIndex = 13;
-            this.EditButton.Text = "Edit";
-            this.EditButton.UseVisualStyleBackColor = false;
-            this.EditButton.Visible = false;
-            this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
+            this.Enable.BackColor = System.Drawing.Color.Gold;
+            this.Enable.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.Enable.Location = new System.Drawing.Point(506, 106);
+            this.Enable.Name = "Enable";
+            this.Enable.Size = new System.Drawing.Size(106, 35);
+            this.Enable.TabIndex = 15;
+            this.Enable.Text = "Enable";
+            this.Enable.UseVisualStyleBackColor = false;
+            this.Enable.Visible = false;
+            this.Enable.Click += new System.EventHandler(this.Enable_Click);
             // 
-            // DeleteButton
+            // AvgRating
             // 
-            this.DeleteButton.BackColor = System.Drawing.Color.LightCoral;
-            this.DeleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.DeleteButton.Location = new System.Drawing.Point(625, 106);
-            this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(106, 35);
-            this.DeleteButton.TabIndex = 14;
-            this.DeleteButton.Text = "Delete";
-            this.DeleteButton.UseVisualStyleBackColor = false;
-            this.DeleteButton.Visible = false;
-            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            this.AvgRating.AutoSize = true;
+            this.AvgRating.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.AvgRating.Location = new System.Drawing.Point(535, 83);
+            this.AvgRating.Name = "AvgRating";
+            this.AvgRating.Size = new System.Drawing.Size(133, 20);
+            this.AvgRating.TabIndex = 16;
+            this.AvgRating.Text = "Average Rating: ";
             // 
-            // AdSearchResult
+            // BrandLabel
+            // 
+            this.BrandLabel.AutoSize = true;
+            this.BrandLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.BrandLabel.Location = new System.Drawing.Point(535, 63);
+            this.BrandLabel.Name = "BrandLabel";
+            this.BrandLabel.Size = new System.Drawing.Size(64, 20);
+            this.BrandLabel.TabIndex = 17;
+            this.BrandLabel.Text = "Brand: ";
+            this.BrandLabel.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // ProductSearchResult
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.AdCard);
-            this.Name = "AdSearchResult";
+            this.Name = "ProductSearchResult";
             this.Size = new System.Drawing.Size(749, 169);
             this.Load += new System.EventHandler(this.AdSearchResult_Load);
             this.AdCard.ResumeLayout(false);
@@ -149,5 +189,8 @@
         private System.Windows.Forms.PictureBox PictureBox;
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.Button EditButton;
+        private System.Windows.Forms.Button Enable;
+        private System.Windows.Forms.Label AvgRating;
+        private System.Windows.Forms.Label BrandLabel;
     }
 }
