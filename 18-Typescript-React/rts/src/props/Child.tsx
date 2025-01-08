@@ -2,8 +2,24 @@ import React from 'react';
 
 interface ChildProps {
       color: string;
+      onClick: () => void;
+      children?: React.ReactNode;
 }
 
-export const Child = ({ color }: ChildProps) => {
-      return <h1>{color}</h1>;
+export const Child = ({ color, onClick }: ChildProps) => {
+      return (
+            <div>
+                  {color}
+                  <button onClick={onClick}>Click me</button>
+            </div>
+      );
+};
+
+export const ChildAsFC: React.FC<ChildProps> = ({ color, onClick }) => {
+      return (
+            <div>
+                  {color}
+                  <button onClick={onClick}>Click me</button>
+            </div>
+      );
 };

@@ -1,9 +1,13 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import Parent from './props/Parent';
+import EventComponent from './events/EventComponent';
 
 const App = () => {
-      return <Parent />;
+      return (
+            <div>
+                  <EventComponent />
+            </div>
+      );
 };
 
 const container = document.querySelector('#root');
