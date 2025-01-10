@@ -5,30 +5,9 @@ SELECT * FROM Category;
 SELECT * FROM ProductEvaluation;
 SELECT * FROM ProductCategory;
 
-SELECT AVG(Value) from ProductEvaluation where ProductId=1
-SELECT AVG(CAST(Value AS DECIMAL(5, 2))) FROM ProductEvaluation WHERE ProductId=1;
+--SELECT AVG(Value) from ProductEvaluation where ProductId=1
+--SELECT AVG(CAST(Value AS DECIMAL(5, 2))) FROM ProductEvaluation WHERE ProductId=1;
 
--- Create a new foreign key constraint with ON DELETE CASCADE
-ALTER TABLE ProductCategory
-ADD CONSTRAINT FK__Product1
-FOREIGN KEY (ProductId) REFERENCES Product(Id)
-ON DELETE CASCADE;
-
-ALTER TABLE ProductCategory
-ADD CONSTRAINT FK__Category1
-FOREIGN KEY (CategoryId) REFERENCES Category(Id)
-ON DELETE CASCADE;
-
--- Create a new foreign key constraint with ON DELETE CASCADE
-ALTER TABLE ProductEvaluation
-ADD CONSTRAINT FK__Product2
-FOREIGN KEY (ProductId) REFERENCES Product(Id)
-ON DELETE CASCADE;
-
-ALTER TABLE ProductEvaluation
-ADD CONSTRAINT FK__User1
-FOREIGN KEY (ProductId) REFERENCES [User](Id)
-ON DELETE CASCADE;
 
 --UPDATE Product SET IsDisabled=1 WHERE Id=1
 
@@ -84,16 +63,17 @@ CREATE TABLE ProductCategory (
 
 INSERT INTO [User] (Username, Password)
 VALUES 
-    ('alice', 'password1'),
-    ('bob', 'password2'),
-    ('carol', 'password3'),
-    ('dave', 'password4'),
-    ('eve', 'password5'),
-    ('frank', 'password6'),
-    ('grace', 'password7'),
-    ('hank', 'password8'),
-    ('iris', 'password9'),
-    ('jack', 'password10');
+    ('alice', 'password1',0),
+    ('bob', 'password2',0),
+    ('carol', 'password3',0),
+    ('dave', 'password4',0),
+    ('eve', 'password5',0),
+    ('frank', 'password6',0),
+    ('grace', 'password7',0),
+    ('hank', 'password8',0),
+    ('iris', 'password9',0),
+    ('jack', 'password10',0),
+	('a','a',1); 
 
 INSERT INTO Product (Title, Description, Price, FabricationDate)
 VALUES 
@@ -218,3 +198,26 @@ SET Brand = CASE
     WHEN Title = 'Sausage' THEN 'RootBurst'
     WHEN Title = 'Honey' THEN 'FarmFresh'
 END;
+
+
+-- Create a new foreign key constraint with ON DELETE CASCADE
+ALTER TABLE ProductCategory
+ADD CONSTRAINT FK__Product1
+FOREIGN KEY (ProductId) REFERENCES Product(Id)
+ON DELETE CASCADE;
+
+ALTER TABLE ProductCategory
+ADD CONSTRAINT FK__Category1
+FOREIGN KEY (CategoryId) REFERENCES Category(Id)
+ON DELETE CASCADE;
+
+-- Create a new foreign key constraint with ON DELETE CASCADE
+ALTER TABLE ProductEvaluation
+ADD CONSTRAINT FK__Product2
+FOREIGN KEY (ProductId) REFERENCES Product(Id)
+ON DELETE CASCADE;
+
+ALTER TABLE ProductEvaluation
+ADD CONSTRAINT FK__User1
+FOREIGN KEY (UserId) REFERENCES [User](Id)
+ON DELETE CASCADE;

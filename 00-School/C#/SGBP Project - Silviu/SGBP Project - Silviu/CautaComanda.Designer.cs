@@ -44,12 +44,16 @@
             this.PretTotal_Label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.PretTotal_Label = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.SetDeliveryDate = new System.Windows.Forms.Button();
+            this.DeliveryPanel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.Client_GridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Comenzi_GridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Comanda_GridView)).BeginInit();
             this.TotalClienti.SuspendLayout();
             this.Enable_InfoBox.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.DeliveryPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // ListaClientiLabel
@@ -249,11 +253,43 @@
             this.PretTotal_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.PretTotal_Label.Visible = false;
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(10, 18);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(458, 30);
+            this.dateTimePicker1.TabIndex = 16;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // SetDeliveryDate
+            // 
+            this.SetDeliveryDate.BackColor = System.Drawing.Color.SandyBrown;
+            this.SetDeliveryDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.SetDeliveryDate.Location = new System.Drawing.Point(10, 54);
+            this.SetDeliveryDate.Name = "SetDeliveryDate";
+            this.SetDeliveryDate.Size = new System.Drawing.Size(200, 51);
+            this.SetDeliveryDate.TabIndex = 17;
+            this.SetDeliveryDate.Text = "Set Delivery Date";
+            this.SetDeliveryDate.UseVisualStyleBackColor = false;
+            this.SetDeliveryDate.Click += new System.EventHandler(this.SetDeliveryDate_Click);
+            // 
+            // DeliveryPanel
+            // 
+            this.DeliveryPanel.Controls.Add(this.SetDeliveryDate);
+            this.DeliveryPanel.Controls.Add(this.dateTimePicker1);
+            this.DeliveryPanel.Location = new System.Drawing.Point(575, 761);
+            this.DeliveryPanel.Name = "DeliveryPanel";
+            this.DeliveryPanel.Size = new System.Drawing.Size(493, 126);
+            this.DeliveryPanel.TabIndex = 18;
+            this.DeliveryPanel.Visible = false;
+            // 
             // CautaComanda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2083, 990);
+            this.Controls.Add(this.DeliveryPanel);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.Enable_InfoBox);
             this.Controls.Add(this.label3);
@@ -276,6 +312,7 @@
             this.Enable_InfoBox.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.DeliveryPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -299,5 +336,8 @@
         private System.Windows.Forms.Label PretTotal_Label2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label PretTotal_Label;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Button SetDeliveryDate;
+        private System.Windows.Forms.Panel DeliveryPanel;
     }
 }

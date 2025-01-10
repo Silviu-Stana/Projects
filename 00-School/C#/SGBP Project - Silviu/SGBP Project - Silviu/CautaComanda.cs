@@ -31,6 +31,12 @@ namespace SGBP_Project___Silviu
             Comenzi_GridView.ReadOnly = true;
             Comanda_GridView.ReadOnly = true;
 
+            Client_GridView.MultiSelect = false;
+            Comenzi_GridView.MultiSelect = false;
+            Comanda_GridView.MultiSelect = false;
+
+
+            SetupDatePicker();
 
             Client_GridView.AllowUserToAddRows = false; //taie ultimul rand din GridView ca sa arate mai frumos
             Comenzi_GridView.AllowUserToAddRows = false;
@@ -49,6 +55,14 @@ namespace SGBP_Project___Silviu
 
             Enable_Label2.Text = numeClient;
             DeterminaNrClienti();
+        }
+
+        void SetupDatePicker()
+        {
+            dateTimePicker1.MaxDate = DateTime.Now;
+            dateTimePicker1.MinDate = new DateTime(2000, 1, 1);
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.CustomFormat = "yyyy-MM-dd HH:mm";
         }
 
         void DeterminaNrClienti()
@@ -118,7 +132,7 @@ namespace SGBP_Project___Silviu
         }
         void CalculeazaNrComenzi()
         {
-            string sql = "select count(nrComanda) from tComenzi where codClient=@codClient";
+            string sql = "select count(nrComanda) from Pachete.tComenzi where codClient=@codClient";
             using (SqlCommand cmd = new SqlCommand(sql, Global.con))
             {
                 Global.con.Open();
@@ -131,10 +145,18 @@ namespace SGBP_Project___Silviu
         }
 
 
+        int nrComandaSelectata;
 
         private void Comenzi_GridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return; //prevent error when clicking on column names
+
+            nrComandaSelectata = int.Parse(Comenzi_GridView.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+            DeliveryPanel.Visible = true;
+            var selectedDeliveryDate = Comenzi_GridView.Rows[e.RowIndex].Cells[2].Value;
+            if (selectedDeliveryDate != DBNull.Value) dateTimePicker1.Value = Convert.ToDateTime(selectedDeliveryDate);
+            else dateTimePicker1.Value = DateTime.Today;
 
             nrComanda = Comenzi_GridView.Rows[e.RowIndex].Cells[0].Value.ToString();
             selectedComanda = e.RowIndex;
@@ -159,6 +181,7 @@ namespace SGBP_Project___Silviu
             CalculeazaPretTotal();
             ArataInformatiiDespreComanda();
         }
+
         void CalculeazaPretTotal()
         {
             int total = 0;
@@ -169,6 +192,29 @@ namespace SGBP_Project___Silviu
             PretTotal_Label.Text = total.ToString() + " RON";
             CentreazaText(PretTotal_Label, 20);
         }
+
+        private void SetDeliveryDate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand("UPDATE Pachete.tComenzi SET dataLivrare=@dataLivrare WHERE nrComanda=@nrComanda", Global.con))
+                {
+                    cmd.Parameters.AddWithValue("@dataLivrare", dateTimePicker1.Value);
+                    cmd.Parameters.AddWithValue("@nrComanda", nrComandaSelectata);
+                    Global.con.Open();
+                    cmd.ExecuteNonQuery();
+                    Global.con.Close();
+                }
+
+                // Update the cell in the grid view to reflect the changes
+                Comenzi_GridView.Rows[selectedComanda].Cells[2].Value = dateTimePicker1.Value;
+            }
+            catch
+            {
+                MessageBox.Show("Eroare la modificarea datei de livrare");
+            }
+        }
+
         void ArataInformatiiDespreComanda()
         {
             groupBox2.Enabled = true;
@@ -189,6 +235,8 @@ namespace SGBP_Project___Silviu
             groupBox2.Visible = false;
             PretTotal_Label.Visible = false;
             PretTotal_Label2.Visible = false;
+
+            DeliveryPanel.Visible = false;
         }
 
 
@@ -213,6 +261,11 @@ namespace SGBP_Project___Silviu
         }
 
         private void NrClienti_Label_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
 
         }

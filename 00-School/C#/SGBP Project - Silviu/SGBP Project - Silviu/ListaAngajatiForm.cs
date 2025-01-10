@@ -56,20 +56,21 @@ namespace SGBP_Project___Silviu
             ListaAngajati_GridView.Columns[0].Width = ListaAngajati_GridView.Columns[0].Width;
             ListaAngajati_GridView.Columns[1].Width = ListaAngajati_GridView.Columns[0].Width * 2;
 
-            AddListaFunctiiLaDropDown();
+            AddListaFunctiiLaDropDown(Functie_DropDown);
+            AddListaFunctiiLaDropDown(FunctieInsert_DropDown);
 
             ListaAngajati_GridView.ClearSelection(); // Clear selection after data binding
         }
 
 
-        private void AddListaFunctiiLaDropDown()
+        private void AddListaFunctiiLaDropDown(ComboBox Functii)
         {
-            Functie_DropDown.Items.Clear();
+            Functii.Items.Clear();
             foreach (DataGridViewRow row in ListaAngajati_GridView.Rows)
             {
                 if (row.Cells[1].Value != null)
                 {
-                    Functie_DropDown.Items.Add(row.Cells[1].Value.ToString());
+                    Functii.Items.Add(row.Cells[1].Value.ToString());
                 }
             }
         }
@@ -158,6 +159,56 @@ namespace SGBP_Project___Silviu
                 System.IO.File.WriteAllText(saveFileDialog.FileName, sb.ToString());
                 MessageBox.Show("Data exported successfully!", "Export CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            StergeAngajat();
+        }
+
+        void StergeAngajat()
+        {
+            if (selectedRow == -1)
+            {
+                MessageBox.Show("Selectati un angajat pentru a-l sterge", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string strDelete = "DELETE FROM Pachete.tAngajati WHERE codAngajat = @codAngajat";
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand(strDelete, Global.con))
+                {
+                    cmd.Parameters.AddWithValue("@codAngajat", codAngajat);
+
+                    Global.con.Open();
+                    int n = cmd.ExecuteNonQuery(); //nr randuri afectate  
+
+                    if (n > 0)
+                    {
+                        MessageBox.Show("Angajat Sters cu succes.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Global.dataSet.Tables["Angajati"].Rows.RemoveAt(selectedRow);
+                        selectedRow = -1;
+                    }
+                    else
+                    {
+                        MessageBox.Show("CodAngajat inexistent", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Eroare: Stergere\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                Global.con.Close();
+            }
+        }
+
+        private void Functie_DropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
