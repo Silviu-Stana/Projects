@@ -1,0 +1,12 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Consult Prolog File",
+      "type": "shell",
+      "command": "swipl",
+      "args": ["-s", "${file}"],
+      "problemMatcher": []
+    }
+  ]
+}
