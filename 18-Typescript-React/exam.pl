@@ -1,7 +1,7 @@
 %consult("exam.pl").
 
 
-count(E, [], 0).
-count(E, [E|T], NR):- count(E, T, NR1), NR is NR1 + 1.
-count(E, [H|T], NR):- count(E, T, NR).
-
+% b(n) = b(n-1)-2*b(n-2)
+b(0,-1).
+b(1,2).
+b(N,R) :- N1 is N-1, N2 is N-2, b(N1,R1), b(N2,R2), R is R1-2*R2.
