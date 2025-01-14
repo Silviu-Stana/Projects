@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -20,6 +22,7 @@ namespace SGBP_Project___Silviu
         string numeAngajat;
         string functieAngajat;
         string codAngajat;
+        string codFunctie;
 
         public ListaAngajatiForm()
         {
@@ -28,13 +31,17 @@ namespace SGBP_Project___Silviu
 
         private void ListaAngajati_GridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            numeAngajat = ListaAngajati_GridView.Rows[e.RowIndex].Cells[0].Value.ToString();
-            functieAngajat = ListaAngajati_GridView.Rows[e.RowIndex].Cells[1].Value.ToString();
-            codAngajat = ListaAngajati_GridView.Rows[e.RowIndex].Cells[2].Value.ToString();
-            Nume_TextBox.Text = numeAngajat;
-            Functie_DropDown.Text = functieAngajat;
+            if (e.RowIndex >= 0 && e.RowIndex < ListaAngajati_GridView.Rows.Count)
+            {
+                numeAngajat = ListaAngajati_GridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+                functieAngajat = ListaAngajati_GridView.Rows[e.RowIndex].Cells[1].Value.ToString();
+                codFunctie = ListaAngajati_GridView.Rows[e.RowIndex].Cells[3].Value.ToString();
+                codAngajat = ListaAngajati_GridView.Rows[e.RowIndex].Cells[2].Value.ToString();
+                Nume_TextBox.Text = numeAngajat;
+                Functie_DropDown.Text = functieAngajat;
 
-            selectedRow = e.RowIndex;
+                selectedRow = e.RowIndex;
+            }
         }
 
         private void ListaAngajati_GridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -47,7 +54,7 @@ namespace SGBP_Project___Silviu
             ListaAngajati_GridView.AllowUserToAddRows = false; //taie ultimul rand din GridView ca sa arate mai frumos
 
             Global.angajatiDataAdapter = new SqlDataAdapter(
-                "select numeAngajat, B.functie, A.codAngajat from Pachete.tAngajati as A inner JOIN Pachete.tFunctii as B on A.codFunctie=B.codFunctie", Global.con);
+                "select numeAngajat, B.functie, A.codAngajat, B.codFunctie from Pachete.tAngajati as A inner JOIN Pachete.tFunctii as B on A.codFunctie=B.codFunctie", Global.con);
             Global.angajatiDataAdapter.Fill(Global.dataSet, "Angajati");
 
             ListaAngajati_GridView.DataSource = Global.dataSet;
@@ -56,22 +63,28 @@ namespace SGBP_Project___Silviu
             ListaAngajati_GridView.Columns[0].Width = ListaAngajati_GridView.Columns[0].Width;
             ListaAngajati_GridView.Columns[1].Width = ListaAngajati_GridView.Columns[0].Width * 2;
 
-            AddListaFunctiiLaDropDown(Functie_DropDown);
-            AddListaFunctiiLaDropDown(FunctieInsert_DropDown);
+            AdaugaValoriLaListaDeFunctii(Functie_DropDown);
+            AdaugaValoriLaListaDeFunctii(FunctieInsert_DropDown);
 
             ListaAngajati_GridView.ClearSelection(); // Clear selection after data binding
         }
 
 
-        private void AddListaFunctiiLaDropDown(ComboBox Functii)
+        private void AdaugaValoriLaListaDeFunctii(ComboBox Functii)
         {
             Functii.Items.Clear();
-            foreach (DataGridViewRow row in ListaAngajati_GridView.Rows)
+            var uniqueFunctii = new HashSet<string>();
+            int rowCount = ListaAngajati_GridView.Rows.Count;
+            for (int i = 0; i < rowCount; i++)
             {
-                if (row.Cells[1].Value != null)
+                if (ListaAngajati_GridView.Rows[i].Cells[1].Value != null)
                 {
-                    Functii.Items.Add(row.Cells[1].Value.ToString());
+                    uniqueFunctii.Add(ListaAngajati_GridView.Rows[i].Cells[1].Value.ToString());
                 }
+            }
+            foreach (var functie in uniqueFunctii)
+            {
+                Functii.Items.Add(functie);
             }
         }
 
@@ -161,11 +174,6 @@ namespace SGBP_Project___Silviu
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            StergeAngajat();
-        }
-
         void StergeAngajat()
         {
             if (selectedRow == -1)
@@ -190,25 +198,121 @@ namespace SGBP_Project___Silviu
                         Global.dataSet.Tables["Angajati"].Rows.RemoveAt(selectedRow);
                         selectedRow = -1;
                     }
-                    else
-                    {
-                        MessageBox.Show("CodAngajat inexistent", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    else { MessageBox.Show("CodAngajat inexistent", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Eroare: Stergere\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            catch (Exception ex) { MessageBox.Show("Eroare: Stergere\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             finally
             {
                 Global.con.Close();
+                Nume_TextBox.Text = "";
+                Functie_DropDown.Text = "";
+                numeAngajat = "";
+                functieAngajat = "";
+            }
+        }
+
+        void AdaugaAngajat()
+        {
+            if (string.IsNullOrWhiteSpace(NumeAdd.Text) || string.IsNullOrWhiteSpace(FunctieInsert_DropDown.Text))
+            {
+                MessageBox.Show("Completati toate campurile pentru a adauga un angajat", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string connectionString = Global.con.ConnectionString;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                //PROCEDURA STOCATA
+                SqlCommand command = new SqlCommand("adaugaAngajat", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@NumeAngajat", NumeAdd.Text);
+                command.Parameters.AddWithValue("@CodFunctie", GetCodFunctie(FunctieInsert_DropDown.Text));  // Example function ID
+
+                connection.Open();
+
+                try
+                {
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("Angajat adăugat cu succes!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Eroare la inserare: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    Global.con.Close();
+                    NumeAdd.Text = "";
+                    FunctieInsert_DropDown.Text = "";
+
+                    RefreshGridView();
+                }
+            }
+        }
+
+        void RefreshGridView()
+        {
+            Global.dataSet.Tables["Angajati"].Clear();
+            Global.angajatiDataAdapter.Fill(Global.dataSet, "Angajati");
+            ListaAngajati_GridView.DataSource = Global.dataSet.Tables["Angajati"];
+            ListaAngajati_GridView.ClearSelection();
+            selectedRow = -1;
+
+            ListaAngajati_GridView.Columns[0].Width = ListaAngajati_GridView.Columns[0].Width;
+            ListaAngajati_GridView.Columns[1].Width = ListaAngajati_GridView.Columns[0].Width * 2;
+        }
+
+
+        private int GetLastInsertedCodAngajat()
+        {
+            string query = "SELECT MAX(codAngajat) FROM Pachete.tAngajati";
+            using (SqlCommand cmd = new SqlCommand(query, Global.con))
+            {
+                Global.con.Open();
+                int codAngajat = (int)cmd.ExecuteScalar();
+                Global.con.Close();
+                return codAngajat;
+            }
+        }
+
+        private int GetCodFunctie(string functie)
+        {
+            string query = "SELECT codFunctie FROM Pachete.tFunctii WHERE functie = @functie";
+            using (SqlCommand cmd = new SqlCommand(query, Global.con))
+            {
+                cmd.Parameters.AddWithValue("@functie", functie);
+                Global.con.Open();
+                int codFunctie = (int)cmd.ExecuteScalar();
+                Global.con.Close();
+                return codFunctie;
             }
         }
 
         private void Functie_DropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void AddAngajat_Click(object sender, EventArgs e)
+        {
+            AdaugaAngajat();
+        }
+
+        private void NumeAdd_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private int GetSelectedDropdownValueIndex(ComboBox dropdown)
+        {
+            return dropdown.SelectedIndex;
+        }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+            StergeAngajat();
         }
     }
 }

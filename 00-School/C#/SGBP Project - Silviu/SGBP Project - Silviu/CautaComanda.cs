@@ -59,15 +59,15 @@ namespace SGBP_Project___Silviu
 
         void SetupDatePicker()
         {
-            dateTimePicker1.MaxDate = DateTime.Now;
-            dateTimePicker1.MinDate = new DateTime(2000, 1, 1);
+            dateTimePicker1.MaxDate = DateTime.Now.AddDays(3);
+            dateTimePicker1.MinDate = new DateTime(1990, 1, 1);
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.CustomFormat = "yyyy-MM-dd HH:mm";
         }
 
         void DeterminaNrClienti()
         {
-            string sql = "select count(codClient) from tClienti";
+            string sql = "select count(codClient) from Pachete.tClienti";
             using (SqlCommand cmd = new SqlCommand(sql, Global.con))
             {
                 Global.con.Open();
