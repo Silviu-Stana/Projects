@@ -1,0 +1,214 @@
+--IF ELSE
+declare
+  a int:=10;
+  b int:=20;
+begin
+  if a>b 
+    then dbms_output.put_line('a>b');
+    else dbms_output.put_line('b>a');
+  end if;
+end;  
+
+--Daca foloseam int, facea impartire fara virgula
+DECLARE
+a NUMBER := 5; 
+b NUMBER := 7; 
+x NUMBER; 
+BEGIN
+--a<>0  inseamna a!=0
+IF (a<>0) THEN
+x := -b/a;
+DBMS_OUTPUT.PUT_LINE(' x = ' || TO_CHAR(x));
+ELSE
+     IF (b<>0) THEN
+DBMS_OUTPUT.PUT_LINE('Fara solutie');
+ELSE
+DBMS_OUTPUT.PUT_LINE('Nedeterminare');
+END IF;
+END IF;
+END;
+
+
+
+--WHILE
+DECLARE
+    S int:=0;
+    i int:=0;
+
+BEGIN
+    WHILE S<100
+        LOOP
+        i:=i+1;
+        S:=S+i;
+        DBMS_OUTPUT.PUT_LINE('S='|| S || ' ' || 'i=' || i);
+        END LOOP;
+END;
+
+
+
+--SELECT AND SELECT INTO
+SELECT FIRST_NAME, EMPLOYEE_ID from OEHR_EMPLOYEES order by EMPLOYEE_ID;
+
+
+declare 
+FirstName   OEHR_EMPLOYEES.FIRST_NAME%type;
+i NUMBER := 100;
+
+BEGIN 
+
+LOOP
+    SELECT FIRST_NAME INTO FirstName from OEHR_EMPLOYEES WHERE EMPLOYEE_ID=i;
+    DBMS_OUTPUT.PUT_LINE(FirstName);
+
+    i := i+1;
+
+EXIT WHEN i=150;
+END LOOP;
+
+end;
+
+
+--GOTO
+DECLARE
+S int:=0;
+i int:=1;
+BEGIN
+<<start1>>
+    i:=i+1;
+    S:=S+i;
+    DBMS_OUTPUT.PUT_LINE('S=' || S || ' ' || 'i=' || i);
+
+    if S>100 then goto stop1;
+    end if;
+    goto start1;
+<<stop1>>
+
+    DBMS_OUTPUT.PUT_LINE('S=' || S || ' ' || 'i=' || i);
+END;
+
+
+
+--LOOP
+DECLARE
+    S int:=0;
+    i int;
+BEGIN
+    FOR i in 1..30
+        LOOP
+        S:=S+i;
+        DBMS_OUTPUT.PUT_LINE('S='||S||' '||'i='||i);
+        END LOOP;
+END;
+
+--GOTO2
+DECLARE
+S int:=0;
+i int:=1;
+BEGIN
+<<start1>>
+    i:=i+1;
+    S:=S+i;
+    DBMS_OUTPUT.PUT_LINE('S=' || S || ' ' || 'i=' || i);
+
+    if S>100 then goto stop1;
+    end if;
+    goto start1;
+<<stop1>>
+
+    DBMS_OUTPUT.PUT_LINE('S=' || S || ' ' || 'i=' || i);
+END;
+
+
+--FUNCTIE
+CREATE OR REPLACE FUNCTION nrAngajati(departament in OEHR_EMPLOYEES.DEPARTMENT_ID%type)
+RETURN int
+IS
+    nr int;
+BEGIN
+    SELECT COUNT(*) INTO nr
+    FROM OEHR_EMPLOYEES
+    WHERE DEPARTMENT_ID=departament;
+
+    RETURN nr;
+END;
+
+
+--APEL FUNCTIE
+BEGIN
+DBMS_OUTPUT.PUT_LINE(nrAngajati(50));
+END;
+
+--PROCEDURA
+CREATE OR REPLACE PROCEDURE statisticaLimitaCredit
+    (codCountry in OEHR_CUSTOMERS.COUNTRY_ID%type,
+    minCreditLimit out OEHR_CUSTOMERS.CREDIT_LIMIT%type,
+    maxCreditLimit out OEHR_CUSTOMERS.CREDIT_LIMIT%type)
+is
+BEGIN
+    SELECT MIN(CREDIT_LIMIT), MAX(CREDIT_LIMIT) into minCreditLimit, maxCreditLimit
+    FROM OEHR_CUSTOMERS;
+END;
+
+
+DECLARE
+    codCountry OEHR_CUSTOMERS.COUNTRY_ID%TYPE := 'US';
+    minCreditLimit OEHR_CUSTOMERS.CREDIT_LIMIT%TYPE;
+    maxCreditLimit OEHR_CUSTOMERS.CREDIT_LIMIT%TYPE;
+
+BEGIN
+    statisticaLimitaCredit(codCountry, minCreditLimit, maxCreditLimit);
+    dbms_output.put_line('limita credit minima = ' || minCreditLimit);
+    dbms_output.put_line('limita credit maxima = ' || maxCreditLimit);
+END;
+
+
+
+
+
+--%ROWTYPE, rand record
+DECLARE
+    employeeRecord OEHR_EMPLOYEES%rowtype; --variabila care tine 1 rand intreg
+    employeeId NUMBER := 101;
+
+BEGIN
+    SELECT *
+    INTO employeeRecord
+    FROM OEHR_EMPLOYEES
+    WHERE EMPLOYEE_ID=employeeId;
+
+    --Accesez coloane individuale din Record
+    DBMS_OUTPUT.PUT_LINE('Nume: ' || employeeRecord.FIRST_NAME || ' ' || employeeRecord.LAST_NAME);
+    DBMS_OUTPUT.PUT_LINE('Data angajare: ' || TO_CHAR(employeeRecord.HIRE_DATE,'YYYY-MM-DD'));
+END;
+
+
+
+
+
+
+
+CREATE SEQUENCE SEQ_ID START WITH 1 INCREMENT BY 1 NOCACHE NOCYCLE;
+
+CREATE OR REPLACE TRIGGER numeEronat
+    BEFORE INSERT OR UPDATE ON OEHR_EMPLOYEES FOR EACH ROW
+DECLARE
+    numeError EXCEPTION;
+BEGIN
+    IF LENGTH(:NEW.FIRST_NAME)<3
+    THEN RAISE numeError;
+    END IF;
+
+    IF LENGTH(:NEW.LAST_NAME)<3
+    THEN RAISE numeError;
+    END IF;
+
+    IF INSERTING AND :NEW.EMPLOYEE_ID IS NULL
+    THEN :NEW.EMPLOYEE_ID:=seq_id.nextval;
+    END IF;
+--DBMS_OUTPUT doar scrie, dar nu opreste executia. deoarece avem eroare, vrem sa si prevenim inserarea
+EXCEPTION WHEN numeError THEN RAISE_APPLICATION_ERROR(-20001,'Eroare: Numele inserat este prea scurt. Trebuie sa aiba cel putin 3 caractere.');
+END;
+
+
+--TEST PENTRU TRIGGER (test cu eroare daca numele este prea scurt!)
+--INSERT INTO OEHR_EMPLOYEES (FIRST_NAME, LAST_NAME, EMAIL) VALUES ('Alice', 'e', 'alice@smith.com');
