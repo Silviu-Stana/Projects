@@ -1,0 +1,227 @@
+CREATE TABLE Angajati
+(
+    codAngajat number PRIMARY KEY,
+    nume varchar2(40) NOT NULL,
+    localitate varchar2(20) NOT NULL
+);
+
+CREATE TABLE ProduseVanduteAngajati
+(
+    codAngajat number REFERENCES Angajati(codAngajat) NOT NULL,
+    codVanzare number REFERENCES ProduseVandute(codVanzare) NOT NULL,
+    CONSTRAINT pk_produseVanduteAngajati PRIMARY KEY(codAngajat,codVanzare)
+);
+
+CREATE TABLE ProduseVandute
+(
+    codVanzare number PRIMARY KEY,
+    numeProdus varchar2(30) NOT NULL,
+    pretProdus decimal(10,2) NOT NULL,
+    ore number NOT NULL
+);
+
+ALTER TABLE ProduseVandute RENAME COLUMN cantitate TO ore;
+
+ALTER TABLE ProduseVandute
+MODIFY pretProdus NUMERIC(10,2);
+
+ALTER TABLE ProduseVandute
+ADD CONSTRAINT pretMinim CHECK(pretProdus>0);
+
+CREATE SEQUENCE seq_codAngajat START WITH 1 INCREMENT BY 1 CACHE 20;
+CREATE SEQUENCE seq_codVanzare START WITH 1 INCREMENT BY 1 CACHE 20;
+
+--Acest trigger ne va ajuta sa facem AUTO INCREMENT pentru cod, ca sa simplificam inserarea
+CREATE OR REPLACE TRIGGER trigger_codAngajat
+BEFORE INSERT ON Angajati
+FOR EACH ROW
+BEGIN
+    :NEW.codAngajat := seq_codAngajat.NEXTVAL;
+END;
+--alternativ, puteam si sa adaug NEXTVAL direct in insertie:
+--insert into Angajati(marca, nume, cod_functie, cod_Dep) values (seq_codAngajat.NEXTVAL,'Nume','Localitate');
+
+CREATE OR REPLACE TRIGGER trigger_codVanzare
+BEFORE INSERT ON ProduseVandute
+FOR EACH ROW
+BEGIN
+    :NEW.codVanzare := seq_codVanzare.NEXTVAL;
+END;
+
+
+
+--not allowed in APEX to insert multiple values at the same time, so we have to do it 1 line at a time)
+INSERT ALL
+    INTO Angajati (nume, localitate) VALUES ('Ana', 'Pitesti')
+    INTO Angajati (nume, localitate) VALUES ('Ion', 'Bucuresti')
+    INTO Angajati (nume, localitate) VALUES ('Maria', 'Cluj')
+    INTO Angajati (nume, localitate) VALUES ('George', 'Pitesti')
+    INTO Angajati (nume, localitate) VALUES ('Elena', 'Bucuresti')
+    INTO Angajati (nume, localitate) VALUES ('Mihai', 'Cluj')
+    INTO Angajati (nume, localitate) VALUES ('Ioana', 'Pitesti')
+    INTO Angajati (nume, localitate) VALUES ('Andrei', 'Bucuresti')
+    INTO Angajati (nume, localitate) VALUES ('Adriana', 'Cluj')
+    INTO Angajati (nume, localitate) VALUES ('Vlad', 'Pitesti')
+    INTO Angajati (nume, localitate) VALUES ('Cristina', 'Bucuresti')
+    INTO Angajati (nume, localitate) VALUES ('Stefan', 'Cluj')
+    INTO Angajati (nume, localitate) VALUES ('Laura', 'Pitesti')
+    INTO Angajati (nume, localitate) VALUES ('Radu', 'Bucuresti')
+    INTO Angajati (nume, localitate) VALUES ('Florentina', 'Cluj')
+    INTO Angajati (nume, localitate) VALUES ('Diana', 'Pitesti')
+    INTO Angajati (nume, localitate) VALUES ('Alexandru', 'Bucuresti')
+    INTO Angajati (nume, localitate) VALUES ('Simona', 'Cluj')
+    INTO Angajati (nume, localitate) VALUES ('Bogdan', 'Pitesti')
+    INTO Angajati (nume, localitate) VALUES ('Camelia', 'Bucuresti')
+
+BEGIN
+  INSERT INTO ProduseVandute (numeProdus, pretProdus, ore) VALUES ('SEO Service', 500.00, 10);
+  INSERT INTO ProduseVandute (numeProdus, pretProdus, ore) VALUES ('Website Development', 1500.00, 5);
+  INSERT INTO ProduseVandute (numeProdus, pretProdus, ore) VALUES ('Automation Service', 1200.00, 7);
+  INSERT INTO ProduseVandute (numeProdus, pretProdus, ore) VALUES ('SEO Service', 450.00, 12);
+  INSERT INTO ProduseVandute (numeProdus, pretProdus, ore) VALUES ('Website Development', 2000.00, 4);
+  INSERT INTO ProduseVandute (numeProdus, pretProdus, ore) VALUES ('Automation Service', 1100.00, 9);
+  INSERT INTO ProduseVandute (numeProdus, pretProdus, ore) VALUES ('SEO Service', 550.00, 8);
+  INSERT INTO ProduseVandute (numeProdus, pretProdus, ore) VALUES ('Website Development', 1300.00, 6);
+  INSERT INTO ProduseVandute (numeProdus, pretProdus, ore) VALUES ('Automation Service', 1000.00, 11);
+  INSERT INTO ProduseVandute (numeProdus, pretProdus, ore) VALUES ('SEO Service', 480.00, 15);
+  INSERT INTO ProduseVandute (numeProdus, pretProdus, ore) VALUES ('Website Development', 1600.00, 3);
+  INSERT INTO ProduseVandute (numeProdus, pretProdus, ore) VALUES ('Automation Service', 1050.00, 10);
+  INSERT INTO ProduseVandute (numeProdus, pretProdus, ore) VALUES ('SEO Service', 500.00, 13);
+  INSERT INTO ProduseVandute (numeProdus, pretProdus, ore) VALUES ('Website Development', 1400.00, 7);
+  INSERT INTO ProduseVandute (numeProdus, pretProdus, ore) VALUES ('Automation Service', 1150.00, 8);
+  INSERT INTO ProduseVandute (numeProdus, pretProdus, ore) VALUES ('SEO Service', 530.00, 14);
+  INSERT INTO ProduseVandute (numeProdus, pretProdus, ore) VALUES ('Website Development', 1550.00, 5);
+  INSERT INTO ProduseVandute (numeProdus, pretProdus, ore) VALUES ('Automation Service', 1200.00, 6);
+  INSERT INTO ProduseVandute (numeProdus, pretProdus, ore) VALUES ('SEO Service', 460.00, 18);
+  INSERT INTO ProduseVandute (numeProdus, pretProdus, ore) VALUES ('Website Development', 1700.00, 4);
+END;
+
+BEGIN
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (1, 1); -- Ana, SEO Service
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (2, 2); -- Ion, Website Development
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (3, 3); -- Maria, Automation Service
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (4, 4); -- George, SEO Service
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (5, 5); -- Elena, Website Development
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (6, 6); -- Mihai, Automation Service
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (7, 7); -- Ioana, SEO Service
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (8, 8); -- Andrei, Website Development
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (9, 9); -- Adriana, Automation Service
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (10, 10); -- Vlad, SEO Service
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (11, 11); -- Cristina, Website Development
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (12, 12); -- Stefan, Automation Service
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (13, 13); -- Laura, SEO Service
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (14, 14); -- Radu, Website Development
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (15, 15); -- Florentina, Automation Service
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (16, 16); -- Diana, SEO Service
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (17, 17); -- Alexandru, Website Development
+  --INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (18, 18); -- Simona a fost stearsa
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (19, 19); -- Bogdan, SEO Service
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (20, 20); -- Camelia, Website Development
+
+  --Mai multi angajati pot participa la o vanzare (si sa primeasca credit pentru serviciul vandut)
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (1, 3);  -- Ana, Automation Service
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (2, 4);  -- Ion, SEO Service
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (3, 5);  -- Maria, Website Development
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (4, 6);  -- George, Automation Service
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (5, 7);  -- Elena, SEO Service
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (6, 8);  -- Mihai, Website Development
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (7, 9);  -- Ioana, Automation Service
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (8, 10); -- Andrei, SEO Service
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (9, 11); -- Adriana, Website Development
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (10, 12); -- Vlad, Automation Service
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (11, 13); -- Cristina, SEO Service
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (12, 14); -- Stefan, Website Development
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (13, 15); -- Laura, Automation Service
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (14, 16); -- Radu, SEO Service
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (15, 17); -- Florentina, Website Development
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (16, 18); -- Diana, Automation Service
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (17, 19); -- Alexandru, SEO Service
+  --INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (18, 20); -- Simona a fost stearsa
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (19, 1);  -- Bogdan, SEO Service
+  INSERT INTO ProduseVanduteAngajati (codAngajat, codVanzare) VALUES (20, 2);  -- Camelia, Website Development
+END;
+
+UPDATE Angajati SET localitate='Stefanesti' where nume='Bogdan' AND localitate='Pitesti';
+DELETE FROM Angajati WHERE nume='Simona' AND localitate='Cluj';
+
+--Select 1 tabel
+SELECT * FROM Angajati;
+SELECT * FROM ProduseVandute;
+SELECT * FROM ProduseVanduteAngajati;
+
+--Select 3 tabele
+--Ce servicii a vandut fiecare angajat?
+SELECT A.nume, P.numeProdus from Angajati A
+INNER JOIN ProduseVanduteAngajati B
+ON A.codAngajat=B.codAngajat
+INNER JOIN ProduseVandute P
+ON B.codVanzare=P.codVanzare
+--Ordonat
+ORDER BY A.nume;
+
+
+--WHERE
+SELECT nume
+FROM Angajati
+WHERE nume LIKE 'A%';
+
+--Cate din fiecare (serviciu) au fost Vandute?
+--GROUP BY
+SELECT numeProdus, COUNT(numeProdus)
+FROM ProduseVandute
+GROUP BY numeProdus;
+
+--VIEW
+CREATE VIEW nrServiciiVandute AS
+    SELECT numeProdus, COUNT(numeProdus) AS numarVandute
+    FROM ProduseVandute
+    GROUP BY numeProdus;
+
+SELECT * FROM nrServiciiVandute;
+
+
+--HAVING (arata doar vanzarile care au o rata pe ora>500)
+SELECT A.codAngajat, A.nume, SUM(P.pretProdus / P.ore) AS "Pret pe Ora"
+FROM Angajati A
+JOIN ProduseVanduteAngajati VA ON A.codAngajat = VA.codAngajat
+JOIN ProduseVandute P ON VA.codVanzare = P.codVanzare
+GROUP BY A.codAngajat, A.nume
+HAVING SUM(p.pretProdus / p.ore) > 500;
+
+
+--SUBINTEROGARE: profit total facut de fiecare angajat
+SELECT A.nume, (SELECT SUM(PV.pretProdus)
+                                FROM ProduseVandute PV
+                                INNER JOIN ProduseVanduteAngajati PVA ON PV.codVanzare=PVA.codVanzare
+                                WHERE PVA.codAngajat=A.codAngajat
+                              ) AS "Profit Total Pentru Angajat"
+FROM Angajati A;
+
+
+--SELECT * from ProduseVandute
+--SUBINTEROGARE: doar angajatii care au vandut mai mult de 15 ore
+SELECT nume, ore FROM Angajati
+WHERE codAngajat IN (
+    SELECT codAngajat
+    FROM ProduseVanduteAngajati
+    WHERE codVanzare IN(
+          SELECT codVanzare
+          FROM ProduseVandute
+          WHERE ore>15
+    )
+);
+
+
+
+--SUBINTEROGARE: gaseste numele angajatului care a vandut cel mai scump produs
+SELECT nume
+FROM Angajati
+WHERE codAngajat IN (
+    SELECT codAngajat
+    FROM ProduseVanduteAngajati
+    WHERE codVanzare =(
+        SELECT codVanzare
+        FROM ProduseVandute
+        WHERE pretProdus = (SELECT MAX(pretProdus) FROM ProduseVandute)
+    )
+);

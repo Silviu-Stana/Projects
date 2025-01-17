@@ -1,0 +1,222 @@
+--IN APEX TABELELE SUNT PREFIXATE DE OEHR_
+--IN LIVE SQL DE HR.
+
+--COMANDA SELECT
+
+--ATRIBUTELE COMENZII SELECT 
+select * from employees;
+
+select first_name, last_name from employees;
+
+--aliasuri pentru coloane
+select first_name "prenume", last_name "nume" from employees;
+select first_name prenume, last_name nume from employees;
+select first_name prenume, last_name "NUME ANGAJAT" from employees;
+
+--opearatorul de concatenare
+select last_name || ' ' || first_name "Numele si prenumele" from employees;
+
+--OPERATORI ARITMETICI +, -, /, :
+select last_name || first_name "Numele si prenumele", salary Salariu, salary*0.1 impozit from employees;
+
+select salary from employees;
+
+
+--PREVENIREA SELECTARII INREGISTRARILOR DUPLICAT
+select salary from employees;
+select distinct salary from employees;
+select distinct department_id from employees;
+
+--CLAUZA order by
+select * from employees order by salary asc;  //asc optional
+select * from employees order by salary, last_name;
+select * from employees order by salary desc;
+
+--CLAUZA WHERE
+--OPERATORI RELATIONALI =,>,<,<=,>=,<>,!=
+select * from employees where salary>10000;
+select * from employees where hire_date > '01-JAN-05';
+
+--CONDITII MULTIPLE DE INTEROGARE and, or
+select * from employees where salary>10000 and salary<15000;
+
+--OPERATORI sql: BETWEEN...AND..., IN, LIKE, IS NULL
+--NOT IN, NOT BETWEEN, NOT LIKE, IS NOT NULL
+select * from employees where salary between 10000 and 15000;
+
+select * from employees where salary IN (10000, 12000, 15000);
+
+select first_name, last_name from employees where upper(last_name) like 'A%';
+
+select first_name, last_name from employees where upper(last_name) like '_L%';
+
+select first_name, last_name from employees where upper(last_name) like 'L/_%' escape '/';  
+
+select * from employees where department_id IS NULL;
+
+--CONVERTIREA VALORILOR NULL CU AJUTORUL FUNCTIEI NVL
+SELECT first_name, last_name, NVL(commission_pct, 0)*salary prima FROM employees;
+
+--pseudo-coloana ROWNUM
+SELECT ROWNUM, last_name, first_name,salary from employees order by salary desc;
+
+select last_name, first_name,salary from employees where rownum<=5 order by salary desc;
+
+--clauza FETCH
+--Sa se afiseze primii 5 angajati cu salariul cel mai mare
+select last_name, first_name,salary from employees 
+order by salary desc
+fetch next 5 rows only;
+
+--se sare peste primii 10 angajati cu salariul cel mai mare si se afiseaza urmatorii 5
+select last_name, first_name,salary from employees 
+order by salary desc
+offset 10 rows
+fetch next 5 rows only;
+
+--cu procent
+--Sa se afiseze primii 5% angajati cu salariul cel mai mare
+select last_name, first_name,salary from employees 
+order by salary desc
+fetch next 5 percent only;
+
+--Sa se afiseze angajatii cu cele mai mari 5 salarii
+select last_name, first_name,salary from employees 
+order by salary desc
+fetch next 5 rows only with ties;
+
+--FUNCTII REFERITOARE LA MAI MULTE INREGISTRARI (FUNCTII TOTALIZATOARE, FUNCTII DE GRUP): count, max, min, sum, avg, ....
+select count(*) "Numar angajati" from employees where hire_date>'01-JAN-05';
+
+select sum(salary) Salarii from employees;
+
+
+--CLAUZA GROUP BY
+--cati angajati sunt in fiecare departament
+select count(*) "numar angajati", department_id from employees group by department_id;
+
+select sum(salary) "salariu", department_id from employees group by department_id;
+
+select min(salary) "salariu", department_id from employees group by department_id;
+
+select min(salary) "salariu minim", max(salary) "salariul maxim", count(*) "nr angajati", department_id 
+from employees 
+group by department_id
+order by department_id;
+
+--clauza HAVING
+select min(salary), department_id from employees 
+group by department_id
+having min(salary) > 10000;
+
+
+--NVL
+select first_name, commission_pct, NVL(commission_pct,0.8)
+from employees
+where employee_id between 140 and 150
+
+--NVL2
+select first_name, commission_pct, NVL2(commission_pct,'ARE','NU ARE')
+from employees where employee_id between 140 and 150
+
+--NULLIF
+select employee_id, first_name, last_name, NULLIF(length(first_name),length(last_name))
+from employees where employee_id between 103 and 142
+
+
+--jonctiune de egalitate
+select dep.department_name, emp.last_name
+from  departments dep 
+inner join  employees emp
+on dep.department_id=emp.department_id
+where department_name='Treasury';
+
+--JONCTIUNI DE EGALITATE
+--varianta 1
+select dep.department_name, emp.last_name
+from  departments dep 
+inner join  employees emp
+on dep.department_id=emp.department_id
+--varianta 2
+select dep.department_name, emp.last_name, emp.first_name
+from  departments dep inner join  employees emp 
+using (department_id)
+--varianta 3
+select dep.department_name, emp.last_name, emp.first_name
+from  departments dep,  employees emp 
+where dep.department_id=emp.department_id
+
+--JONCTIUNI LA STANGA
+--varianta 1
+select dep.department_name, emp.last_name
+from  departments dep 
+left join  employees emp
+on dep.department_id=emp.department_id
+--varianta 2
+select dep.department_name, emp.last_name
+from  departments dep 
+left join  employees emp
+using (department_id)
+--varianta 3
+select dep.department_name, emp.last_name, emp.first_name
+from  departments dep,  employees emp 
+where dep.department_id=emp.department_id(+)
+
+--JONCTIUNI LA DREAPTA
+--varianta 1
+select dep.department_name, emp.last_name
+from  departments dep 
+right join  employees emp
+on dep.department_id=emp.department_id
+--varianta 2
+select dep.department_name, emp.last_name
+from  departments dep 
+right join  employees emp
+using (department_id)
+--varianta 3
+select dep.department_name, emp.last_name, emp.first_name
+from  departments dep,  employees emp 
+where dep.department_id(+)=emp.department_id
+
+--JONCTIUNE COMPLETA
+--varianta 1
+select dep.department_name, emp.last_name
+from  departments dep 
+full join  employees emp
+on dep.department_id=emp.department_id
+--varianta 2
+select dep.department_name, emp.last_name
+from  departments dep 
+full join  employees emp
+using (department_id)
+--varianta 3
+--UNION elimina inregistrarile duplicat
+select dep.department_name, emp.last_name, emp.first_name
+from  departments dep,  employees emp 
+where dep.department_id (+)= emp.department_id 
+union
+select dep.department_name, emp.last_name, emp.first_name
+from  departments dep,  employees emp 
+where dep.department_id = emp.department_id(+)
+
+
+--AUTOJONCTIUNI
+select emp1.last_name angajat, emp2.last_name manager
+from employees emp1, employees emp2
+where emp1.manager_id=emp2.employees_id
+
+--OPERATORI PENTRU MULTIMI
+--UNION(NU APAR INREGISTRARILE DUPLICAT), UNION ALL, INTERSECT, MINUS
+
+
+--OPERATORI ORACLE: EXISTS, NOT EXISTS, ANY, ALL  
+--sa se afiseze denumirea departamentelor in care nu exista angajati
+--SUBINTEROGARE CORELATA
+select department_name from  departments dep
+where not exists
+(select 1 from  employees emp where emp.department_id=dep.department_id)
+
+--sa se afiseze denumirea departamentelor care au angajati
+select department_name from  departments dep
+where exists
+(select 1 from  employees emp where emp.department_id=dep.department_id)
