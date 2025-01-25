@@ -12,7 +12,7 @@ interface CodeEditorProps {
       onChange(value: string): void;
 }
 
-const CodeEditor: React.FC<CodeEditorProps> = ({ initialValue = '', onChange }) => {
+const CodeEditor: React.FC<CodeEditorProps> = ({ initialValue, onChange }) => {
       const editorRef = useRef<any>();
 
       const onEditorDidMount: EditorDidMount = (getValue, monacoEditor) => {
@@ -74,7 +74,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({ initialValue = '', onChange }) 
                               scrollBeyondLastLine: true,
                               automaticLayout: true,
                         }}
-                  ></MonacoEditor>
+                  />
             </div>
       );
 };

@@ -6,7 +6,7 @@ interface PreviewProps {
 
 const html = `
       <html>
-      <head>
+      <head></head>
       <body>
             <div id="root"></div>
             <script>
@@ -19,11 +19,10 @@ const html = `
                               root.innerHTML = '<div style="color: red;"><h4>Runtime Error</h4>' + err + '<div>'
                               throw err;
                         }
-                          
                   },false);
             </script>
       </body>
-      </head>
+      
       </html>
 `;
 
