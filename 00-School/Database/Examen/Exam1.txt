@@ -1,0 +1,83 @@
+tMuncitori (CodMuncitor, Nume, Atelier)
+tProduse (CodProdus, DenumireProdus, PretProdus, Stoc)
+tOperatii (CodOperatie, PretManopera, DurataNormata, #CodProdus)
+tProductie (IdInregistrare, Data, #CodMuncitor, #CodOperatie, NumarSemifabricatePrelucrate)
+
+1.
+CREATE TABLE tProductie (
+    IdInregistrare CHAR(10) NOT NULL PRIMARY KEY,
+    Data DATE,  -- Use DATE in Oracle for smalldatetime equivalent
+    CodMuncitor CHAR(10) CONSTRAINT fk_Munc REFERENCES tMuncitori(CodMuncitor),
+    CodOperatie CHAR(10) CONSTRAINT fk_Oper REFERENCES tOperatii(CodOperatii),
+    NumarSemifabricatePrelucrate INT CONSTRAINT ch_Fab CHECK (NumarSemifabricatePrelucrate BETWEEN 1 AND 100)
+);
+
+
+
+
+2.
+INSERT INTO tMuncitori (CodMuncitor, Nume, Atelier)
+VALUES ('M1', 'Stana', 'IT');
+
+3.
+UPDATE tOperatii
+SET PretManopera = PretManopera * 0.9
+WHERE DurataNormata > 60;
+
+
+4. Nr muncitori la nivel de Atelier
+SELECT COUNT(CodMuncitor) AS "Nr Muncitori", Atelier
+FROM tMuncitori
+GROUP BY Atelier;
+
+5.
+SELECT D.Atelier, C.CodProdus, C.DenumireProdus, B.CodOperatie, B.DenumireOperatie, A.Data, SUM(A.NumarSemifabricatePrelucrate) AS "Suma Totala"
+FROM tProductie A
+INNER JOIN tOperatii B ON A.CodOperatie = B.CodOperatie
+INNER JOIN tProduse C ON B.CodProdus = C.CodProdus
+INNER JOIN tMuncitori D ON A.CodMuncitor = D.CodMuncitor
+GROUP BY D.Atelier, C.CodProdus, C.DenumireProdus, B.CodOperatie, B.DenumireOperatie, A.Data;
+
+6. Produse cu pret Max
+SELECT CodProdus, DenumireProdus
+FROM tProduse
+WHERE PretProdus = (SELECT MAX(PretProdus) FROM tProduse);
+
+
+7. Muncitori fara operatii
+SELECT B.CodMuncitor, B.Nume, B.Atelier, A.CodOperatie
+FROM tProductie A
+RIGHT JOIN tMuncitori B ON A.CodMuncitor = B.CodMuncitor
+WHERE A.CodOperatie IS NULL;
+
+
+8. Add column
+ALTER TABLE tProduse
+ADD Stoc INT DEFAULT 0;
+
+9. Trigger to Increase Stock:
+CREATE OR REPLACE TRIGGER tr_CresteStoc
+AFTER INSERT ON tProductie
+FOR EACH ROW
+BEGIN
+    IF :NEW.CodOperatie = 100 THEN
+        UPDATE tProduse
+        SET Stoc = Stoc + :NEW.NumarSemifabricatePrelucrate
+        WHERE CodProdus = :NEW.CodOperatie;
+    END IF;
+END;
+
+
+10. Creating a Function:
+CREATE OR REPLACE FUNCTION fc_Durata (codProdus INT)
+RETURN INT
+IS
+    durata INT := 0;  -- Initialize to 0 to avoid NULL issues
+BEGIN
+    SELECT COALESCE(SUM(DurataNormata), 0)  -- Avoid NULL return in case of no match
+    INTO durata
+    FROM tOperatii
+    WHERE CodProdus = codProdus;  -- Use parameter correctly
+
+    RETURN durata;
+END;

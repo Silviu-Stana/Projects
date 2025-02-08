@@ -1,0 +1,56 @@
+tProductie (IdInregistrare, Data, #CodMuncitor, #CodOperatie, NumarSemifabricatePrelucrate)
+tMuncitori (CodMuncitor, Nume, Atelier)
+tOperatii (CodOperatie, PretManopera, DurataNormata, #CodProdus)
+tProduse (CodProdus, DenumireProdus, PretProdus, Stoc)
+
+
+-- 1. Create table tProductie with constraints
+CREATE TABLE tProductie (
+    IdInregistrare CHAR(10),
+    Data DATE,
+    CodMuncitor VARCHAR2(10),
+    CodOperatie VARCHAR2(10),
+    NumarSemifabricatePrelucrate NUMBER(5) NOT NULL,
+    CONSTRAINT pk_id PRIMARY KEY (IdInregistrare),
+    CONSTRAINT fk_munc FOREIGN KEY (CodMuncitor) REFERENCES tMuncitori(CodMuncitor),
+    CONSTRAINT fk_oper FOREIGN KEY (CodOperatie) REFERENCES tOperatii(CodOperatie),
+    CONSTRAINT chk_nrfab CHECK (NumarSemifabricatePrelucrate BETWEEN 1 AND 100)
+);
+
+-- 2. Insert into tMuncitori
+INSERT INTO tMuncitori (CodMuncitor, Nume, Atelier)
+VALUES ('M1', 'Vasile', 'Metalurgie');
+
+-- 3. Update tOperatii
+UPDATE tOperatii
+SET PretManopera = PretManopera * 0.9
+WHERE DurataNormata > 60;
+
+-- 4. Count workers per Atelier
+SELECT Atelier, COUNT(*) AS Nr_Muncitori
+FROM tMuncitori
+GROUP BY Atelier;
+
+-- 5. Select with joins and grouping
+SELECT D.Atelier, C.CodProdus, C.DenumireProdus, B.CodOperatie, B.DenumireOperatie, A.Data, SUM(A.NumarSemifabricatePrelucrate)
+FROM tProductie A
+JOIN tOperatii B ON A.CodOperatie = B.CodOperatie
+JOIN tProduse C ON B.CodProdus = C.CodProdus
+JOIN tMuncitori D ON A.CodMuncitor = D.CodMuncitor
+GROUP BY D.Atelier, C.CodProdus, C.DenumireProdus, B.CodOperatie, B.DenumireOperatie, A.Data;
+
+-- 6. Get products with the maximum price
+SELECT CodProdus, DenumireProdus, PretProdus
+FROM tProduse P
+WHERE PretProdus = (SELECT MAX(P2.PretProdus)
+                    FROM tProduse P2
+                    WHERE P2.DenumireProdus = P.DenumireProdus);
+
+-- 7. Get workers who have no operations in production
+SELECT C.CodMuncitor, C.Nume, C.Atelier
+FROM tMuncitori C
+LEFT JOIN tProductie A ON A.CodMuncitor = C.CodMuncitor
+WHERE A.CodOperatie IS NULL;
+
+-- 8. Alter table to add column with default value
+ALTER TABLE tProduse ADD Stoc NUMBER DEFAULT 0;

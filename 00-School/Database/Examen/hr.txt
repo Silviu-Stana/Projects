@@ -1,0 +1,113 @@
+select * from oehr_employees;
+
+--PREVENIREA SELECTARII INREGISTRARILOR DUPLICAT
+select salary from oehr_employees;
+select distinct salary from oehr_employees;
+select distinct department_id from oehr_employees;
+
+--OPERATORI sql: BETWEEN...AND..., IN, LIKE, IS NULL
+--NOT IN, NOT BETWEEN, NOT LIKE, IS NOT NULL
+select * from oehr_employees where salary between 10000 and 15000;
+
+select * from oehr_employees where salary IN (10000, 12000, 15000);
+
+select first_name, last_name from oehr_employees where upper(last_name) like 'A%';
+select first_name, last_name from oehr_employees where upper(last_name) like '_L%';
+select * from oehr_employees where department_id IS NULL;
+
+--CONVERTIREA VALORILOR NULL CU AJUTORUL FUNCTIEI NVL
+SELECT first_name, last_name, NVL(commission_pct, 0)*salary prima FROM oehr_employees;
+
+--pseudo-coloana ROWNUM
+SELECT ROWNUM, last_name, first_name,salary from oehr_employees order by salary desc;
+select last_name, first_name,salary from oehr_employees where rownum<=5 order by salary desc;
+
+--clauza FETCH, skip 10 max, print next 5
+select last_name, first_name,salary from oehr_employees 
+order by salary desc
+offset 10 rows
+fetch next 5 rows only;
+
+--CLAUZA GROUP BY
+--cati angajati sunt in fiecare departament
+select count(*) "numar angajati", department_id from oehr_employees group by department_id;
+
+select sum(salary) "salariu", department_id from oehr_employees group by department_id;
+
+select min(salary) "salariu", department_id from oehr_employees group by department_id;
+
+select min(salary) "salariu minim", max(salary) "salariul maxim", count(*) "nr angajati", department_id 
+from oehr_employees 
+group by department_id
+order by department_id;
+
+--clauza HAVING
+select min(salary), department_id from oehr_employees 
+group by department_id
+having min(salary) > 10000;
+
+
+--NVL
+select first_name, commission_pct, NVL(commission_pct,0.8)
+from oehr_employees
+where employee_id between 140 and 150
+
+--NVL2
+select first_name, commission_pct, NVL2(commission_pct,'ARE','NU ARE')
+from oehr_employees where employee_id between 140 and 150
+
+--NULLIF
+select employee_id, first_name, last_name, NULLIF(length(first_name),length(last_name))
+from oehr_employees where employee_id between 103 and 142
+
+
+--jonctiune de egalitate
+select dep.department_name, emp.last_name
+from  departments dep 
+inner join  oehr_employees emp
+on dep.department_id=emp.department_id
+where department_name='Treasury';
+
+--JONCTIUNI DE EGALITATE
+--varianta 1
+select dep.department_name, emp.last_name
+from  departments dep 
+inner join  oehr_employees emp
+on dep.department_id=emp.department_id
+
+--JONCTIUNI LA STANGA
+--varianta 1
+select dep.department_name, emp.last_name
+from  departments dep 
+left join  oehr_employees emp
+on dep.department_id=emp.department_id
+
+--JONCTIUNI LA DREAPTA
+--varianta 1
+select dep.department_name, emp.last_name
+from  departments dep 
+right join  oehr_employees emp
+on dep.department_id=emp.department_id
+
+--JONCTIUNE COMPLETA
+--varianta 1
+select dep.department_name, emp.last_name
+from  departments dep 
+full join  oehr_employees emp
+on dep.department_id=emp.department_id
+
+
+--SELFJOIN
+select e.last_name Employee, m.last_name "Their Manager"
+from oehr_employees e, oehr_employees m
+where e.manager_id=m.employee_id;
+
+--OPERATORI PENTRU MULTIMI
+--UNION(NU APAR INREGISTRARILE DUPLICAT), UNION ALL, INTERSECT, MINUS
+
+
+--EXISTS, NOT EXISTS, ANY, ALL  
+--show dep WITHOUT employees
+select department_name from  departments dep
+where not exists
+(select 1 from  oehr_employees emp where emp.department_id=dep.department_id)

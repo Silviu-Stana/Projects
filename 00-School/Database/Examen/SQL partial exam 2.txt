@@ -1,0 +1,73 @@
+tDetaliiContracte (codProdus, nrContract)
+tContracte (nrContract, data, #codClient)
+tProduse (codProdus, denProd, pret)
+tClienti (codClient, DenClient)
+
+
+-- 1. Sum contracts per product
+SELECT codProdus, SUM(nrContract)
+FROM tDetaliiContracte
+GROUP BY codProdus;
+
+-- 2. Find contracts with a specific product
+SELECT A.codClient, B.codProdus
+FROM tContracte A
+INNER JOIN tDetaliiContracte B ON A.nrContract = B.nrContract
+WHERE B.codProdus = 'P1';
+
+-- 3. Sum quantity per client and product, ordered by quantity descending
+SELECT A.codClient, B.codProdus, SUM(B.cantitate) AS Cantitate
+FROM tContracte A
+INNER JOIN tDetaliiContracte B ON A.nrContract = B.nrContract
+GROUP BY A.codClient, B.codProdus
+ORDER BY Cantitate DESC;
+
+-- 4. Products that have no contract details
+SELECT A.codProdus
+FROM tProduse A 
+LEFT JOIN tDetaliiContracte B ON A.codProdus = B.codProdus
+WHERE B.codProdus IS NULL;
+
+-- 5. Contract details with total value per product
+SELECT A.DenClient, B.nrContract, D.DenProdus, C.Cant, D.Pret, (C.Cant * D.Pret) AS Valoare
+FROM tClienti A
+INNER JOIN tContracte B ON A.codClient = B.codClient
+INNER JOIN tDetaliiContracte C ON B.nrContract = C.nrContract
+INNER JOIN tProduse D ON C.codProdus = D.codProdus;
+
+-- 6. Total contract value per client
+SELECT A.DenClient, SUM(C.Cant * D.Pret) AS ValoareTotala
+FROM tClienti A
+INNER JOIN tContracte B ON A.codClient = B.codClient
+INNER JOIN tDetaliiContracte C ON B.nrContract = C.nrContract
+INNER JOIN tProduse D ON C.codProdus = D.codProdus
+GROUP BY A.DenClient;
+
+-- 7. Contracts that match the date of contract number '1000'
+SELECT A.codClient, A.nrContract, A.data
+FROM tContracte A
+WHERE A.data = (SELECT B.data
+                FROM tContracte B
+                WHERE B.nrContract = '1000');
+
+-- 8. Create table tContracte
+CREATE TABLE tContracte (
+    nrContract CHAR(10) NOT NULL,
+    data DATE DEFAULT SYSDATE,
+    codClient CHAR(10) NOT NULL,
+    CONSTRAINT pk_cont PRIMARY KEY (nrContract),
+    CONSTRAINT fk_cli FOREIGN KEY (codClient) REFERENCES tClienti(codClient)
+);
+
+-- 9. Insert a product
+INSERT INTO tProduse (codProdus, denProd, pret)
+VALUES ('P1', 'Hammer', 10);
+
+-- 10. Update product prices where the name starts with 'P'
+UPDATE tProduse
+SET pret = pret * 0.9
+WHERE denProd LIKE 'P%';
+
+-- 11. Delete a product by name
+DELETE FROM tProduse
+WHERE denProd = 'P1';

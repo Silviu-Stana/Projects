@@ -1,0 +1,65 @@
+tServicii (CodServiciu, DenServiciu, Tarif, Durata)
+tClienti (CodClient, NumeClient)
+tBonuri (nrBon, Data, #CodClient)
+tDetaliiBon (NrBon, #CodServiciu, Marca)
+tAngajati (marca, functia)
+
+
+-- 1. Max service price
+SELECT MAX(s.Tarif)
+FROM tServicii s;
+
+-- 2. Clients associated with employee '1001'
+SELECT c.NumeClient
+FROM tClienti c
+INNER JOIN tBonuri b ON c.CodClient = b.CodClient
+INNER JOIN tDetaliiBon d ON b.NrBon = d.NrBon 
+INNER JOIN tAngajati a ON d.Marca = a.marca
+WHERE a.marca = 1001;
+
+-- 3. Total service price per client
+SELECT c.NumeClient, SUM(s.Tarif) AS "total"
+FROM tClienti c
+INNER JOIN tBonuri b ON c.CodClient = b.CodClient
+INNER JOIN tDetaliiBon d ON b.NrBon = d.NrBon
+INNER JOIN tServicii s ON d.CodServiciu = s.CodServiciu
+GROUP BY c.NumeClient;
+
+-- 4. Count of bills per date
+SELECT b.Data, COUNT(b.NrBon)
+FROM tBonuri b
+GROUP BY b.Data;
+
+-- 5. Services not included in any bill
+SELECT s.DenServiciu
+FROM tServicii s
+WHERE s.CodServiciu NOT IN (SELECT d.CodServiciu FROM tDetaliiBon d);
+
+-- 6. Service details for a specific service code
+SELECT c.CodServiciu, c.DenServiciu, s.Tarif, s.Durata
+FROM tServicii c
+INNER JOIN tDetaliiBon d ON c.marca = d.marca
+INNER JOIN tServicii s ON d.CodServiciu = s.CodServiciu
+WHERE s.CodServiciu = 'S10'
+GROUP BY c.CodServiciu, c.DenServiciu, s.Tarif, s.Durata;
+
+-- 7. Create table tBonuri
+CREATE TABLE tBonuri (
+    nrBon INT PRIMARY KEY,
+    Data DATE NOT NULL,
+    CodClient INT NOT NULL
+);
+
+-- 8. Insert a record into tBonuri
+INSERT INTO tBonuri (nrBon, Data, CodClient)
+VALUES (1, SYSDATE, 1);
+
+-- 9. Update service tariff for services starting with 'M'
+UPDATE tServicii
+SET Tarif = 0.95 * Tarif
+WHERE DenServiciu LIKE 'M%';
+
+-- 10. Declare a variable and select based on it
+SELECT a.* 
+FROM tAngajati a
+WHERE a.functia = 'mare boss';

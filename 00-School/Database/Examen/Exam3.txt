@@ -1,0 +1,87 @@
+1.
+CREATE TABLE SERVICII_PRESTATE(
+IdComanda char(10) not null,
+CodServiciu char(10) not null,
+Data smalldatetime DEFAULT GetDate())
+
+ALTER TABLE SERVICII_PRESTATE
+ADD CONSTRAINT pk_serv_prest PRIMARY KEY(IdComanda,CodServiciu)
+
+ALTER TABLE SERVICII_PRESTATE
+ADD CONSTRAINT fk_coma FOREIGN KEY(IdComanda) REFERENCES COMENZI(IdComanda)
+
+ALTER TABLE SERVICII_PRESTATE
+ADD CONSTRAINT pk_serv FOREIGN KEY(CodServiciu) REFERENCES SERVICII(CodServiciu)
+
+ALTER TABLE SERVICII_PRESTATE
+ADD CONSTRAINT df_date DEFAULT GetDate() FOR Data
+
+
+
+2.
+SELECT CodServiciu, DenumireServiciu, MAX(TarifServiciu)
+FROM SERVICII
+GROUP BY CodServiciu, DenumireServiciu
+
+
+3.
+select A.Data, D.CodClient, D.NumeClient, C.CodServiciu, C.DenumireServiciu, C.DurataNormata
+from SERVICII_PRESTATE as A
+inner join COMENZI as B on A.IdComanda=B.IdComanda
+inner join SERVICII as C on A.CodServiciu=C.CodServiciu
+inner join CLIENTI as D on B.CodClient=D.CodClient
+ORDER BY A.Data, D.NumeClient asc
+
+4.
+SELECT s.CodServiciu, s.DenumireServiciu
+FROM SERVICII s
+LEFT JOIN SERVICII_PRESTATE sp ON s.CodServiciu = sp.CodServiciu
+WHERE sp.CodServiciu IS NULL;
+
+5.
+SELECT TO_CHAR(sp.Data, 'MM') AS LunaCurenta, s.CodServiciu, s.DenumireServiciu, SUM(s.TarifServiciu) AS TarifServiciu
+FROM SERVICII_PRESTATE sp
+JOIN SERVICII s ON sp.CodServiciu = s.CodServiciu
+GROUP BY TO_CHAR(sp.Data, 'MM'), s.CodServiciu, s.DenumireServiciu;
+
+
+6.
+SELECT TO_CHAR(sp.Data, 'MM') AS LunaCurenta
+FROM SERVICII_PRESTATE sp
+JOIN SERVICII s ON sp.CodServiciu = s.CodServiciu
+GROUP BY TO_CHAR(sp.Data, 'MM')
+HAVING SUM(s.TarifServiciu) = ( --the subquery does the exact same thing as above (same lines)
+    SELECT MAX(SUM(s.TarifServiciu))
+    FROM SERVICII_PRESTATE sp2
+    JOIN SERVICII s ON sp2.CodServiciu = s.CodServiciu
+    GROUP BY TO_CHAR(sp2.Data, 'MM')
+);
+
+
+
+7.
+UPDATE SERVICII
+SET TarifServiciu=TarifServiciu*1.1
+WHERE DurataNormata>60
+
+8.
+CREATE OR REPLACE PROCEDURE StergereComanda(comandaId IN NUMBER) AS
+BEGIN
+    DELETE FROM SERVICII_PRESTATE WHERE IdComanda = comandaId; --delete from Child first to prevent foreign key violations
+    DELETE FROM COMENZI WHERE IdComanda = comandaId; --then delete from Parent
+END;
+
+--how to execute?
+--BEGIN StergeComanda(123); END;
+
+9. ALTER TABLE SERVICII ADD NumarSolicitari NUMBER DEFAULT 0;
+
+10.
+CREATE OR REPLACE TRIGGER IncrementareNumarSolicitari
+AFTER INSERT ON SERVICII_PRESTATE
+FOR EACH ROW
+BEGIN
+    UPDATE SERVICII
+    SET NumarSolicitari = NumarSolicitari + 1
+    WHERE CodServiciu = :NEW.CodServiciu;
+END;
