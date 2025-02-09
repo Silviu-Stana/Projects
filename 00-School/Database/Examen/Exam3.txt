@@ -1,27 +1,18 @@
 1.
 CREATE TABLE SERVICII_PRESTATE(
-IdComanda char(10) not null,
-CodServiciu char(10) not null,
-Data smalldatetime DEFAULT GetDate())
-
-ALTER TABLE SERVICII_PRESTATE
-ADD CONSTRAINT pk_serv_prest PRIMARY KEY(IdComanda,CodServiciu)
-
-ALTER TABLE SERVICII_PRESTATE
-ADD CONSTRAINT fk_coma FOREIGN KEY(IdComanda) REFERENCES COMENZI(IdComanda)
-
-ALTER TABLE SERVICII_PRESTATE
-ADD CONSTRAINT pk_serv FOREIGN KEY(CodServiciu) REFERENCES SERVICII(CodServiciu)
-
-ALTER TABLE SERVICII_PRESTATE
-ADD CONSTRAINT df_date DEFAULT GetDate() FOR Data
-
-
+CREATE TABLE SERVICII_PRESTATE (
+    Comanda INT,
+    CodServiciu INT,
+    Data DATE DEFAULT SYSDATE,
+    CONSTRAINT pk_SERVICII_PRESTATE PRIMARY KEY (Comanda, CodServiciu),
+    CONSTRAINT fk_Comanda FOREIGN KEY (Comanda) REFERENCES COMENZI(IdComanda),
+    CONSTRAINT fk_Serviciu FOREIGN KEY (CodServiciu) REFERENCES SERVICII(CodServiciu)
+);
 
 2.
-SELECT CodServiciu, DenumireServiciu, MAX(TarifServiciu)
+SELECT CodServiciu, DenumireServiciu
 FROM SERVICII
-GROUP BY CodServiciu, DenumireServiciu
+WHERE TarifServiciu = (SELECT MAX(TarifServiciu) FROM SERVICII);
 
 
 3.
@@ -39,23 +30,26 @@ LEFT JOIN SERVICII_PRESTATE sp ON s.CodServiciu = sp.CodServiciu
 WHERE sp.CodServiciu IS NULL;
 
 5.
-SELECT TO_CHAR(sp.Data, 'MM') AS LunaCurenta, s.CodServiciu, s.DenumireServiciu, SUM(s.TarifServiciu) AS TarifServiciu
-FROM SERVICII_PRESTATE sp
-JOIN SERVICII s ON sp.CodServiciu = s.CodServiciu
-GROUP BY TO_CHAR(sp.Data, 'MM'), s.CodServiciu, s.DenumireServiciu;
+SELECT 
+    TO_CHAR(SP.Data, 'YYYY-MM') AS LunaCurenta,  -- Extragem luna și anul din data prestării
+    S.CodServiciu,
+    S.DenumireServiciu,
+    SUM(S.TarifServiciu) AS TotalIncasari
+FROM SERVICII_PRESTATE SP
+JOIN SERVICII S ON SP.CodServiciu = S.CodServiciu
+WHERE EXTRACT(YEAR FROM SP.Data) = EXTRACT(YEAR FROM SYSDATE)  
+  AND EXTRACT(MONTH FROM SP.Data) = EXTRACT(MONTH FROM SYSDATE)  
+GROUP BY TO_CHAR(SP.Data, 'YYYY-MM'), S.CodServiciu, S.DenumireServiciu
+ORDER BY S.CodServiciu;
 
 
 6.
-SELECT TO_CHAR(sp.Data, 'MM') AS LunaCurenta
-FROM SERVICII_PRESTATE sp
-JOIN SERVICII s ON sp.CodServiciu = s.CodServiciu
-GROUP BY TO_CHAR(sp.Data, 'MM')
-HAVING SUM(s.TarifServiciu) = ( --the subquery does the exact same thing as above (same lines)
-    SELECT MAX(SUM(s.TarifServiciu))
-    FROM SERVICII_PRESTATE sp2
-    JOIN SERVICII s ON sp2.CodServiciu = s.CodServiciu
-    GROUP BY TO_CHAR(sp2.Data, 'MM')
-);
+SELECT TO_CHAR(Data, 'YYYY-MM') AS Luna, SUM(S.TarifServiciu) AS TotalIncasari
+FROM SERVICII_PRESTATE SP
+JOIN SERVICII S ON SP.CodServiciu = S.CodServiciu
+GROUP BY TO_CHAR(Data, 'YYYY-MM')
+ORDER BY TotalIncasari DESC
+FETCH FIRST 1 ROW WITH TIES;
 
 
 

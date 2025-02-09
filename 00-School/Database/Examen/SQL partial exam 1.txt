@@ -53,4 +53,5 @@ LEFT JOIN tProductie A ON A.CodMuncitor = C.CodMuncitor
 WHERE A.CodOperatie IS NULL;
 
 -- 8. Alter table to add column with default value
-ALTER TABLE tProduse ADD Stoc NUMBER DEFAULT 0;
+ALTER TABLE tProduse
+ADD Stoc NUMBER DEFAULT 0;
