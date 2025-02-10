@@ -69,7 +69,7 @@ END;
 
 
 10. Creating a Function:
-CREATE OR REPLACE FUNCTION fc_Durata (codProdus INT)
+CREATE OR REPLACE FUNCTION fc_Durata (codProdus IN INT)
 RETURN INT
 IS
     durata INT := 0;  -- Initialize to 0 to avoid NULL issues

@@ -1,0 +1,69 @@
+1.
+create table COMENZI(
+        NrComanda NUMBER,
+        CodClient char(10) NOT NULL,
+        TermenLivrare Date NOT NULL,
+        Avans NUMBER(9,2),
+        CONSTRAINT ck_termenLiv CHECK(TermenLivrare >= sysdate),
+        CONSTRAINT pk_nrCom PRIMARY KEY(NrComanda),
+        CONSTRAINT fk_cli FOREIGN KEY(CodClient) REFERENCES CLIENTI(CodClient)
+);
+
+2.
+ALTER TABLE COMENZI
+ADD DataComanda DATE default sysdate;
+
+3.
+create user Mobila identified by Stefan_Silviu
+default tablespace t_mobila
+temporary tablespace ts_mobila
+quota unlimited on ts_mobila;
+grant select on CLIENTI to Mobila;
+
+4.
+select C.Localitate, SUM(A.NrBucatiComandate*D.Pret)
+from DETALII_COMENZI A
+inner join COMENZI B on A.NrComanda=B.NrComanda
+inner join CLIENTI C on B.CodClient = C.CodClient
+inner join MODELE D on D.CodModel = A. CodModel
+group by C.Localitate;
+
+
+5. --localitate cu max count comenzi
+select C.Localitate, COUNT(A.NrComanda)
+from DETALII_COMENZI A
+inner join COMENZI B on A.NrComanda=B.NrComanda
+inner join CLIENTI C on B.CodClient = C.CodClient
+group by C.Localitate
+order by C.Localitate DESC
+FETCH 1 ROWS ONLY WITH TIES;
+
+6.
+INSERT INTO CLIENTI(CodClient, Nume, Localitate)
+VALUES('C1','Silviu','Pitesti');
+
+7.
+UPDATE COMENZI
+SET Avans=1000
+WHERE NrComanda=100;
+
+8.
+select A.DenumireModel
+from MODELE A
+LEFT JOIN DETALII_Comenzi B on A.CodModel=B.CodModel
+WHERE B.CodModel IS NULL;
+
+
+9.
+CREATE OR REPLACE TRIGGER tr_MesajExecutie
+AFTER INSERT OR UPDATE OR DELETE ON MODELE
+FOR EACH ROW
+BEGIN
+    IF INSERTING THEN
+        DBMS_OUTPUT.PUT_LINE('Comanda insert executata');
+    ELSIF UPDATING THEN
+        DBMS_OUTPUT.PUT_LINE('Comanda update executata');
+    ELSIF DELETING THEN
+        DBMS_OUTPUT.PUT_LINE('Comanda delete executata');
+    END IF;
+END;

@@ -1,5 +1,4 @@
 1.
-CREATE TABLE SERVICII_PRESTATE(
 CREATE TABLE SERVICII_PRESTATE (
     Comanda INT,
     CodServiciu INT,
@@ -59,7 +58,8 @@ SET TarifServiciu=TarifServiciu*1.1
 WHERE DurataNormata>60
 
 8.
-CREATE OR REPLACE PROCEDURE StergereComanda(comandaId IN NUMBER) AS
+CREATE OR REPLACE PROCEDURE StergereComanda(comandaId IN NUMBER)
+IS
 BEGIN
     DELETE FROM SERVICII_PRESTATE WHERE IdComanda = comandaId; --delete from Child first to prevent foreign key violations
     DELETE FROM COMENZI WHERE IdComanda = comandaId; --then delete from Parent

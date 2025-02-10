@@ -46,9 +46,6 @@ END;
 
 
 
---SELECT AND SELECT INTO
-SELECT FIRST_NAME, EMPLOYEE_ID from OEHR_EMPLOYEES order by EMPLOYEE_ID;
-
 
 declare 
 FirstName   OEHR_EMPLOYEES.FIRST_NAME%type;
@@ -100,24 +97,6 @@ BEGIN
         END LOOP;
 END;
 
---GOTO2
-DECLARE
-S int:=0;
-i int:=1;
-BEGIN
-<<start1>>
-    i:=i+1;
-    S:=S+i;
-    DBMS_OUTPUT.PUT_LINE('S=' || S || ' ' || 'i=' || i);
-
-    if S>100 then goto stop1;
-    end if;
-    goto start1;
-<<stop1>>
-
-    DBMS_OUTPUT.PUT_LINE('S=' || S || ' ' || 'i=' || i);
-END;
-
 
 --FUNCTIE
 CREATE OR REPLACE FUNCTION nrAngajati(departament in OEHR_EMPLOYEES.DEPARTMENT_ID%type)
@@ -143,9 +122,9 @@ CREATE OR REPLACE PROCEDURE statisticaLimitaCredit
     (codCountry in OEHR_CUSTOMERS.COUNTRY_ID%type,
     minCreditLimit out OEHR_CUSTOMERS.CREDIT_LIMIT%type,
     maxCreditLimit out OEHR_CUSTOMERS.CREDIT_LIMIT%type)
-is
+IS
 BEGIN
-    SELECT MIN(CREDIT_LIMIT), MAX(CREDIT_LIMIT) into minCreditLimit, maxCreditLimit
+    SELECT MIN(CREDIT_LIMIT), MAX(CREDIT_LIMIT) INTO minCreditLimit, maxCreditLimit
     FROM OEHR_CUSTOMERS;
 END;
 

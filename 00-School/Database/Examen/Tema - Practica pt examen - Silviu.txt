@@ -1,3 +1,13 @@
+--Sa se gaseasca pacieti care au vizitat ultima oara acum mai mult de 6 luni.
+SELECT p.id_pacient, p.nume_pacient
+FROM pacienti p
+WHERE (SELECT MAX(v.data_vizita) 
+       FROM vizite v 
+       WHERE v.id_pacient = p.id_pacient) < SYSDATE-180;
+
+
+
+
 CREATE TABLE Angajati
 (
     codAngajat number PRIMARY KEY,
@@ -5,11 +15,12 @@ CREATE TABLE Angajati
     localitate varchar2(20) NOT NULL
 );
 
-CREATE TABLE ProduseVanduteAngajati
-(
-    codAngajat number REFERENCES Angajati(codAngajat) NOT NULL,
-    codVanzare number REFERENCES ProduseVandute(codVanzare) NOT NULL,
-    CONSTRAINT pk_produseVanduteAngajati PRIMARY KEY(codAngajat,codVanzare)
+CREATE TABLE ProduseVanduteAngajati (
+    codAngajat NUMBER NOT NULL,
+    codVanzare NUMBER NOT NULL,
+    CONSTRAINT pk_produseVanduteAngajati PRIMARY KEY (codAngajat, codVanzare),
+    CONSTRAINT fk_produseVanduteAngajati_angajat FOREIGN KEY (codAngajat) REFERENCES Angajati(codAngajat),
+    CONSTRAINT fk_produseVanduteAngajati_vanzare FOREIGN KEY (codVanzare) REFERENCES ProduseVandute(codVanzare)
 );
 
 CREATE TABLE ProduseVandute

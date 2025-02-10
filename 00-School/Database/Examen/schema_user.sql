@@ -16,6 +16,8 @@ quota unlimited on ts_prof;
 create role dev;
 grant create session, create table, create view, create procedure, create synonym, create sequence to dev;
 
+create synonym seal for ts.seal
+
 grant dev to profesor;
 
 

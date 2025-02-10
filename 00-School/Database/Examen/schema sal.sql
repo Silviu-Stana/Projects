@@ -73,7 +73,7 @@ where marca=1;
 
 --Give same to marca=2 as marca=1. (salariu-200, prima/2)
 update salarii
-	set (salariu_baza, prima)=(select salariu_baza-200, prima/2 
+set (salariu_baza, prima)=(select salariu_baza-200, prima/2 
                             from salarii 
                             where marca=1
                             )
@@ -92,9 +92,9 @@ set salariu_baza=salariu_baza* decode(marca, 1, 1.1,  2, 1.15,   1.05) ;
 
 --Modifica salariu_baza pentru salariatii din departamentul IT cu x1.1
 update salarii S
-	set salariu_baza=salariu_baza*1.1
-	where (select den_dep from departamente D inner join angajati2 A on A.cod_dep=D.cod_dep
-		where A.marca=S.marca)='IT';
+      set salariu_baza=salariu_baza*1.1
+      where (select den_dep from departamente D inner join angajati2 A on A.cod_dep=D.cod_dep
+where A.marca=S.marca)='IT';
 
 
 --Sa se creeze vederea v_Angajati pe baza datelor din tabelul angajati din schema RU si salarii si schema SAL. Vederea se va crea in schema SAL.

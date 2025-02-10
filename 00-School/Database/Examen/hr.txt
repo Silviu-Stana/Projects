@@ -96,18 +96,17 @@ from  departments dep
 full join  oehr_employees emp
 on dep.department_id=emp.department_id
 
+--OPERATORI PENTRU MULTIMI
+--UNION(NU APAR INREGISTRARILE DUPLICAT), UNION ALL, INTERSECT, MINUS
+
 
 --SELFJOIN
 select e.last_name Employee, m.last_name "Their Manager"
 from oehr_employees e, oehr_employees m
 where e.manager_id=m.employee_id;
 
---OPERATORI PENTRU MULTIMI
---UNION(NU APAR INREGISTRARILE DUPLICAT), UNION ALL, INTERSECT, MINUS
 
-
---EXISTS, NOT EXISTS, ANY, ALL  
---show dep WITHOUT employees
+--show departments WITHOUT employees
 select department_name from  departments dep
 where not exists
 (select 1 from  oehr_employees emp where emp.department_id=dep.department_id)
