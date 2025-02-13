@@ -1,5 +1,5 @@
-import { useRef, useEffect } from 'react';
 import './preview.css';
+import { useRef, useEffect } from 'react';
 
 interface PreviewProps {
       code: string;
@@ -9,7 +9,7 @@ interface PreviewProps {
 const html = `
     <html>
       <head>
-            <style>html { background-color: white; } </style>
+            <style>html { background-color: white; }</style>
       </head>
       <body>
         <div id="root"></div>
@@ -20,7 +20,7 @@ const html = `
               console.error(err);      
             };
             
-            window.addEventListener('error', ()=> {
+            window.addEventListener('error', (event) => {
                     event.preventDefault();
                     handleError(event.error);
             });
@@ -28,7 +28,8 @@ const html = `
           window.addEventListener('message', (event) => {
             try {
               eval(event.data);
-            } catch (err) { handleError(err) }
+            } catch (err) {
+                  handleError(err); }
           }, false);
         </script>
       </body>
@@ -40,9 +41,9 @@ const Preview: React.FC<PreviewProps> = ({ code, err }) => {
 
       useEffect(() => {
             iframe.current.srcdoc = html;
-            iframe.current.onload = () => {
+            setTimeout(() => {
                   iframe.current.contentWindow.postMessage(code, '*');
-            };
+            }, 50);
       }, [code]);
 
       return (
