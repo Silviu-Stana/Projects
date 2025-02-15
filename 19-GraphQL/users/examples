@@ -1,0 +1,26 @@
+//of GraphQL nested queries
+{
+  apple:company(id: "1") {
+    id,name,description,
+    users {
+      id,
+      firstName,
+      age,
+      company {
+        name
+      }
+    }
+  }
+  
+  google: company(id: "2") {
+    id,name,description,
+    users {
+      id,
+      firstName,
+      age,
+      company {
+        name
+      }
+    }
+  }
+}
