@@ -1,0 +1,16 @@
+mutation {
+  addUser(age:36, firstName:"Seal"){
+    id
+    firstName
+    age
+  }
+}
+
+
+mutation {
+  editUser(id:"7b0c", firstName:"Seal"){
+    id
+    firstName
+    age
+  }
+}

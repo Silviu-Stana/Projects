@@ -1,5 +1,0 @@
-{
-  "routes": {
-    "/companies/:id/users": "/users?companyId=:id"
-  }
-}
