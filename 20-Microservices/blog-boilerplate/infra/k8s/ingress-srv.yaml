@@ -2,23 +2,48 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-srv
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: 'true'
 spec:
   ingressClassName: nginx
   rules:
     - host: posts.com
       http:
         paths:
-          - path: /posts
+          - path: /posts/create
             pathType: Prefix
             backend:
               service:
                 name: posts-clusterip-srv
                 port:
                   number: 4000
+          - path: /posts
+            pathType: Prefix
+            backend:
+              service:
+                name: query-srv
+                port:
+                  number: 4002
+          - path: /posts/?(.*)/comments
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: comments-srv
+                port:
+                  number: 4001
                   # First do this:
                   # kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
                   # To be able to apply this file:
                   # k apply -f ingress-srv.yaml
                   #Remember to add this to your window/system32 "hosts" file
                   # Then visit the site using the NodePort port
-                  # Example: "http://posts.com:32386/posts"
+                  # Example: "http://posts.com/posts"
+          # Always write this "path: /" at the very end of the file:
+          # - path: /?(.*)   if you use React Query in a single page app
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: client-srv
+                port:
+                  number: 3000
