@@ -1,0 +1,10 @@
+$ kubectl port-forward --namespace=ingress-nginx service/ingress-nginx-controller 3000:80
+
+I just needed some port forwarding....
+
+Also make sure to visit the url with that port:
+http://ticketing.com:3000/api/users/currentuser
+
+Forwarding from 127.0.0.1:3000 -> 80
+Forwarding from [::1]:3000 -> 80
+Handling connection for 3000
