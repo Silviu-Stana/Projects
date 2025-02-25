@@ -2,6 +2,7 @@ import express from 'express';
 import 'express-async-errors';
 import { json } from 'body-parser';
 import mongoose from 'mongoose';
+import cookieSession from 'cookie-session';
 import { currentUserRouter } from './routes/current-user';
 import { signinRouter } from './routes/signin';
 import { signoutRouter } from './routes/signout';
@@ -11,7 +12,15 @@ import { Request, Response, NextFunction } from 'express';
 import { NotFoundError } from './errors/not-found-errors';
 
 const app = express();
+app.set('trust proxy', true);
 app.use(json());
+app.use(
+    cookieSession({
+        signed: false,
+        secure: false,
+        //convert this to "secure: true" when deploying application with https://
+    })
+);
 
 app.use(currentUserRouter);
 app.use(signinRouter);
@@ -33,6 +42,9 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 });
 
 const start = async () => {
+    //Typeguard for typescript to know: the environment variable is NOT undefined
+    if (!process.env.JWT_KEY) throw new Error('JWT_KEY must be defined');
+
     try {
         await mongoose.connect('mongodb://auth-mongo-srv:27017/auth');
         console.log('Connected to MongoDB');
