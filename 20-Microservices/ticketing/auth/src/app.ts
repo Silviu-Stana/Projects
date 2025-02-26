@@ -16,7 +16,9 @@ app.use(json());
 app.use(
     cookieSession({
         signed: false,
-        secure: false,
+        //we need to run over http:// in test environment so that jest doesn't fail the tests
+        secure: process.env.NODE_ENV !== 'test',
+        // secure: false,
         //convert this to "secure: true" when deploying application with https://
     })
 );
