@@ -31,7 +31,7 @@ const userSchema = new mongoose.Schema(
         },
     },
     {
-        //This helps us override JSON.stringify() to return in postman when creating a user a modified object with "_id" named "id" so Mongooes will now match other database types in naming convention (across different microservices that use different backend)
+        //This helps us override JSON.stringify() to return in postman when creating a user a modified object with "_id" named "id" so Mongoose will now match other database types in naming convention (across different microservices that use different backend)
         toJSON: {
             transform(doc, ret) {
                 ret.id = ret._id;
