@@ -13,6 +13,30 @@ it('returns a 401 if user not logged in', async () => {
     await request(app).put(`/api/tickets/${id}`).send({ title: 'aowihdw', price: 20 }).expect(401);
 });
 
-it('returns a 401 if user does not own ticket', async () => {});
-it('returns a 400 if user provides invalid title or price', async () => {});
-it('updates the ticket provided valid inputs', async () => {});
+it('returns a 401 if user does not own ticket', async () => {
+    const response = await request(app).post('/api/tickets').set('Cookie', global.signin()).send({ title: 'asoiwad', price: 20 });
+
+    //every time we call global.signin() again it generates a random new user id
+    await request(app).put(`/api/tickets/${response.body.id}`).set('Cookie', global.signin()).send({ title: 'aowihdo', price: 1000 }).expect(401);
+});
+
+it('returns a 400 if user provides invalid title or price', async () => {
+    const cookie = global.signin();
+    const response = await request(app).post('/api/tickets').set('Cookie', cookie).send({ title: 'asoiwad', price: 20 });
+
+    await request(app).put(`/api/tickets/${response.body.id}`).set('Cookie', cookie).send({ title: '', price: 20 }).expect(400);
+
+    await request(app).put(`/api/tickets/${response.body.id}`).set('Cookie', cookie).send({ title: 'asoiwad', price: -10 }).expect(400);
+});
+
+it('updates the ticket provided valid inputs', async () => {
+    const cookie = global.signin();
+    const response = await request(app).post('/api/tickets').set('Cookie', cookie).send({ title: 'asoiwad', price: 20 });
+
+    await request(app).put(`/api/tickets/${response.body.id}`).set('Cookie', cookie).send({ title: 'new title', price: 100 }).expect(200);
+
+    const ticketResponse = await request(app).get(`/api/tickets/${response.body.id}`).send();
+
+    expect(ticketResponse.body.title).toEqual('new title');
+    expect(ticketResponse.body.price).toEqual(100);
+});
