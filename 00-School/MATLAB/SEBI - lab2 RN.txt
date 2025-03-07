@@ -1,0 +1,138 @@
+%% functii predefinite
+% generarea de valori nule - zeros(n, m)
+n = 3; m = 4;
+M1 = zeros(n, m)
+
+% generarea de valori unitare 1
+M2 = ones(n, m)
+
+k = 10;
+M3 = ones(n, m) * k % genereaza matrice cu valoarea k
+
+% generarea de date cu distributie uniforma: rand
+% uniforme pe [0, 1]
+M4 = rand(n, m)
+
+% generarea de date uniforme in 2D -- Punct(x, y)
+Nr = 100;
+M5 = rand(Nr, 2)
+
+% reprezentare grafica a punctelor in 2D -- plot(x, y)
+plot(M5(:, 1), M5(:, 2), 'r*')
+
+% generarea de date cu distributie normala: randn
+M6 = randn(Nr, 2) % N(medie, dispersie) -- N(0, 1)
+plot(M6(:, 1), M6(:, 2), 'b*')
+
+medie = 4.5; dispersie = 1.5
+M7 = medie + randn(Nr, 2) * dispersie
+plot(M7(:, 1), M7(:, 2), 'b*', M5(:, 1), M5(:, 2), 'r*')
+
+%% INSTRUCTIUNI IN LIMBAJ
+% IF, SWITCH, FOR, WHILE, break, continue
+
+%% INSTRUCTIUNEA IF
+% Sintaxa generala
+
+% if conditie_logica
+%     instructiuni;
+% elseif conditie_logica
+%     instructiuni;
+% elseif conditie_logica
+%     instructiuni;
+% else
+%     instructiuni;
+% end
+
+% Exemplu de utilizare - calcul Expresie E
+n = 12;
+if rem(n, 3) ~= 0
+    E = n^2 - 1;
+elseif rem(n, 2) ~= 0
+    E = n + 1;
+else
+    E = - n^2;
+end
+Expresie = E
+
+%% INSTRUCTIUNEA SWITCH
+% Sintaxa generala:
+
+% switch expresii_selectie
+%     case 0
+%         instructiuni;
+%     case 1
+%         instructiuni;
+%     case 2
+%         instructiuni;
+%     ...
+%     case n
+%         instructiuni;
+%     otherwise
+%         instructiuni;
+% end
+
+% Exemplu de utilizare pentru switch:
+n = 7;
+switch rem(n, 3) + rem(n, 4)
+    case 0
+        E = n^2 - n + 3;
+    case 1
+        E = - n^3;
+    case 2
+        E = n * rem(n, 3);
+    case 3
+        E = - rem(n, 4) - n;
+    otherwise
+        E = rem(n, 3) + rem(n, 4);
+end
+Expresie = E
+
+%% Instructiunea FOR
+% Sintaxa generala:
+
+% for i = 1:n % index = val_initiala:val_finala\
+%     instructiuni;
+% end
+
+% Exemplul 1 de utilizare
+n = 3; m = 5;
+A = rand(n, m);
+for i = 1:size(A, 1)
+    for j = 1:size(A, 2)
+        Rez(i, j) = A(i, j)^2 + i * j;
+        Rez1(i, j) = A(i, j)^2 + k;
+    end
+end
+Rez
+
+Rez2 = A.^2 + k
+MDif = Rez1 - Rez2;
+
+% Suma diferentelor din cele matrici - sum
+S1 = sum(MDif) % Vectorul sumelor pe coloane
+S2 = sum(sum(MDif))
+SRez2 = sum(Rez2);
+SRez2'
+SMRez2 = sum(sum(Rez2))
+
+%% Instructiunea WHILE
+% Sintaxa generala:
+
+% while conditie_logica
+%     instructiuni;
+% end
+
+% Exemplu de utilizare
+a = 0; b = 3; fa = -Inf; fb = Inf; v = [];
+while b - a > eps*b
+    x = (a + b) / 2;
+    v = [v; x];
+    fx = x^3 - 2*x - 5;
+    if sign(fx) == sign(fa)
+        a = x; fa = fx;
+    else
+        b = x; fb = fx;
+    end
+end
+x

@@ -1,0 +1,106 @@
+clear all
+clc
+%functii predefinite
+%generare valori = 0
+n=3; m=4;
+M1= zeros(n,m)
+
+%generare valori = 1 (unitare)
+M2= ones(n,m)
+
+k=10
+M3=ones(n,m) * k
+
+%generare date cu distribuire uniforme: (intre 0 si 1)
+M4= rand(n,m)
+
+%generare date uniforme in 2D    (puncte in plan XY)
+Nr = 100;
+M5= rand(Nr, 2)
+
+%arata grafic punctele
+plot(M5(:,1),M5(:,2), 'r*')
+
+%generare date cu distributie normala: (intre -1 si 1)
+M6= randn(Nr,2) % N(medie,dispersie) (dispersie=imprastiere in jurul mediei) -- N(0,1) is default
+plot(M6(:,1),M6(:,2), 'b*')
+
+
+%schimbam media (sa nu fie in centru)
+medie=4.5
+dispersie=1.5
+M7=medie+randn(Nr,2)*dispersie
+plot(M7(:,1),M7(:,2), 'b*',  M5(:,1),M5(:,2), 'r*') %arata ambele grafuri impreuna
+
+%INSTRUCTIUNI IN LIMBAJ
+% FOR, WHILE, break, continue
+
+%IF:
+n=12;
+if rem(n,3) ~= 0  %daca n%3 != 0
+    E=n^2-1;
+elseif rem(n,2) ~= 0
+    E=n+1;
+else
+    E=- n^2;
+end
+Expresie=E
+
+
+
+
+%SWITCH
+n=7;
+switch rem(n,3) + rem(n,4)
+    case 0
+        E = n^2-n+3
+    case 1
+        E = -n^3;
+    case 2
+        E = n*rem(n,3)
+    otherwise
+        E = rem(n,3) + rem(n,4)
+end
+Expresie = E
+
+
+
+%FOR
+n=3; m=5;
+k=rand(1,1); %o singura valoare 
+A = rand(n,m);
+for i = 1:size(A,1) % cate linii are A
+    for j = 1:size(A,2) % coloane
+        Rezultat(i,j) = A(i,j)^2 + i*j;
+        Rezultat1(i,j) = A(i,j)^2 + k;
+    end
+end
+Rezultat1 %o matrice
+
+Rezultat2 = A.^2 %acelasi lucru ca for de mai sus (. inseamna fiecare element)
+
+MDif = Rezultat1 - Rezultat2
+
+%suma diferentelor din cele 2 matrici
+S1 = sum(MDif) %vectorul sumelor pe coloane
+S2 = sum(sum(MDif)) %suma tuturor valorilor din matrice
+
+SRez2 = sum(Rezultat2)
+SRez2'
+
+
+
+
+%WHILE
+a=0; b=3; fa=-Inf; fb=Inf; v=[];
+while b-a > eps*b
+    x = (a+b)/2
+    v=[v;x];%concatenare. adauga mereu urmatoarea valoare "x"
+    fx=x^3 - 2*x*x - 5;
+    if(sign(fx) == sign(fa))
+        a=x; fa=fx;
+    else
+        b=x; fb=fx;
+    end
+end
+x

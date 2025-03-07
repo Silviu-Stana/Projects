@@ -1,0 +1,83 @@
+clear
+clc
+X=[1 -2 1; 3 -1 0; 4 -2 1];
+W=[0.1 0.2 -0.3; 0.5 1 -1; 0.3 0.1 0.4];
+%Adunare matrici:
+R1=X+W;
+%Scadere matrici
+R2=X-W;
+%*
+R3=X*W;
+%Impartirea matricelor (este practic inmultirea cu Inversul ei)
+R4=X/W;
+%Ridicare la putere n (inmulteste matricea W de n ori)
+n=3;
+R5=W^n;
+%Transpusa unei matrici: (interschimba linile cu coloanele)
+R6=W';
+
+%Determinatul:
+R7=det(X);
+%Inversa unei matrici (dar mai intai asigura ca exista Determinantul)
+R8=inv(X);
+
+%Verificare X*R8
+R9=X*R8; %Adica matricea unitate I3
+
+%Diagonala principala: diag
+R10=diag(W);
+R11=diag(R9);
+
+%Operatori la nivel de element:  .*  ./   .^     (la impartire, toate trb !=0)
+R12=X .* W;
+
+%Accesarea elementelor: W(i,j)
+i=2;j=3;
+Element=W(i,j);
+
+%Operatorul  ":"
+z=1:10; %sir de la 1 la 10, are automat ratia=1
+%z'
+
+z2=1:2:20; %ratia=2
+
+z3=20:-3:1; %z3'
+
+%Extragerea unei linii / coloane
+nr=2;
+Linie=X(nr, :);
+Coloana=X(:, nr);
+
+%Extrage unei zone
+Zona=X(2:3, 2:3);
+
+%Dimensiunea unei matrici:
+dim=size(X);
+
+%Nr linii
+dim1=size(X,1);
+
+%Nr coloane
+dim2=size(X,2);
+
+Zona2=X(nr:dim1,nr:dim2);
+
+%Concatenarea datelor
+R15=[X W]; %pe coloane
+R16=[X; W]; %pe linii, 6 linii
+
+%Incarcarea datelor de intrare
+%1. Din alte fisiere script - "DateX1.m"
+DateX1 %nu printeaza nimic, dar ne da acces la toate variabilele
+R17=X1+W1;
+
+%2. Fisier de alta extensie - "DateX2.dat"
+load Date2.dat;
+%Date2 devine variabila in scriptul curent
+%size(Date2)
+
+R18=X1+Date2(1:size(X1,1),1:size(X1,2));
+
+%Vectori si valori proprii
+W2=[1 0 0; -1 1 0; 1 1 0];
+[V,D]=eig(W2);
