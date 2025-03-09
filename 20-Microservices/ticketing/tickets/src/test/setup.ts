@@ -22,6 +22,7 @@ beforeAll(async () => {
 });
 
 beforeEach(async () => {
+    jest.clearAllMocks();
     if (mongoose.connection.db) {
         //If we have data
         const collections = await mongoose.connection.db.collections();
