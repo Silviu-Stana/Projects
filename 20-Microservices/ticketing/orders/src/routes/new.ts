@@ -40,6 +40,7 @@ router.post(
             expiresAt: expiration,
             ticket: ticket,
         });
+        await order.save();
 
         //order:created event
 
