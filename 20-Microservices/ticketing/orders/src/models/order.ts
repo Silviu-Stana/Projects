@@ -1,15 +1,18 @@
+import { OrderStatus } from '@sealsdev/commonservice';
+export { OrderStatus };
 import mongoose from 'mongoose';
+import { TicketDoc } from './ticket';
 
 interface OrderAttributes {
     userId: string;
-    status: string;
+    status: OrderStatus;
     expiresAt: Date;
     ticket: TicketDoc;
 }
 
 interface OrderDoc extends mongoose.Document {
     userId: string;
-    status: string;
+    status: OrderStatus;
     expiresAt: Date;
     ticket: TicketDoc;
 }
@@ -21,7 +24,7 @@ interface OrderModel extends mongoose.Model<OrderDoc> {
 const orderSchema = new mongoose.Schema<OrderDoc, OrderModel>(
     {
         userId: { type: String, required: true },
-        status: { type: String, required: true },
+        status: { type: String, required: true, enum: Object.values(OrderStatus), default: OrderStatus.Created },
         expiresAt: { type: mongoose.Schema.Types.Date },
         ticket: { type: mongoose.Schema.ObjectId, ref: 'Ticket' },
     },
