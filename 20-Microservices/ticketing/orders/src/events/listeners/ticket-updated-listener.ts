@@ -1,6 +1,6 @@
 import { Subjects, Listener, TicketUpdatedEvent } from '@sealsdev/commonservice';
 import { Message } from 'node-nats-streaming';
-import { Ticket } from '../../models/ticket';
+import Ticket from '../../models/ticket';
 import { queueGroupName } from './queue-group-name';
 
 export class TicketUpdatedListener extends Listener<TicketUpdatedEvent> {

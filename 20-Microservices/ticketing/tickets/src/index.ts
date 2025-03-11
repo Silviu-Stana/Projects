@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import { app } from './app';
 import { natsWrapper } from './nats-wrapper';
+import app from './app';
 
 const start = async () => {
     //Typeguard for typescript to know: the environment variable is NOT undefined
