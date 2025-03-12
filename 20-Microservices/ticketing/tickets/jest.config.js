@@ -5,9 +5,9 @@ module.exports = {
     transform: {
         '^.+\\.(t|j)sx?$': '@swc/jest',
     },
-    globals: {
-        'ts-jest': {
-            isolatedModules: true,
-        },
-    },
+    // globals: {
+    //     'ts-jest': {
+    //         isolatedModules: true,
+    //     },
+    // },
 };
