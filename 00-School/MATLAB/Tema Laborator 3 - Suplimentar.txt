@@ -1,0 +1,28 @@
+%% Tema: Sa se arate Gauss 2D si Gauss 3D IN aceeasi fereastra:
+clear all; clc; close all;
+
+sigma = 3; % dispersion, mean = 0
+x = -1:0.005:1;
+
+% Gauss 2D
+y = (1/(2*pi*sigma^2)) * exp(-(x.^2 / (2*sigma^2)));
+
+figure;
+subplot(1,2,1); % Create a 1-row, 2-column grid, and select the first subplot
+plot(x, y);
+title('Gauss 2D');
+xlabel('Values OX');
+ylabel('Values OY');
+grid on;
+
+% Gauss 3D
+[X, Y] = meshgrid(x, x);
+Z = (1/(2*pi*sigma^2)) * exp(-((X.^2 + Y.^2) / (2*sigma^2)));
+
+subplot(1,2,2); % Select the second subplot
+mesh(X, Y, Z);
+title('Gauss 3D');
+xlabel('Values OX');
+ylabel('Values OY');
+zlabel('Values OZ');
+grid on;

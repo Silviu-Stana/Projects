@@ -1,0 +1,115 @@
+clear all
+clc
+%Suma divizorii ptr date din vector intre 0-100
+%round(rand(1,1)*100)
+N=10; %nr elemente
+V=round(rand(N,1)*100) %generare V cu int
+%SDV = vector cu suma divizorilor elementelor din vector
+SDV =zeros(N,1);
+for i=1:size(V,1)
+    SDV(i)=sum_divizori(V(i));
+end
+SDV
+plot(SDV)
+V
+
+%Construieste vector nr prime din V numit Vprim
+Vprim=[]; nr=1;
+for i=1:size(SDV,1)
+    if SDV(i)==0
+        Vprim(nr)=V(i);
+        nr=nr+1;
+    end
+end
+Vprim
+
+%Si varianta 2 pe scurt:
+Vprim2 = V(SDV == 0)
+
+
+%% F returns DivizorSum AND Count
+SDV =zeros(N,1);
+ND=zeros(N,1);
+for i=1:size(V,1)
+    [SDV(i) ND(i)]=sum_count_div(V(i));
+end
+SDV
+ND
+Rez = [V ND]
+
+
+
+%% Grafice:
+%1. Graficul f.
+x=-4*pi:pi/100:4*pi;
+y=sin(x);
+plot(x,y)
+%functie de eroare
+v=100:-0.01:0
+plot(v)
+
+%2.
+clear all; clc; close all;
+x=0:pi/100:4*pi; %domeniul de definitie
+y1=sin(x);
+y2=sin(x-0.25)
+y3=sin(x-0.5)
+plot(x,y1,'r:',x,y2,'g*',x,y3,'b+');
+
+legend('sin(x)','sin(x-.25)','sin(x-/5)')
+xlabel('x= 0:4\pi')
+ylabel('Sin x')
+title('Plot functie sin', 'FontSize', 12)
+
+
+%Gauss 2D
+clear all; clc; close all;
+sigma=3; %dispersia, media-0
+disp('grafic 2D')
+x= -1:.005:1;
+y= (1/2*pi*sigma^2)*exp(-(x.^2/2*sigma^2));
+plot(x,y);
+title('Gauss 2D')
+xlabel('Values OX')
+ylabel('Values OY')
+
+%Gauss 3D
+clear all; clc; close all;
+sigma=3; %dispersia, media-0
+disp('grafic 3D')
+x= -1:.005:1;
+y= -1:.005:1;
+[X,Y]=meshgrid(x,y);
+z= (1/2*pi*sigma^2)*exp(-(X.^2+Y.^2)/2*sigma^2);
+mesh(z);
+title('Gauss 3D')
+xlabel('Values OX')
+ylabel('Values OY')
+zlabel('Values OZ')
+
+%5. Split in multiple graphs (this is an array with 2 lines and 2 columns, 3rd parameter describes the cell it is in)
+clear all; clc; close all;
+t=0:pi/10:2*pi;
+[X,Y,Z] = cylinder(4*cos(t));
+subplot(2,2,1); mesh(X)
+subplot(2,2,2); mesh(Y)
+subplot(2,2,3); mesh(Z)
+subplot(2,2,4); mesh(X,Y,Z)
+
+
+%6. Show in same window
+clear all; clc; close all;
+x1=0:0.1:2;
+x2=-2:0.2:2;
+y1=sin(x1);
+y2=x1.^2+x2.^2;
+y3=sin(x2);
+y4=sin(x1)-sin(x2);
+subplot(3,2,1); plot(y1)
+subplot(3,2,2); plot(y2)
+subplot(3,2,3); plot(y3)
+subplot(3,2,4); plot(y4)
+subplot(3,2,5); plot(y4)
+subplot(3,2,6); plot(y4)
+
+%Homework: Show Gauss 2D and Gauss 3D IN THE SAME WINDOW
