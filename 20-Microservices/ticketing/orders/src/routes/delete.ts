@@ -3,6 +3,7 @@ import express, { Request, Response } from 'express';
 import { Order, OrderStatus } from '../models/order';
 import { OrderCancelledPublisher } from '../events/publishers/order-cancelled-publisher';
 import { natsWrapper } from '../nats-wrapper';
+import mongoose from 'mongoose';
 
 const router = express.Router();
 
@@ -20,6 +21,7 @@ router.delete('/api/orders/:orderId', requireAuth, async (req: Request, res: Res
     //PUBLISH EVENT that it was cancelled
     new OrderCancelledPublisher(natsWrapper.client).publish({
         id: order.id,
+        version: order.version,
         ticket: {
             id: order.ticket.id,
         },

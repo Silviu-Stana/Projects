@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import { Order, OrderStatus } from './order';
+import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
 // import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
 
 interface TicketAttributes {
@@ -36,11 +37,7 @@ const ticketSchema = new mongoose.Schema<TicketDoc, TicketModel>(
 );
 
 ticketSchema.set('versionKey', 'version');
-ticketSchema.pre('save', function (done) {
-    this.$where = {
-        version: this.get('version') - 1,
-    };
-});
+ticketSchema.plugin(updateIfCurrentPlugin);
 
 ticketSchema.statics.findByEvent = (event: { id: string; version: number }) => {
     return Ticket.findOne({ _id: event.id, version: event.version - 1 });

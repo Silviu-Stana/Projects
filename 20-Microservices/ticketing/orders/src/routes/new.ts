@@ -49,6 +49,7 @@ router.post(
             id: order.id,
             status: order.status,
             userId: order.userId,
+            version: order.version,
             //the reason we communicate "expiresAt" as a string
             //is so we can send UTC, instead of the timezone the service is in !
             expiresAt: order.expiresAt.toISOString(),

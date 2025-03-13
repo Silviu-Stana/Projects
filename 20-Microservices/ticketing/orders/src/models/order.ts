@@ -2,6 +2,7 @@ import { OrderStatus } from '@sealsdev/commonservice';
 export { OrderStatus };
 import mongoose from 'mongoose';
 import { TicketDoc } from './ticket';
+import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
 
 interface OrderAttributes {
     userId: string;
@@ -38,6 +39,9 @@ const orderSchema = new mongoose.Schema<OrderDoc, OrderModel>(
         },
     }
 );
+
+orderSchema.set('versionKey', 'version');
+orderSchema.plugin(updateIfCurrentPlugin);
 
 orderSchema.statics.build = (attrs: OrderAttributes) => {
     return new Order(attrs);
