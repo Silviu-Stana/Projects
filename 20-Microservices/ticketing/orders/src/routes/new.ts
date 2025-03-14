@@ -1,4 +1,10 @@
-import { BadRequestError, NotFoundError, OrderStatus, requireAuth, validateRequest } from '@sealsdev/commonservice';
+import {
+    BadRequestError,
+    NotFoundError,
+    OrderStatus,
+    requireAuth,
+    validateRequest,
+} from '@sealsdev/commonservice';
 import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
 import Ticket from '../models/ticket';
@@ -14,7 +20,10 @@ router.post(
     '/api/orders',
     requireAuth,
     [
-        body('ticketId').not().isEmpty().withMessage('ticketId must be provided'),
+        body('ticketId')
+            .not()
+            .isEmpty()
+            .withMessage('ticketId must be provided'),
         body('ticketId').isMongoId().withMessage('Invalid MongoDB ObjectId'),
         // Alternative way of validating mongo id:
         //custom((input: string) => mongoose.Types.ObjectId.isValid(input))...
@@ -29,11 +38,14 @@ router.post(
 
         //Make sure ticket not reserved
         const isReserved = await ticket.isReserved();
-        if (isReserved) throw new BadRequestError('Ticket is already reserved.');
+        if (isReserved)
+            throw new BadRequestError('Ticket is already reserved.');
 
         //Calculate expiration date
         const expiration = new Date();
-        expiration.setSeconds(expiration.getSeconds() + EXPIRATION_WINDOW_SECONDS);
+        expiration.setSeconds(
+            expiration.getSeconds() + EXPIRATION_WINDOW_SECONDS
+        );
 
         //Build the order and save to DB
         const order = Order.build({

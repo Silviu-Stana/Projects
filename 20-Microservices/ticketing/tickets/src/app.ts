@@ -3,7 +3,11 @@ import 'express-async-errors';
 import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
 import { Request, Response, NextFunction } from 'express';
-import { errorHandler, NotFoundError, currentUser } from '@sealsdev/commonservice';
+import {
+    errorHandler,
+    NotFoundError,
+    currentUser,
+} from '@sealsdev/commonservice';
 import { createTicketRouter } from './routes/new';
 import { showTicketRouter } from './routes/show';
 import { indexTicketRouter } from './routes';
