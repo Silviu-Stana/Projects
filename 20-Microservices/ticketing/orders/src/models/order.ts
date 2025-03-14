@@ -26,7 +26,12 @@ interface OrderModel extends mongoose.Model<OrderDoc> {
 const orderSchema = new mongoose.Schema<OrderDoc, OrderModel>(
     {
         userId: { type: String, required: true },
-        status: { type: String, required: true, enum: Object.values(OrderStatus), default: OrderStatus.Created },
+        status: {
+            type: String,
+            required: true,
+            enum: Object.values(OrderStatus),
+            default: OrderStatus.Created,
+        },
         expiresAt: { type: mongoose.Schema.Types.Date },
         ticket: { type: mongoose.Schema.ObjectId, ref: 'Ticket' },
     },
@@ -40,8 +45,9 @@ const orderSchema = new mongoose.Schema<OrderDoc, OrderModel>(
     }
 );
 
-orderSchema.set('versionKey', 'version');
-orderSchema.plugin(updateIfCurrentPlugin);
+orderSchema.set('versionKey', 'version' as any);
+// Fix plugin typescript error (for skaffold, otherwise Routes won't work)
+orderSchema.plugin(updateIfCurrentPlugin as any);
 
 orderSchema.statics.build = (attrs: OrderAttributes) => {
     return new Order(attrs);

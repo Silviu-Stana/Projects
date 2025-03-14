@@ -1,7 +1,6 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema, Document, Model } from 'mongoose';
 import { Order, OrderStatus } from './order';
 import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
-// import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
 
 interface TicketAttributes {
     id: string;
@@ -9,19 +8,22 @@ interface TicketAttributes {
     price: number;
 }
 
-export interface TicketDoc extends mongoose.Document {
+export interface TicketDoc extends Document {
     title: string;
     price: number;
     version: number;
     isReserved(): Promise<boolean>;
 }
 
-interface TicketModel extends mongoose.Model<TicketDoc> {
+interface TicketModel extends Model<TicketDoc> {
     build(attrs: TicketAttributes): TicketDoc;
-    findByEvent(event: { id: string; version: number }): Promise<TicketDoc | null>;
+    findByEvent(event: {
+        id: string;
+        version: number;
+    }): Promise<TicketDoc | null>;
 }
 
-const ticketSchema = new mongoose.Schema<TicketDoc, TicketModel>(
+const ticketSchema = new Schema<TicketDoc>(
     {
         title: { type: String, required: true },
         price: { type: Number, required: true, min: 0 },
@@ -36,11 +38,15 @@ const ticketSchema = new mongoose.Schema<TicketDoc, TicketModel>(
     }
 );
 
+// Apply versioning plugin
 ticketSchema.set('versionKey', 'version');
-ticketSchema.plugin(updateIfCurrentPlugin);
+ticketSchema.plugin(updateIfCurrentPlugin); // Ensure the plugin is applied to the correct schema
 
-ticketSchema.statics.findByEvent = (event: { id: string; version: number }) => {
-    return Ticket.findOne({ _id: event.id, version: event.version - 1 });
+ticketSchema.statics.findByEvent = function (event: {
+    id: string;
+    version: number;
+}) {
+    return this.findOne({ _id: event.id, version: event.version - 1 });
 };
 
 ticketSchema.statics.build = (attrs: TicketAttributes) => {
@@ -53,18 +59,21 @@ ticketSchema.statics.build = (attrs: TicketAttributes) => {
 
 ticketSchema.methods.isReserved = async function () {
     // this = the ticket doc we just called 'isReserved()' on
-
-    //if Status of our ticket is NOT "Cancelled", it means it is reserved.
     const existingOrder = await Order.findOne({
         ticket: this,
         status: {
-            $in: [OrderStatus.Created, OrderStatus.AwaitingPayment, OrderStatus.Completed],
+            $in: [
+                OrderStatus.Created,
+                OrderStatus.AwaitingPayment,
+                OrderStatus.Completed,
+            ],
         },
     });
 
     return !!existingOrder; //converts "null" to boolean, with a value of "true", then back to "false"
 };
 
+// Fix type mismatch by using correct schema
 const Ticket = mongoose.model<TicketDoc, TicketModel>('Ticket', ticketSchema);
 
 export default Ticket;

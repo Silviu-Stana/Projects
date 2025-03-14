@@ -9,7 +9,7 @@ import { body } from 'express-validator';
 import Ticket from '../models/ticket';
 import { TicketUpdatedPublisher } from '../events/publishers/ticket-updated-publisher';
 import { natsWrapper } from '../nats-wrapper';
-import BadRequestError from '@sealsdev/commonservice/build/errors/bad-request-error';
+import { BadRequestError } from '@sealsdev/commonservice/build/errors/bad-request-error';
 
 const router = express.Router();
 

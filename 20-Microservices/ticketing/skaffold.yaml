@@ -16,6 +16,14 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
+    - image: sealdev/client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '**/*.js'
+            dest: .
     - image: sealdev/tickets
       context: tickets
       docker:
@@ -33,18 +41,10 @@ build:
           - src: 'src/**/*.ts'
             dest: .
     - image: sealdev/expiration
-      context: orders
+      context: expiration
       docker:
         dockerfile: Dockerfile
       sync:
         manual:
           - src: 'src/**/*.ts'
-            dest: .
-    - image: sealdev/client
-      context: client #is the folder name that contains this image
-      docker:
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: '**/*.js'
             dest: .

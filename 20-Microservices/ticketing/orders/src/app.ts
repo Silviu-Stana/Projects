@@ -3,7 +3,11 @@ import 'express-async-errors';
 import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
 import { Request, Response, NextFunction } from 'express';
-import { errorHandler, NotFoundError, currentUser } from '@sealsdev/commonservice';
+import {
+    errorHandler,
+    NotFoundError,
+    currentUser,
+} from '@sealsdev/commonservice';
 
 import { newOrderRouter } from './routes/new';
 import { showOrderRouter } from './routes/show';
@@ -22,9 +26,9 @@ app.use(
 app.use(currentUser);
 
 app.use(showOrderRouter);
-app.use(newOrderRouter);
 app.use(indexOrderRouter);
 app.use(deleteOrderRouter);
+app.use(newOrderRouter);
 
 //Route not found
 app.all('*', async (req, res) => {
